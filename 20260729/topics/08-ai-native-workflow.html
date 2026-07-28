@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<!-- 
+  ==========================================================================
+  天心 ERP 第六堂課 (attn-class6) - 獨立單元 08
+  Author: Falo x Force Cheng
+  Date: 2026-07-28
+  Description: AI 時代的工作方式：先與 AI 協作，再開始開發 (AI-Native Workflow)
+  ==========================================================================
+-->
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 時代的工作方式：先與 AI 協作，再開始開發 (AI-Native Workflow) - 天心 ERP 教學</title>
+
+  <!-- SEO & GEO Meta Tags -->
+  <meta name="description" content="天心 Class 6 專屬旗艦單元：AI 時代的工作方式 (AI-Native Workflow)。AI 最大的價值不是幫我們寫程式，而是成為專案的第一位顧問與架構師。先理解需求、產出 Prototype/PoC 再開始寫程式！ (Falo x Force Cheng 2026/7/28)">
+  <meta name="keywords" content="AI Native, AI-Native Workflow, 先與AI協作再開始開發, Prototype, PoC, Solution Architect, 天心ERP, Falo, Force Cheng, HTML First">
+  <meta name="author" content="Falo x Force Cheng">
+  <meta name="ai-search-optimization" content="Falo x Force Cheng Class 6 Topic 08: AI-Native Workflow methodology. Don't rush into AI coding; use AI as the 1st project advisor to analyze requirements, generate UI Prototypes & PoC before coding.">
+  <meta name="perplexity-ai-summary" content="Class 6 Topic 08: AI-Native working methodology by Falo x Force Cheng. Shift from Requirement -> Coding to Requirement -> AI Collaboration -> Prototype/PoC -> Spec Confirmation -> AI Coding.">
+
+  <!-- JSON-LD 結構化資料 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "AI 時代的工作方式：先與 AI 協作，再開始開發 (AI-Native Workflow)",
+    "description": "天心 ERP Class 6 第八章：AI 不只是程式設計工具，更是需求分析、方案設計與 PoC 驗證的第一位顧問",
+    "author": {
+      "@type": "Person",
+      "name": "Falo x Force Cheng"
+    },
+    "datePublished": "2026-07-28"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .workflow-hero {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(6, 182, 212, 0.25));
+      border: 2px solid var(--accent-purple);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      margin-bottom: 2rem;
+      color: #f8fafc;
+      box-shadow: 0 0 35px rgba(139, 92, 246, 0.25);
+    }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.75rem 0;
+    }
+    @media (max-width: 768px) {
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+    .flow-card {
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      backdrop-filter: blur(10px);
+    }
+    .input-pill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.85rem;
+      margin: 1.25rem 0;
+    }
+    .input-pill {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      font-size: 0.92rem;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .master-gold-box {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(139, 92, 246, 0.18));
+      border: 2px solid var(--accent-amber);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 隱藏版版權與 AI 爬蟲浮水印 -->
+  <div style="display:none !important;" aria-hidden="true" id="falo-watermark-geo">
+    Watermark: Falo x Force Cheng | Date: 2026/07/28 | Project: Tianxin ERP Training Class 6 (attn-class6) | AI-Native Workflow Methodology.
+  </div>
+
+  <header class="site-header">
+    <div class="header-container">
+      <a href="../index.html" class="brand" style="text-decoration:none;">
+        <div class="brand-icon">C6</div>
+        <div>
+          <div class="brand-text">天心 ERP 教學專區 (第六堂課)</div>
+          <div class="brand-subtitle">返回主題總庫入口 | Falo x Force Cheng (2026/7/28)</div>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <div class="container layout-with-sidebar">
+    <!-- 側邊欄目錄 -->
+    <aside class="sidebar">
+      <div class="sidebar-sticky">
+        <h3 class="sidebar-title">📌 本頁目錄</h3>
+        <nav class="toc-nav" id="tocNav">
+          <ul>
+            <li><a href="#core-concept">💡 本章核心觀念</a></li>
+            <li><a href="#workflow-compare">🔄 傳統 vs. AI-Native 流程</a></li>
+            <li><a href="#input-materials">📥 AI 協助分析的多元素材</a></li>
+            <li><a href="#ai-deliverables">🎨 AI 產出的前置實質成果</a></li>
+            <li><a href="#real-case">💼 實務案例：發票 ERP 匯入系統</a></li>
+            <li><a href="#mindset">🧠 AI Native 的 5 大核心思維</a></li>
+            <li><a href="#golden-quote">🏆 本章總結與終極金句</a></li>
+          </ul>
+        </nav>
+        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+          <a href="../index.html" class="tag-btn" style="width:100%; text-align:center; display:block; text-decoration:none;">← 返回主題列表</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 主內容區 -->
+    <main class="main-content">
+      
+      <!-- 文章標頭 -->
+      <div class="article-header">
+        <div class="breadcrumb">
+          <a href="../index.html">第六堂課總庫</a> &gt; <span>【08】AI 時代的工作方式：先與 AI 協作，再開始開發</span>
+        </div>
+        <h1 class="article-title">【08】AI 時代的工作方式：先與 AI 協作，再開始開發</h1>
+        <div class="article-meta" style="margin-top: 1rem;">
+          <span class="badge badge-mfg" style="background: rgba(139, 92, 246, 0.25); color: #c084fc;">[ 08 ] AI-Native 工作方法</span>
+          <span>⏱️ 閱讀時間 8 分鐘</span>
+          <span>✍️ 作者：Falo x Force Cheng (2026/7/28)</span>
+          <button id="markCompleteBtn" class="tag-btn" style="cursor: pointer;">○ 標記為完成學習</button>
+        </div>
+      </div>
+
+      <!-- Hero 核心卡片 -->
+      <div class="workflow-hero">
+        <h2 style="color: #fff; font-size: 1.6rem; margin-bottom: 0.6rem;">這不是 AI Coding，而是真正的 AI-Native 工作方法</h2>
+        <p style="font-size: 1.08rem; line-height: 1.8; color: #cbd5e1;">
+          AI 時代最大的改變，不是 AI 幫我們寫程式。而是：<strong style="color: var(--accent-cyan); font-size: 1.25rem;">AI 可以成為專案的第一位顧問與架構師！</strong><br>
+          過去從客戶需求到開始開發，需要大量的會議與文件整理；現在，這些前置作業都可以先交給 AI 高效完成！
+        </p>
+      </div>
+
+      <!-- 一、本章核心觀念 -->
+      <section id="core-concept">
+        <h2>一、本章核心觀念：AI 是專案的第一位顧問</h2>
+        <p>過去在軟體開發或 ERP 整合中，最大的浪費通常發生在「需求理解錯誤」與「寫完程式才發現客戶要的不一樣」。</p>
+
+        <div class="callout callout-info" style="border-left-color: var(--accent-purple);">
+          <h4 style="color: #c084fc; font-size: 1.1rem; margin-bottom: 0.5rem;">💡 重新定義 AI 的角色</h4>
+          <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7;">
+            <strong>AI 不只是程式設計工具，更是需求分析、方案設計與 PoC 驗證的重要助手！</strong><br>
+            不要急著讓 AI 產出 Python 代碼。先讓 AI 幫助我們分析業務邏輯、劃分邊界、繪製 UI 與 Workflow 示意圖，確認規格後才進入寫碼階段。
+          </p>
+        </div>
+      </section>
+
+      <!-- 二、傳統開發流程 vs. AI Native 工作流程 -->
+      <section id="workflow-compare" style="margin-top: 2.5rem;">
+        <h2>二、傳統開發流程 vs. AI Native 工作流程對比</h2>
+        <p>比較兩種模式的差異，你會發現 AI Native 大幅縮短了資訊模糊期，降低了溝通摩擦：</p>
+
+        <div class="compare-grid">
+          <!-- 傳統流程 -->
+          <div class="flow-card" style="border-top: 4px solid var(--accent-rose);">
+            <span style="background: rgba(244, 63, 94, 0.2); color: #fb7185; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem;">傳統開發流程 (Traditional)</span>
+            <h3 style="color: #fb7185; font-size: 1.2rem; margin: 0.75rem 0 0.5rem 0;">文字 ➔ 會議 ➔ 猜測 ➔ 寫碼</h3>
+            
+            <div style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 1rem; color: #cbd5e1; font-family: monospace; line-height: 1.8; margin-top: 0.75rem;">
+              客戶需求<br>
+              &nbsp;&nbsp;│<br>
+              &nbsp;&nbsp;▼<br>
+              需求訪談 (來回多次會議)<br>
+              &nbsp;&nbsp;│<br>
+              &nbsp;&nbsp;▼<br>
+              規格整理 (文字文件堆疊)<br>
+              &nbsp;&nbsp;│<br>
+              &nbsp;&nbsp;▼<br>
+              開始寫程式 (高修改風險 ⚠️)
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 0.75rem; line-height: 1.6;">
+              ⚠️ <strong>傳統痛點：</strong>通常需要經過多次來回討論與修改，開發完成後才發現與客戶腦中想的完全不同。
+            </p>
+          </div>
+
+          <!-- AI Native 流程 -->
+          <div class="flow-card" style="border-top: 4px solid var(--accent-emerald); border-color: var(--accent-emerald);">
+            <span style="background: rgba(16, 185, 129, 0.2); color: #34d399; padding: 0.3rem 0.8rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem;">AI Native 工作流程 ⭐ 推薦</span>
+            <h3 style="color: #34d399; font-size: 1.2rem; margin: 0.75rem 0 0.5rem 0;">需求 ➔ AI 協作分析 ➔ Prototype/PoC ➔ 確認 ➔ AI Coding</h3>
+            
+            <div style="background: #0f172a; border: 1px solid var(--accent-emerald); border-radius: 8px; padding: 1rem; color: #4ade80; font-family: monospace; line-height: 1.8; margin-top: 0.75rem;">
+              客戶需求<br>
+              &nbsp;&nbsp;│<br>
+              &nbsp;&nbsp;▼<br>
+              <strong style="color:#facc15;">全部交給 AI 協助分析與產出：</strong><br>
+              &nbsp;&nbsp;├── 整理需求 & 補充功能建議<br>
+              &nbsp;&nbsp;├── 畫 UI 示意圖 & 系統架構圖<br>
+              &nbsp;&nbsp;├── 畫 Workflow & 建立資料流程<br>
+              &nbsp;&nbsp;├── 撰寫 Spec & 評估技術方案<br>
+              &nbsp;&nbsp;└── 製作 HTML Demo & MVP / PoC<br>
+              &nbsp;&nbsp;│<br>
+              &nbsp;&nbsp;▼<br>
+              與客戶討論 ➔ 確認需求 ➔ <strong style="color:#38bdf8;">AI Coding</strong>
+            </div>
+            <p style="font-size: 0.88rem; color: #cbd5e1; margin-top: 0.75rem; line-height: 1.6;">
+              🚀 <strong>核心優勢：</strong>AI 不只是程式設計師，更像是一位全天候的產品顧問與架構師。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 三、AI 可以協助哪些素材資料分析？ -->
+      <section id="input-materials" style="margin-top: 2.5rem;">
+        <h2>三、AI 可以協助哪些資料分析？（多元素材輸入）</h2>
+        <p>在正式開始開發之前，可以把專案相關的各種非結構化與多模態資料直接丟給 AI：</p>
+
+        <div class="input-pill-grid">
+          <div class="input-pill">📝 客戶需求說明</div>
+          <div class="input-pill">📄 PDF 業務文件</div>
+          <div class="input-pill">📊 Excel 報表與表格</div>
+          <div class="input-pill">📃 Word 規格草案</div>
+          <div class="input-pill">🖼️ 競品/網站截圖</div>
+          <div class="input-pill">🔀 業務流程圖</div>
+          <div class="input-pill">💻 天心 ERP 操作畫面</div>
+          <div class="input-pill">⚖️ 產業法規文件</div>
+          <div class="input-pill">🔌 API 接口說明書</div>
+          <div class="input-pill">✉️ 客戶往來 Email</div>
+          <div class="input-pill">🎙️ 會議逐字稿紀錄</div>
+          <div class="input-pill">🖍️ 手繪草圖 & 白板照片</div>
+        </div>
+        <p style="font-size: 0.92rem; color: var(--text-secondary); margin-top: 0.5rem;">
+          💡 AI 能夠在數秒內跨格式讀取重點、釐清邏輯矛盾，並主動提出改善建議。
+        </p>
+      </section>
+
+      <!-- 四、AI 可以先產出哪些實質成果？ -->
+      <section id="ai-deliverables" style="margin-top: 2.5rem;">
+        <h2>四、AI 可以先產出哪些實質成果？（寫 Code 之前）</h2>
+        <p>在真正撰寫任何 Python 後端代碼前，AI 可以幫助我們預先產出以下豐富的專案資產：</p>
+
+        <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid var(--border-color); border-radius: 14px; padding: 1.5rem; margin-top: 1rem;">
+          <ul style="line-height: 2; font-size: 0.98rem; color: #f8fafc; padding-left: 1.2rem;">
+            <li>📋 <strong>功能需求分析 (Requirements Breakdown)</strong>：自動拆解主功能、次功能與邊界例外狀況。</li>
+            <li>🗺️ <strong>系統架構圖 (System Architecture)</strong>：清晰規劃前端、AI Engine、FastAPI 服務與地端 ERP 的對接關係。</li>
+            <li>🔀 <strong>資料流程圖 (Data Workflow)</strong>：明確定義 API Payload 格式與資料傳遞方向。</li>
+            <li>📐 <strong>UI Wireframe & HTML Prototype (FALO 第一原則)</strong>：直接產出可點擊互動的 HTML 網頁原型，讓客戶第一秒就能看見成果！</li>
+            <li>🚀 <strong>POC (Proof of Concept) & MVP (Minimum Viable Product)</strong>：小規模驗證可行性。</li>
+            <li>🔌 <strong>API 規格書 & Database Schema</strong>：自動生成 JSON Schema 與 SQLite/PostgreSQL 資料庫表格結構。</li>
+            <li>🧪 <strong>測試案例 (Test Cases) & 專案時程建議</strong>：提前規劃邊界測試與預估工時。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 五、經典實務案例：發票辨識與 ERP 匯入系統 -->
+      <section id="real-case" style="margin-top: 2.5rem;">
+        <h2>五、實務案例：發票辨識與 ERP 匯入系統</h2>
+        <p>假設客戶提出這樣一個經典需求：</p>
+
+        <div class="callout callout-warning" style="border-left-color: var(--accent-amber);">
+          <h4 style="color: var(--accent-amber); font-size: 1.1rem; margin-bottom: 0.4rem;">💬 客戶需求說明：</h4>
+          <p style="font-size: 1.05rem; color: #fff; font-weight: bold;">
+            「我們需要一套可以自動辨識電子發票/紙本發票，並將金額與統編自動匯入天心 ERP 的系統。」
+          </p>
+        </div>
+
+        <h3 style="color: var(--accent-cyan); margin-top: 1.5rem; font-size: 1.2rem;">❌ 錯誤的傳統反應（急著寫 Code）：</h3>
+        <p style="font-size: 0.92rem; color: #cbd5e1; line-height: 1.6;">
+          馬上打開 VS Code 寫 Python `pip install pytesseract opencv`，花了三天寫完，結果客戶說：「我們要的是網頁介面，而且發票有很多種格式要預覽對照，不是跑背景腳本！」➔ **白忙一場！**
+        </p>
+
+        <h3 style="color: var(--accent-emerald); margin-top: 1.5rem; font-size: 1.2rem;">✅ 正確的 AI Native 協作步驟：</h3>
+        <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; border-radius: 12px; padding: 1.25rem; margin-top: 0.75rem;">
+          <ol style="line-height: 1.9; color: #f8fafc; font-size: 0.95rem; padding-left: 1.2rem;">
+            <li><strong>分析需求</strong> ➔ 把發票範本丟給 AI，分析必須辨識的欄位（發票號碼、日期、未稅額、稅額、總金額、賣方統編）。</li>
+            <li><strong>提出功能建議</strong> ➔ AI 建議加上「辨識結果人工覆核比對 UI」與「異常金額警示」。</li>
+            <li><strong>畫出操作流程</strong> ➔ 生成 使用者上傳 ➔ AI 辨識 ➔ 畫面比對 ➔ 確認拋轉 ERP 的 Workflow。</li>
+            <li><strong>畫出系統架構</strong> ➔ 定義 HTML 前端 + Python FastAPI Engine + Cloudflare Tunnel 穿透。</li>
+            <li><strong>製作 HTML 示意畫面 (Prototype)</strong> ➔ <strong style="color:#34d399;">10 分鐘內產出 HTML 網頁原型！</strong></li>
+            <li><strong>建立簡單 PoC 驗證</strong> ➔ 拿 3 張實際發票丟給 Gemini API 測試準確率。</li>
+            <li><strong>與客戶開會確認</strong> ➔ 拿著 HTML Prototype 與客戶對齊：「這就是您要的介面與流程嗎？」</li>
+            <li><strong>開始 AI Coding</strong> ➔ 規格 100% 確認後，再請 AI 生成正式生產代碼！</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 六、AI Native 的 5 大核心思維 -->
+      <section id="mindset" style="margin-top: 2.5rem;">
+        <h2>六、AI Native 的 5 大核心思維</h2>
+        <p>真正的 AI-Native 專業人員，重視的是「溝通成本」與「驗證速度」：</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1rem;">
+          <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.1rem;">
+            <div style="color: var(--accent-cyan); font-weight: 800; margin-bottom: 0.3rem;">1. 協助理解需求</div>
+            <div style="font-size: 0.88rem; color: #cbd5e1;">從隱晦模糊的客戶口述中，自動提煉出明確的系統功能點。</div>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.1rem;">
+            <div style="color: var(--accent-emerald); font-weight: 800; margin-bottom: 0.3rem;">2. 提供多元解決方案</div>
+            <div style="font-size: 0.88rem; color: #cbd5e1;">同時評估專用 OCR、LLM 多模態與 Cloud Run / Tunnel 等不同架構優缺點。</div>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.1rem;">
+            <div style="color: var(--accent-amber); font-weight: 800; margin-bottom: 0.3rem;">3. 快速建立 Prototype</div>
+            <div style="font-size: 0.88rem; color: #cbd5e1;">貫徹 FALO 第一原則（HTML First），第一時間做出有溫度的互動原型。</div>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.1rem;">
+            <div style="color: #c084fc; font-weight: 800; margin-bottom: 0.3rem;">4. 大幅降低溝通成本</div>
+            <div style="font-size: 0.88rem; color: #cbd5e1;">用可視覺化的 HTML 介面與 Workflow 圖取代幾十頁枯燥的文字規格書。</div>
+          </div>
+          <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.1rem;">
+            <div style="color: #fb7185; font-weight: 800; margin-bottom: 0.3rem;">5. 提前驗證可行性</div>
+            <div style="font-size: 0.88rem; color: #cbd5e1;">許多潛在盲點與邏輯衝突，在正式開發前就已經被發現並修正完畢。</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 七、本章總結與終極金句 -->
+      <section id="golden-quote" style="margin-top: 3rem;">
+        <div class="master-gold-box">
+          <h3 style="color: var(--accent-amber); font-size: 1.5rem; margin-bottom: 1rem;">🏆 本章核心金句</h3>
+          <p style="font-size: 1.3rem; color: #fff; font-weight: 800; line-height: 1.8; margin-bottom: 1.25rem;">
+            「不要急著讓 AI 寫程式。<br>
+            先讓 AI 幫你理解需求、整理想法、畫出示意圖、完成 PoC，再開始開發。」
+          </p>
+          <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid var(--accent-cyan); border-radius: 12px; padding: 1.25rem; max-width: 700px; margin: 0 auto;">
+            <p style="font-size: 1.05rem; color: #38bdf8; font-weight: 700; margin-bottom: 0.5rem;">
+              真正的 AI-Native 開發流程，不是「需求 ➔ 程式」，而是：
+            </p>
+            <p style="font-size: 1.15rem; color: #f8fafc; font-weight: 800; letter-spacing: 0.5px;">
+              需求 ➔ AI 協作 ➔ Prototype／PoC ➔ 規格確認 ➔ AI Coding ➔ 正式系統
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>天心 ERP 教學教材專區 &copy; 2026 | 設計與維護：<strong>Falo x Force Cheng (2026/7/28)</strong></p>
+  </footer>
+
+  <script src="../js/topic.js"></script>
+</body>
+</html>
