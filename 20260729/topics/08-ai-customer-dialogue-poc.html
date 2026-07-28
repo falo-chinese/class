@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 時代：用 AI 與客戶對話，快速做出建議、示意圖與 POC</title>
+  <meta name="description" content="從客戶對話、需求釐清、素材整理，到利用 AI 產出建議、示意圖與可驗證 POC 的實戰方法。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .poc-hero { background: linear-gradient(135deg, rgba(139,92,246,.24), rgba(6,182,212,.2)); border: 2px solid #8b5cf6; border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2rem; text-align: center; }
+    .poc-hero strong { color: #c4b5fd; font-size: 1.35rem; }
+    .flow-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:.7rem; margin:1.5rem 0 2rem; }
+    .flow-node { padding:1rem .7rem; border-radius:12px; text-align:center; font-weight:800; background:rgba(15,23,42,.8); border:1px solid #475569; }
+    .flow-node span { display:block; color:#22d3ee; font-size:.8rem; margin-bottom:.35rem; }
+    .prompt-box { background:#0f172a; border:1px solid #475569; border-left:4px solid #8b5cf6; border-radius:10px; padding:1.25rem; white-space:pre-wrap; line-height:1.8; margin:1rem 0 1.5rem; }
+    .deliver-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin:1.5rem 0; }
+    .deliver-card { background:rgba(30,41,59,.72); border:1px solid #475569; border-radius:12px; padding:1.25rem; }
+    .deliver-card h3 { color:#67e8f9; margin-top:0; }
+    .meeting-table { width:100%; border-collapse:collapse; margin:1.25rem 0 2rem; }
+    .meeting-table th,.meeting-table td { border:1px solid #475569; padding:.8rem; text-align:left; vertical-align:top; }
+    .meeting-table th { background:rgba(139,92,246,.2); color:#ddd6fe; }
+    @media(max-width:800px){.flow-grid{grid-template-columns:1fr}.deliver-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body data-topic-id="08-ai-customer-dialogue-poc">
+  <header class="site-header"><div class="header-container"><div class="brand">
+    <a href="../index.html" class="brand-icon">C6</a>
+    <div><div class="brand-text">天心 ERP AI 實戰課程</div><div class="brand-subtitle">AI 時代的客戶溝通與 POC 方法</div></div>
+  </div></div></header>
+
+  <div class="topic-container">
+    <aside class="sidebar-toc"><div class="toc-title">本章目錄</div><ul class="toc-list" id="tocList"></ul></aside>
+    <main class="article-content">
+      <div class="article-header">
+        <a href="../index.html" class="back-link">← 回課程首頁</a>
+        <h1 class="article-title">AI 時代：用 AI 與客戶對話，快速做出建議、示意圖與 POC</h1>
+        <div class="article-meta"><span class="badge badge-psi">[ 08 ] 客戶共創</span><span>閱讀時間：約 12 分鐘</span><button id="markCompleteBtn" class="tag-btn" style="cursor:pointer;">標記為已完成</button></div>
+      </div>
+
+      <div class="poc-hero"><strong>不要等需求全部確定才開始做。</strong><p>把客戶說過的話、文件、畫面、表格、流程與限制交給 AI，先做出「看得見、能討論、可驗證」的版本，再和客戶一起收斂答案。</p></div>
+
+      <h2>一、AI 改變的不是工具，而是客戶對話節奏</h2>
+      <p>傳統做法常是訪談、寫會議紀錄、整理需求、等待提案，再排期製作原型。每個階段相隔數天甚至數週，客戶看到成果時，雙方往往已經忘記當初的語境。</p>
+      <p>AI 時代可以把流程壓縮到同一場會議：聽到問題後，立即整理假設、畫出流程、提出方案，甚至做出能操作的 POC。客戶不是最後才驗收，而是從第一版就參與共同設計。</p>
+      <div class="flow-grid">
+        <div class="flow-node"><span>01</span>客戶描述問題</div><div class="flow-node"><span>02</span>AI 整理與追問</div><div class="flow-node"><span>03</span>產出建議與示意</div><div class="flow-node"><span>04</span>建立最小 POC</div><div class="flow-node"><span>05</span>客戶操作並修正</div>
+      </div>
+
+      <h2>二、先把各種東西丟給 AI，但要交代任務</h2>
+      <p>「丟給 AI」不是無腦上傳。素材越接近真實工作現場，AI 越能提出可落地的建議；同時必須說清楚目的、對象、限制與希望的輸出形式。</p>
+      <div class="deliver-grid">
+        <div class="deliver-card"><h3>可以提供的素材</h3><p>會議逐字稿、客戶 Email、Excel、報表截圖、舊系統畫面、SOP、流程圖、錯誤訊息、API 文件、競品案例、手繪草圖。</p></div>
+        <div class="deliver-card"><h3>必須補上的背景</h3><p>誰在使用、目前怎麼做、哪裡最痛、成功標準、不能改的規則、資料敏感性、時間與預算。</p></div>
+        <div class="deliver-card"><h3>請 AI 先做的事</h3><p>摘要現況、列出已知與未知、找矛盾、提出追問、區分事實與假設、排列需求優先順序。</p></div>
+        <div class="deliver-card"><h3>指定交付格式</h3><p>一頁提案、流程圖、系統架構圖、UI Wireframe、互動網頁、API Mock、測試情境或三種方案比較。</p></div>
+      </div>
+      <div class="callout callout-warning"><strong>資料安全是前提</strong><p>客戶個資、密碼、Token、商業機密與正式資料庫內容不可直接投入未核准的公用 AI。先遮罩、匿名化、製作假資料，並依公司與客戶的資料政策選擇工具。</p></div>
+
+      <h2>三、讓 AI 成為會議中的第二大腦</h2>
+      <p>AI 在會議中最有價值的角色，不是替人講話，而是降低遺漏與誤解。它可以即時把模糊語句轉成可驗證項目，提醒團隊尚未確認的條件。</p>
+      <table class="meeting-table">
+        <thead><tr><th>客戶說法</th><th>AI 協助轉譯</th><th>下一個確認問題</th></tr></thead>
+        <tbody>
+          <tr><td>「這個流程太慢。」</td><td>拆解等待時間、人工步驟、重工次數與資料交接點。</td><td>哪一步最常卡住？目前平均多久？希望縮短到多久？</td></tr>
+          <tr><td>「想要一個 AI 助理。」</td><td>區分查詢、摘要、推薦、執行動作與自動決策。</td><td>助理只提供建議，還是能直接寫入 ERP？誰負責核准？</td></tr>
+          <tr><td>「要像某某系統。」</td><td>拆出真正喜歡的互動、畫面、速度或商業規則。</td><td>最重要的是哪三個特性？哪些只需相似、不必完全複製？</td></tr>
+        </tbody>
+      </table>
+
+      <h2>四、從建議、示意圖到 POC 的三層產出</h2>
+      <div class="step-card"><h3><span class="step-number">1</span> 建議：先建立共同理解</h3><p>輸出現況摘要、問題樹、使用者旅程、三種解法與取捨。這一層的目標是確認「我們正在解同一個問題」。</p></div>
+      <div class="step-card"><h3><span class="step-number">2</span> 示意圖：把抽象概念變得可見</h3><p>用流程圖、架構圖、畫面 Wireframe、Before/After 對照或情境故事，讓非技術客戶也能指出哪裡正確、哪裡需要修改。</p></div>
+      <div class="step-card"><h3><span class="step-number">3</span> POC：只驗證最大風險</h3><p>POC 不等於縮小版正式系統。它只需驗證最關鍵的不確定性，例如 AI 能否正確讀取文件、回覆品質是否可接受、流程是否能串接、使用者是否願意採用。</p></div>
+
+      <h2>五、POC 的範圍要小，但證據要強</h2>
+      <p>一個好的 POC 應該能在短時間回答明確問題。畫面可以不完整、資料可以是假資料，但驗證條件不能模糊。</p>
+      <ul>
+        <li><strong>一種角色：</strong>先服務最重要的使用者，不一次涵蓋所有部門。</li>
+        <li><strong>一條流程：</strong>選擇最痛或風險最高的端到端情境。</li>
+        <li><strong>一組資料：</strong>使用足以代表真實狀況的匿名樣本。</li>
+        <li><strong>一個指標：</strong>例如時間降低 50%、正確率達 85%、人工步驟減少三步。</li>
+        <li><strong>一個決策：</strong>完成後要能決定繼續、調整方向，或停止投入。</li>
+      </ul>
+
+      <h2>六、可直接交給 AI 的工作提示</h2>
+      <div class="prompt-box">你是企業解決方案顧問。以下是客戶會議紀錄與現有素材。
+
+請先：
+1. 摘要客戶的目標、痛點、使用者與限制。
+2. 將「已確認事實」與「尚待驗證假設」分開。
+3. 提出 5 個最重要的追問，不要自行補完未知資訊。
+4. 提供保守、平衡、積極三種方案，說明成本、風險與效益。
+5. 畫出現況流程與建議流程。
+6. 定義一個兩天內可完成的 POC，只驗證最大技術或商業風險。
+7. 列出 Demo 腳本、測試資料、成功指標與客戶需要做的決策。
+
+輸出對象是非技術主管，請使用清楚、可討論、避免術語的繁體中文。</div>
+
+      <h2>七、客戶 Demo 不要只展示，要引導決策</h2>
+      <p>Demo 前先重述問題與本次驗證範圍；操作時使用客戶熟悉的案例；結束後不要只問「覺得如何」，而要逐項確認。</p>
+      <ol>
+        <li>這個流程是否符合實際工作？哪一步不符合？</li><li>輸出結果是否足以讓使用者採取下一步？</li><li>哪些錯誤可以接受，哪些錯誤絕不能發生？</li><li>若進入正式導入，誰提供資料、誰驗收、誰負責維運？</li><li>下一輪要優先降低哪一個風險？</li>
+      </ol>
+
+      <h2>八、常見失敗：AI 做得快，不代表方向正確</h2>
+      <div class="callout callout-warning"><strong>四個最常見的陷阱</strong><p>沒有先確認問題就直接做畫面；把漂亮 Demo 當成正式產品；使用過度理想的測試資料；AI 自信地補完了客戶從未確認的規則。</p></div>
+      <p>因此每次產出都要標示資料來源、假設、限制與待確認事項。人仍然負責理解客戶、做取捨、承擔承諾；AI 負責加快探索、呈現與迭代。</p>
+
+      <h2>九、本章行動清單</h2>
+      <ul>
+        <li>找一段真實客戶對話，請 AI 整理事實、假設與追問。</li><li>把一個抽象需求轉成流程圖與兩張關鍵畫面。</li><li>定義一個 1～2 天能完成、只有一項成功指標的 POC。</li><li>讓客戶實際操作，記錄行為與疑問，而不只收集主觀喜好。</li><li>把回饋再次交給 AI，產出下一輪差異與決策清單。</li>
+      </ul>
+      <div class="callout callout-info"><strong>本章結論</strong><p>AI 時代的競爭力，不只是誰能更快產生內容，而是誰能更快把客戶的模糊需求，轉成共同理解、可見方案、可操作 POC 與可做出的決策。</p></div>
+    </main>
+  </div>
+  <footer class="site-footer"><p>天心 ERP AI 實戰課程 &copy; 2026 | Falo x Force Cheng</p></footer>
+  <script src="../js/topic.js"></script>
+</body>
+</html>
