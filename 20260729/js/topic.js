@@ -1,5 +1,5 @@
 /**
- * 天心 ERP 教學專區 - 獨立主題頁面通用腳本
+ * 銀河軟體 教學專區 - 獨立主題頁面通用腳本
  */
 
 document.addEventListener('DOMContentLoaded', () => {

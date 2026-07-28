@@ -99,7 +99,7 @@ def index():
     <div class="container">
         <div class="header">
             <h1>📁 AI Node 本機檔案存取服務</h1>
-            <p>天心 Class 6 教學實戰範例 | 瀏覽程式所在目錄</p>
+            <p>銀河軟體 Class 6 教學實戰範例 | 瀏覽程式所在目錄</p>
             <div id="dirPath" class="path-badge">載入中...</div>
         </div>
         <div class="file-list" id="fileContainer">

@@ -1,5 +1,5 @@
 /**
- * 天心 ERP 教學專區 - 主頁卡片互動與搜尋腳本
+ * 銀河軟體 教學專區 - 主頁卡片互動與搜尋腳本
  * Author: Falo x Force Cheng
  * Date: 2026-07-28
  * Description: 支援標籤篩選、關鍵字搜尋、LocalStorage 完成度狀態，以及全卡片新視窗 (target="_blank") 連結開啟。
