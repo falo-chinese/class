@@ -254,6 +254,56 @@
               <li><strong style="color:#34d399;">Free 免費版 ($0/月)</strong>：<strong style="color:#34d399;">完全就夠用！</strong> 包含免費 CDN、無上限 DDoS 防護、免費 SSL 憑證與免費 Tunnel 穿透。</li>
               <li><strong style="color:#60a5fa;">USD $5 / 月 (Workers Paid)</strong>：<strong style="color:#60a5fa;">CP 值爆棚，更好用！</strong> 包含每月 <strong>1,000 萬次 API 請求</strong> 額度與 50ms CPU 時間，適合在邊緣層直接執行 AI 路由、JWT 驗證與 LINE Webhook 轉發！</li>
             </ul>
+
+            <!-- 📊 Cloudflare Free vs USD $5 生態系對照表 -->
+            <div class="price-table-container" style="margin-top: 1rem;">
+              <table class="pricing-table" style="font-size:0.88rem;">
+                <thead>
+                  <tr>
+                    <th>Cloudflare 服務生態</th>
+                    <th>Free 免費版 ($0/月)</th>
+                    <th>USD $5 / 月 (Workers Paid)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Workers API 請求數</strong></td>
+                    <td>100,000 次 / 天 (約 300 萬次/月)</td>
+                    <td><strong style="color:#60a5fa;">10,000,000 次 / 月</strong> (超大基本額度)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Workers CPU 執行時間</strong></td>
+                    <td>10 ms / 請求</td>
+                    <td><strong style="color:#60a5fa;">50 ms / 請求 (可跑複雜 AI 路由/驗證)</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>D1 SQL 雲端資料庫</strong></td>
+                    <td>500 萬行讀取/天 | 10 萬行寫入/天</td>
+                    <td><strong style="color:#60a5fa;">250 億行讀取/月 | 5,000 萬行寫入/月</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>R2 物件儲存 (發票/PDF/圖檔)</strong></td>
+                    <td>10 GB 儲存 | 零對外流量費</td>
+                    <td><strong style="color:#34d399;">10 GB 儲存 | 零對外流量費 (Zero Egress)</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>KV 鍵值快取 (Token/設定)</strong></td>
+                    <td>10 萬次讀取/天 | 1,000 次寫入/天</td>
+                    <td><strong style="color:#60a5fa;">1,000 萬次讀取/月 | 100 萬次寫入/月</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Vectorize 向量庫 & AI</strong></td>
+                    <td>3,000 萬維度儲存/月 | 1萬 Neurons/天</td>
+                    <td><strong style="color:#60a5fa;">1,000 萬次向量查詢/月 | 支援邊緣推論</strong></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Cloudflare Access 門禁</strong></td>
+                    <td><strong style="color:#34d399;">免費 50 位使用者 SSO 驗證</strong></td>
+                    <td><strong style="color:#34d399;">免費 50 位使用者 SSO 驗證</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </li>
           <li>📦 <strong>與重服務雲端 (Cloud Run) 的完美分工</strong>：重度雲端計算交給 Google Cloud Run；而地端 Python 算力連線與全域 Gateway 對外服務首選 Cloudflare + Tunnel！</li>
         </ul>
