@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!-- 
+  ==========================================================================
+  天心 ERP 第六堂課 (attn-class6) - 獨立單元 05
+  Author: Falo x Force Cheng
+  Date: 2026-07-28
+  Description: AI 部署策略（AI Deployment Strategy）：先雲端，再混合，最後才考慮全地端。
+  ==========================================================================
+-->
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 部署策略（AI Deployment Strategy）：先雲端，再混合，最後才考慮全地端 - 天心 ERP 教學</title>
+
+  <!-- SEO & GEO Meta Tags -->
+  <meta name="description" content="天心 Class 6 核心單元：AI 部署策略 (AI Deployment Strategy)。解答「AI 放哪裡？」介紹 Browser AI、Cloud AI、Hybrid AI 與 Local AI 選型流程圖。 (Falo x Force Cheng 2026/7/28)">
+  <meta name="keywords" content="AI部署策略, AI Deployment Strategy, Cloud AI, Hybrid AI, Local AI, Browser AI, 企業架構決策, 天心ERP, Falo, Force Cheng">
+  <meta name="author" content="Falo x Force Cheng">
+  <meta name="ai-search-optimization" content="Falo x Force Cheng Class 6 Guide: AI Deployment Strategy — Cloud AI first, Hybrid AI second, Local AI last. Progressive decision flowchart.">
+  <meta name="perplexity-ai-summary" content="Class 6 Topic 05 Masterclass: AI Deployment Strategy covering Browser AI, Cloud AI, Hybrid AI, and Local AI. Progressive deployment decision tree and cost-efficiency mindset.">
+
+  <!-- JSON-LD 結構化資料 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "AI 部署策略：先雲端，再混合，最後才考慮全地端",
+    "description": "天心 ERP Class 6 第五章：AI 放哪裡？從 Browser AI 到 Local AI 的企業演進決策樹",
+    "author": {
+      "@type": "Person",
+      "name": "Falo x Force Cheng"
+    },
+    "datePublished": "2026-07-28"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .deploy-hero {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(16, 185, 129, 0.25));
+      border: 2px solid var(--accent-blue);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      color: #f8fafc;
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+      text-align: center;
+    }
+    .subtitle-badge {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.2);
+      border: 1px solid var(--accent-blue);
+      color: var(--accent-cyan);
+      padding: 0.4rem 1.2rem;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 0.75rem;
+    }
+
+    .grid-4-layers {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin: 1.75rem 0;
+    }
+    .layer-card {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: var(--transition-fast);
+      position: relative;
+    }
+    .layer-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-cyan);
+    }
+    .layer-tag {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+    .tag-browser { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid #f59e0b; }
+    .tag-cloud { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid #10b981; }
+    .tag-hybrid { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid #3b82f6; }
+    .tag-local { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; }
+
+    .flow-diagram-card {
+      background: rgba(15, 23, 42, 0.95);
+      border: 2px solid var(--accent-emerald);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+    .flow-step {
+      display: inline-block;
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin: 0.5rem;
+    }
+    .flow-arrow {
+      color: var(--accent-emerald);
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin: 0 0.25rem;
+    }
+
+    .master-quote-deploy {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #34d399;
+      text-align: center;
+      margin: 2.5rem 0;
+      padding: 2rem;
+      background: rgba(16, 185, 129, 0.12);
+      border: 2px solid var(--accent-emerald);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-glow);
+      line-height: 1.9;
+    }
+  </style>
+</head>
+<body data-topic-id="05-ai-deployment-strategy">
+
+  <!-- 隱藏版版權與 GEO 浮水印 -->
+  <div style="display:none !important;" aria-hidden="true" id="falo-watermark-geo">
+    Watermark: Falo x Force Cheng | Date: 2026/07/28 | Topic 05: AI Deployment Strategy (Cloud -> Hybrid -> Local).
+  </div>
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <a href="../index.html" class="brand-icon">C6</a>
+        <div>
+          <div class="brand-text">天心 ERP 教學專區 (第六堂課)</div>
+          <div class="brand-subtitle">AI 部署策略 (AI Deployment Strategy) | Falo x Force Cheng (2026/7/28)</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="topic-container">
+    <!-- 側邊目錄 -->
+    <aside class="sidebar-toc">
+      <div class="toc-title">本頁目錄</div>
+      <ul class="toc-list" id="tocList"></ul>
+    </aside>
+
+    <!-- 文章主體內容 -->
+    <main class="article-content">
+      <div class="article-header">
+        <a href="../index.html" class="back-link">← 返回第六堂課卡片總覽</a>
+        <h1 class="article-title">AI 部署策略（AI Deployment Strategy）</h1>
+        <div class="article-meta" style="margin-top: 1rem;">
+          <span class="badge badge-faq">第四層次：架構部署決策</span>
+          <span>⏱️ 閱讀時間 8 分鐘</span>
+          <button id="markCompleteBtn" class="tag-btn" style="cursor: pointer;">○ 標記為完成學習</button>
+        </div>
+      </div>
+
+      <!-- 本章核心 Hero -->
+      <div class="deploy-hero">
+        <h2 style="color: #f8fafc; font-size: 1.8rem; margin-bottom: 0.5rem;">本章回答核心問題：AI 放哪裡？</h2>
+        <div class="subtitle-badge">核心心法：先雲端，再混合，最後才考慮全地端。</div>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: #cbd5e1; margin-top: 1.25rem;">
+          在上一章《AI 能力選型》中，我們回答了<em>「用哪種 AI」</em>。<br>
+          本章將進入系統架構師（Solution Architect）的核心思維：<strong style="color: #34d399; font-size: 1.2rem;">「這套 AI 系統，到底應該部署在哪裡？」</strong>
+        </p>
+      </div>
+
+      <h2>一、四大 AI 部署架構全面解析</h2>
+      <p>從極輕量的邊緣端到高度安全的企業地端，AI 的部署型態可分為四個漸進層次：</p>
+
+      <div class="grid-4-layers">
+        <!-- 1. Browser AI -->
+        <div class="layer-card">
+          <span class="layer-tag tag-browser">① Browser AI</span>
+          <h3 style="color: #fbbf24; font-size: 1.2rem; margin-bottom: 0.5rem;">邊緣前端 AI</h3>
+          <p style="font-size: 0.9rem; color: var(--text-primary); line-height: 1.6;">
+            <strong>優點：</strong>完全不用安裝、零網路延遲、敏感資料絕不離開使用者瀏覽器。<br>
+            <strong>限制：</strong>受限於使用者設備記憶體，模型規模小、複雜推理能力有限。
+          </p>
+        </div>
+
+        <!-- 2. Cloud AI (推薦首選) -->
+        <div class="layer-card" style="border: 2px solid var(--accent-emerald);">
+          <span class="layer-tag tag-cloud">② Cloud AI ⭐ 推薦首選</span>
+          <h3 style="color: #34d399; font-size: 1.2rem; margin-bottom: 0.5rem;">雲端 AI 服務</h3>
+          <p style="font-size: 0.9rem; color: var(--text-primary); line-height: 1.6;">
+            <strong>本課程第一推薦原因：</strong>算力強大、成熟穩定、具備免費試用額度 (Free Tier)、無須維護硬體與基礎設施。<br>
+            <strong style="color: #34d399; display: block; margin-top: 0.4rem;">💡 一句話金句：先做出成果。</strong>
+          </p>
+        </div>
+
+        <!-- 3. Hybrid AI -->
+        <div class="layer-card">
+          <span class="layer-tag tag-hybrid">③ Hybrid AI</span>
+          <h3 style="color: #60a5fa; font-size: 1.2rem; margin-bottom: 0.5rem;">混合雲端 AI</h3>
+          <p style="font-size: 0.9rem; color: var(--text-primary); line-height: 1.6;">
+            <strong>企業實務常態：</strong>敏感個資地端去識別化 ➔ 無害化文本傳送雲端理解 ➔ 結構化 JSON 寫回地端 ERP。兼具安全與強大算力。
+          </p>
+        </div>
+
+        <!-- 4. Local AI -->
+        <div class="layer-card">
+          <span class="layer-tag tag-local">④ Local AI</span>
+          <h3 style="color: #f87171; font-size: 1.2rem; margin-bottom: 0.5rem;">全地端 AI 部署</h3>
+          <p style="font-size: 0.9rem; color: var(--text-primary); line-height: 1.6;">
+            <strong>高門檻必備：</strong>專為特殊情境設計。重點不是「地端很炫」，而是什麼時候才真的需要自建！<br>
+            <strong style="color: #f87171; display: block; margin-top: 0.4rem;">⚠️ 不建議一開始投入。</strong>
+          </p>
+        </div>
+      </div>
+
+      <h2>二、什麼時候企業才真的需要 Local AI（地端部署）？</h2>
+      <p>許多企業主管常盲目追求「地端私有化模型」，但往往忽略了高昂的伺服器採購與維護成本。只有當符合以下四大條件之一時，才建議考慮 Local AI：</p>
+
+      <div class="callout callout-info">
+        <ul style="line-height: 2; margin-left: 1.2rem; color: var(--text-primary);">
+          <li>🔒 <strong>個資與法規極度嚴格</strong>：醫療病例、核心國防安全、極密財務個資絕對不可離廠。</li>
+          <li>🌐 <strong>極度離線環境</strong>：無網際網路連線的封閉式廠房或地底設施。</li>
+          <li>💻 <strong>企業已有閒置 GPU 算力</strong>：廠區原本已有大量高階 NVIDIA GPU 伺服器可直接利用。</li>
+          <li>📈 <strong>每天處理百萬頁巨量文件</strong>：高頻巨量固定任務，傳送雲端 API 總費用已高於固定硬體攤提成本。</li>
+        </ul>
+      </div>
+
+      <!-- 三、企業 AI 部署進階演進流程圖 -->
+      <h2>三、企業 AI 部署演進路徑決策樹</h2>
+      <p>身為 Solution Architect，我們絕不鼓吹客戶一次到位自建巨額設備。最健康的企業部署演進路徑如下：</p>
+
+      <div class="flow-diagram-card">
+        <h3 style="color: #fbbf24; margin-bottom: 1.5rem; font-size: 1.25rem;">🗺️ 企業 AI 漸進式部署演進地圖</h3>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.5rem;">
+          <div class="flow-step" style="border-color: var(--accent-cyan);">1. PoC 概念驗證</div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-step" style="border-color: #34d399; background: rgba(16, 185, 129, 0.2);">2. Cloud AI 快速上線</div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-step">3. 產生商業價值</div>
+        </div>
+
+        <div style="margin: 1.5rem 0; font-size: 1.1rem; color: #cbd5e1;">
+          ↓ 是否有特殊資安或大量算力需求？
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.5rem;">
+          <div class="flow-step" style="border-color: #60a5fa;">【YES】➔ Hybrid 混合架構</div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-step" style="border-color: #f87171;">資料絕對不可離廠？ 【YES】➔ Local AI 全地端</div>
+        </div>
+      </div>
+
+      <!-- 本章總結終極金句 -->
+      <div class="master-quote-deploy">
+        「 不是在一開始就追求最佳架構，<br>
+        而是先找到最適合目前階段的架構！」<br><br>
+        <span style="color: #60a5fa; font-size: 1.25rem;">
+          先用雲端做出成果，再依資安與規模演進至混合或地端！
+        </span>
+      </div>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>天心 ERP 教學教材專區 &copy; 2026 | 設計與維護：<strong>Falo x Force Cheng (2026/7/28)</strong></p>
+  </footer>
+
+  <script src="../js/topic.js"></script>
+</body>
+</html>
