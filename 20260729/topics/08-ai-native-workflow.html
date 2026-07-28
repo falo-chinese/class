@@ -270,6 +270,18 @@
                 NotebookLM 數秒內 digest 多小時訪談音訊，提煉精確 FAQ 並交棒 AI Agent 自動生成 Prototype。
               </div>
             </div>
+
+            <!-- ⚡ 影片 Token 省費優化密技 -->
+            <div style="grid-column: 1 / -1; background: rgba(15, 23, 42, 0.9); border: 1px solid var(--accent-emerald); border-radius: 10px; padding: 1.1rem; margin-top: 0.5rem;">
+              <div style="color: var(--accent-emerald); font-weight: 800; font-size: 0.98rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;">
+                ⚡ 實務省費技巧：影片錄影 Token 暴降 80%~90% 的 3 大優化法
+              </div>
+              <ul style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.7; padding-left: 1.1rem; margin: 0;">
+                <li><strong>1. 關鍵影格萃取 (Keyframe Extraction)</strong>：不必傳送每秒 60 幀的全長高畫質影片，只需萃取「畫面切換/按鈕點擊瞬間」的 10~20 張關鍵定格截圖，即可完整替代 10 分鐘影片，Token 暴降 90%！</li>
+                <li><strong>2. 降幀數與降低解析度 (Sub-sampling)</strong>：將操作錄影抽樣降至 <strong>1 FPS (每秒1幀)</strong> 或 720p 解析度，既能完封所有 UI 按鈕動作細節，又能大幅減輕多模態 API 負擔。</li>
+                <li><strong>3. 時間戳記語境導引 (Time-stamped Indexing)</strong>：搭配簡短文字時間戳記（如 `[01:15] 點擊拋轉單據按鈕`），讓 AI 能以極少 Token 精確對齊影像與業務動作邏輯！</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
