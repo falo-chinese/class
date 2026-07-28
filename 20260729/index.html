@@ -88,7 +88,8 @@
       <input type="text" id="searchInput" class="search-input" placeholder="搜尋第六堂課主題或關鍵字 (例如：AI選型, Gemini, Workflow, Decision, HTML First)...">
     </div>
     <div class="filter-tags">
-      <button class="tag-btn active" data-category="all">全部網頁 (8)</button>
+      <button class="tag-btn active" data-category="all">全部網頁 (9)</button>
+      <button class="tag-btn" data-category="service">AI 服務架構</button>
       <button class="tag-btn" data-category="select">AI 能力選型</button>
       <button class="tag-btn" data-category="deploy">AI 部署策略</button>
       <button class="tag-btn" data-category="workflow">AI Workflow 案例</button>
@@ -101,6 +102,20 @@
   <!-- 卡片主區塊 -->
   <main class="main-content">
     <div class="cards-grid" id="cardsGrid">
+
+      <!-- 獨立單元 06：AI 服務架構 (AI Service Architecture) -->
+      <div class="topic-card" data-category="service" data-topic-id="06-ai-service-architecture">
+        <div class="card-header">
+          <span class="badge badge-mfg" style="background: rgba(139, 92, 246, 0.2); color: #c084fc;">AI 服務架構</span>
+          <span class="card-time">⏱️ 閱讀 9 分鐘</span>
+        </div>
+        <h2 class="card-title">AI 服務架構（AI Service Architecture）：讓 AI 從一台電腦，變成企業可使用的服務</h2>
+        <p class="card-desc">解構如何將 AI Node 封裝為標準對外 API Service！收錄 Google Apps Script (GAS)、Cloudflare Workers/Pages、Cloudflare Tunnel/ngrok 與混合 Gateway。(Falo x Force Cheng 2026/7/28)</p>
+        <div class="card-footer">
+          <a href="topics/06-ai-service-architecture.html" class="card-btn" target="_blank" rel="noopener noreferrer">閱讀服務架構心法 (新視窗) ➔</a>
+          <button class="complete-toggle" title="標記為已完成">○ 未完成</button>
+        </div>
+      </div>
 
       <!-- 獨立單元 05：AI 部署策略 (AI Deployment Strategy) -->
       <div class="topic-card" data-category="deploy" data-topic-id="05-ai-deployment-strategy">
