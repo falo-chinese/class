@@ -444,7 +444,7 @@ if __name__ == "__main__":
         </ul>
       </div>
 
-      <!-- 四、ngrok vs Cloudflare Tunnel 深度對照 -->
+      <!-- 四、ngrok (練兵) vs. Cloudflare Tunnel (正式) 評估矩陣 -->
       <h2>四、ngrok (練兵) vs. Cloudflare Tunnel (正式) 評估矩陣</h2>
 
       <!-- 🖼️ AI Node 對外服務演進圖 -->
@@ -461,9 +461,87 @@ if __name__ == "__main__":
         </p>
 
         <div style="background: rgba(30, 41, 59, 0.8); padding: 1.25rem; border-radius: 10px; margin: 1rem 0; font-size: 0.93rem; color: #f8fafc; line-height: 1.8;">
-          1️⃣ <strong>購買專屬網域 (Domain Name)</strong>：推薦至 <strong style="color:var(--accent-cyan);">GoDaddy</strong>（國際大廠，活動折扣多）或 <strong style="color:var(--accent-cyan);">國內 VPS / 網域服務商</strong>（如智邦、遠振、捕夢網，可買域名+VPS、發票報帳、中文客服）。<br>
-          2️⃣ <strong>變更 NS 伺服器</strong>：在 GoDaddy 或國內服務商後台，將 DNS Name Server 改填 Cloudflare 指派的兩組 NS。<br>
+          1️⃣ <strong>購買專屬網域 (Domain Name) 與費用區間</strong>：推薦至 <strong style="color:var(--accent-cyan);">GoDaddy</strong>（國際大廠，活動折扣多）或 <strong style="color:var(--accent-cyan);">國內網域/VPS 服務商</strong>（如智邦、遠振、捕夢網，可發票報帳、中文客服）。<br>
+          <div style="background: rgba(15, 23, 42, 0.8); border-left: 3px solid #38bdf8; padding: 0.75rem 1rem; margin: 0.6rem 0; font-size: 0.88rem; color: #cbd5e1;">
+            💰 <strong>網域每年費用區間 (Domain Pricing Range)：</strong><br>
+            • 國際通用 <code>.com</code> 網域：約 <strong>USD $10 ~ $15 / 年（約 NT$ 300 ~ 480 元/年）</strong>，最受歡迎首選！<br>
+            • 台灣在地 <code>.tw</code> / <code>.com.tw</code> 網域：約 <strong>NT$ 600 ~ 800 元/年</strong>。<br>
+            • 促銷特惠網域（如 <code>.xyz</code>, <code>.online</code>, <code>.site</code>）：首年甚至只需 <strong>NT$ 30 ~ 100 元</strong>！<br>
+            💡 <em>每年只要幾百元台幣的極低預算，就能獲得 100% 企業級品牌形象、免費 SSL 憑證與 Cloudflare 完整防禦！</em>
+          </div>
+          2️⃣ <strong>變更 NS 伺服器</strong>：在服務商後台，將 DNS Name Server 改填 Cloudflare 指派的兩組 NS。<br>
           3️⃣ <strong>啟用 Cloudflare Tunnel</strong>：地端執行 <code>cloudflared</code>，綁定專屬子域名（如 <code>ai.yourdomain.com</code>），享受免費 HTTPS 與 DDoS 全球防禦！
+        </div>
+
+        <!-- ✉️ Cloudflare 隱藏版神級服務：Email Routing 郵件路由與雙向 AI 郵件工作流 -->
+        <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(6, 182, 212, 0.15)); border: 1px solid var(--accent-amber); border-radius: 14px; padding: 1.5rem; margin-top: 1rem;">
+          <h4 style="color: var(--accent-amber); font-size: 1.15rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            ✉️ Cloudflare 隱藏版神級服務：Email Routing (免費專屬網域郵件轉發路由)
+          </h4>
+          <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 0.75rem;">
+            購買專屬網域並掛載到 Cloudflare 後，還能<strong>免費啟用 Email Routing 郵件路由功能</strong>，省下昂貴的企業郵件伺服器開銷：
+          </p>
+          <ul style="font-size: 0.9rem; color: #f8fafc; line-height: 1.8; padding-left: 1.2rem; margin: 0 0 1.25rem 0;">
+            <li>📧 <strong>自訂專業郵件地址 ($0/月)</strong>：無痛建立如 <code>service@yourdomain.com</code> 或 <code>ai-alert@yourdomain.com</code> 專業信箱。</li>
+            <li>🔄 <strong>自動無縫轉發 (Forwarding)</strong>：所有寄到專屬網域的信件，自動轉發至你現有的個人 <strong>Gmail</strong> 或公司常用信箱！</li>
+            <li>⚡ <strong>無限別名 (Unlimited Aliases) & Catch-all</strong>：支援建立無限多組別名，或開啟 Catch-all 接收所有錯字信件。</li>
+            <li>🛡️ <strong>強大資安驗證與 AI 搭配</strong>：內建自動完成 SPF 與 DKIM 反垃圾郵件資安驗證，為企業 AI 郵件自動化提供安全防護！</li>
+          </ul>
+
+          <!-- 🤖 雙向 AI 郵件工作流核心：收信 + 發信 全面 AI 化 -->
+          <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid var(--accent-cyan); border-radius: 12px; padding: 1.25rem; margin-top: 1rem;">
+            <h4 style="color: var(--accent-cyan); font-size: 1.1rem; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem;">
+              🤖 企業級「收信 + 發信」雙向 AI 郵件自動化工作流
+            </h4>
+            <p style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 1rem;">
+              結合 Cloudflare Email Routing / Email Workers 與 AI API，不論是<strong>「收到信件（Inbound）」</strong>還是<strong>「發送信件（Outbound）」</strong>，都能全面賦予 AI 智慧功能：
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+              
+              <!-- 收信 + AI -->
+              <div style="background: rgba(30, 41, 59, 0.85); border: 1px solid #38bdf8; border-radius: 10px; padding: 1rem;">
+                <div style="color: #38bdf8; font-weight: 800; font-size: 0.98rem; margin-bottom: 0.4rem;">📩 1. 收信 + AI (Inbound AI Parsing)</div>
+                <ul style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.7; padding-left: 1.1rem; margin: 0;">
+                  <li><strong>自動附件抽取與解析</strong>：客戶寄來發票、採購單或 PDF，Cloudflare 自動觸發 AI Node 解析內文與附件照片。</li>
+                  <li><strong>結構化 JSON 拋轉 ERP</strong>：AI 自動轉譯為標準 JSON 格式，並自動寫入銀河軟體 ERP 資料庫。</li>
+                  <li><strong>智慧意圖分類與派單</strong>：判斷郵件急迫性與類別（客訴、詢價、報帳），自動分派給對應部門。</li>
+                </ul>
+              </div>
+
+              <!-- 發信 + AI -->
+              <div style="background: rgba(30, 41, 59, 0.85); border: 1px solid #34d399; border-radius: 10px; padding: 1rem;">
+                <div style="color: #34d399; font-weight: 800; font-size: 0.98rem; margin-bottom: 0.4rem;">📤 2. 發信 + AI (Outbound AI Generation)</div>
+                <ul style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.7; padding-left: 1.1rem; margin: 0;">
+                  <li><strong>自動撰寫客製化回覆</strong>：AI 根據銀河軟體 ERP 訂單狀態與客戶履歷，自動撰寫具備專業口吻與禮貌的信件內文。</li>
+                  <li><strong>自動附帶 AI 報表與繪圖</strong>：結合 AI 自動產出的 HTML/PDF 報表與視覺化圖表作為附件發送。</li>
+                  <li><strong>智慧風控與告警通知</strong>：異常交易、庫存不足或單據解析失敗時，AI 第一時間發送告警信給管理員。</li>
+                </ul>
+              </div>
+
+            </div>
+
+            <!-- 🖼️ 穿插雙向 AI 郵件工作流視覺圖 1 & 2 -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.25rem;">
+              <div style="text-align: center;">
+                <img src="../assets/ai_email_workflow_diagram_1.png" alt="AI Email Workflow Diagram 1" style="max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--accent-cyan); box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);">
+                <p style="font-size: 0.82rem; color: #94a3b8; margin-top: 0.4rem;">圖：收信 (Inbound) + AI 智慧消化與 ERP 拋轉流程</p>
+              </div>
+              <div style="text-align: center;">
+                <img src="../assets/ai_email_workflow_diagram_2.png" alt="AI Email Workflow Diagram 2" style="max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--accent-emerald); box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);">
+                <p style="font-size: 0.82rem; color: #94a3b8; margin-top: 0.4rem;">圖：發信 (Outbound) + AI 客製化生成與告警通知流程</p>
+              </div>
+            </div>
+
+            <!-- 🖼️ 實體 CoWork Webmail AI 郵件消化系統畫面 -->
+            <div style="text-align: center; margin-top: 1.25rem;">
+              <img src="../assets/ai_email_cowork_webmail_screenshot.png" alt="CoWork Webmail Real-world Screenshot" style="max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--accent-amber); box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);">
+              <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 0.5rem;">
+                圖：CoWork Workspace 實體 Webmail 系統畫面 — Cloudflare Email Routing + AI 節點自動生成 [AI 郵件摘要] 與 [自動 Hashtag 標籤]
+              </p>
+            </div>
+
+          </div>
         </div>
 
         <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
@@ -481,8 +559,9 @@ if __name__ == "__main__":
             </p>
           </div>
         </div>
+      </div>
 
-        <!-- 📊 Cloudflare Free ($0) vs. USD $5 生態系規格對照表 -->
+      <!-- 📊 Cloudflare Free ($0) vs. USD $5 生態系規格對照表 -->
         <div class="price-table-container" style="margin-top: 1.25rem;">
           <table class="pricing-table" style="font-size:0.88rem;">
             <thead>
@@ -574,7 +653,6 @@ if __name__ == "__main__":
             <li><strong>🔵 大流量正式營運 (正規 VPS / 雲端 VM)</strong>：若為巨量高併發 API，建議選擇專用 Windows/Linux 伺服器 (AWS/GCP/國內VPS) 獲得獨佔算力保障。</li>
           </ul>
         </div>
-      </div>
 
       <div class="price-table-container">
         <table class="pricing-table">
@@ -625,6 +703,7 @@ if __name__ == "__main__":
             </tr>
           </tbody>
         </table>
+      </div>
       <!-- 🚀 後續進階課程預告：Cloudflare 超強 Serverless 後端生態系 (D1 / R2 / KV) -->
       <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2)); border: 2px solid var(--accent-purple); border-radius: 16px; padding: 1.75rem; margin: 2.5rem 0; box-shadow: 0 0 30px rgba(139, 92, 246, 0.25);">
         <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">

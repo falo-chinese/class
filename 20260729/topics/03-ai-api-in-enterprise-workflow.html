@@ -299,7 +299,72 @@
 
       </div>
 
-      <h2>二、標準案例分析與雲端選型評估</h2>
+      <!-- 二、案例二：Email 傳輸中加入 AI 智慧摘要與自動標籤 (CoWork Workspace 實戰範例) -->
+      <section style="margin-top: 2.5rem;">
+        <h2>二、案例二：Email 傳輸中加入 AI 智慧摘要與自動標籤 (CoWork Workspace 實戰範例)</h2>
+        <p style="font-size: 0.96rem; color: #cbd5e1; line-height: 1.7;">
+          除了單據辨識拋轉外，在企業日常電子郵件傳輸（Email Routing）流程中加入 AI 智慧節點，也是極具價值的實戰場景！
+        </p>
+
+        <!-- ✉️ CoWork Workspace 實戰展示卡片 -->
+        <div style="background: rgba(15, 23, 42, 0.95); border: 2px solid var(--accent-cyan); border-radius: 14px; padding: 1.5rem; margin-top: 1rem;">
+          <h3 style="color: var(--accent-cyan); font-size: 1.2rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+            📧 實務案例：CoWork Workspace 邊緣主機 AI 郵件智慧消化系統
+          </h3>
+          <p style="font-size: 0.92rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 1rem;">
+            當新郵件抵達邊緣郵件伺服器時，系統自動呼叫輕量化 AI 模型（如 <strong style="color:#38bdf8;">GEMMA-4-26B-A4B-IT</strong> 或 <strong style="color:#34d399;">Qwen / Gemini</strong>），在幾百毫秒內完成：<br>
+            1️⃣ <strong>一鍵生成 AI 郵件摘要</strong>（如 PChome 降價通知、Gogoro 電子發票、Notion 帳單告警）。<br>
+            2️⃣ <strong>自動生成主題標籤 (Hashtags)</strong>（如 <code>#降價通知</code>、<code>#商品追蹤</code>、<code>#限時優惠</code>）。<br>
+            3️⃣ <strong>收件匣預覽列 [AI] 快訊卡片</strong>（同仁無需點開長信，一眼掌握全廠區最新動態與行動指令）。
+          </p>
+
+          <!-- 🖼️ 兩張實體截圖並排展示 (全景 + 細節特寫) -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin-top: 1.25rem;">
+            
+            <!-- 圖一：全景系統畫面 -->
+            <div style="text-align: center;">
+              <img src="../assets/ai_email_summary_screenshot_1.png" alt="CoWork Workspace Webmail Full System Screenshot" style="max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--accent-cyan); box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);">
+              <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.5rem;">
+                圖一：CoWork Workspace 全景畫面 — 收件匣列表每封信件皆有自動生成的 <code>[AI] 快訊卡片</code> 與 <code>#Hashtag 標籤</code>
+              </p>
+            </div>
+
+            <!-- 圖二：細節特寫畫面 -->
+            <div style="text-align: center;">
+              <img src="../assets/ai_email_summary_screenshot_2.png" alt="CoWork Workspace Webmail Zoomed AI Summary Screenshot" style="max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--accent-emerald); box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);">
+              <p style="font-size: 0.85rem; color: #94a3b8; margin-top: 0.5rem;">
+                圖二：特寫畫面 — GEMMA-4 模型即時分析 PChome 郵件內文，生成極致精準的降價通知摘要與按鈕
+              </p>
+            </div>
+
+          </div>
+
+          <!-- 🌐 Cloudflare Email Routing 手法與架構解密 -->
+          <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(6, 182, 212, 0.15)); border: 1px solid var(--accent-amber); border-radius: 12px; padding: 1.25rem; margin-top: 1.5rem;">
+            <h4 style="color: var(--accent-amber); font-size: 1.1rem; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem;">
+              🌐 底層技術手法解密：Cloudflare Email Routing + Email Workers 零伺服器 AI 郵件自動化
+            </h4>
+            <p style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 0.75rem;">
+              在 CoWork Workspace 實體系統中，這套 AI 郵件消化與生成機制，正是透過 <strong>Cloudflare Email Routing (郵件轉發路由)</strong> 與 <strong>Cloudflare Email Workers (無伺服器邊緣運算)</strong> 巧妙實作：
+            </p>
+            <ul style="font-size: 0.88rem; color: #f8fafc; line-height: 1.8; padding-left: 1.2rem; margin: 0 0 1rem 0;">
+              <li>⚡ <strong>1. 免費 MX 路由託管 (Cloudflare Email Routing)</strong>：企業無須架設昂貴 Mail Server，將專屬網域（如 <code>@formosa-ai.com</code>）DNS MX 記錄指向 Cloudflare 即可免費啟用。</li>
+              <li>🤖 <strong>2. 邊緣觸發 AI (Email Workers Event)</strong>：當外部信件寄抵時，Cloudflare 自動觸發 Email Worker 攔截信件 MIME 原始碼，直接傳送至 AI 節點（GEMMA-4 / Qwen / Gemini）進行內文與附件摘要抽取。</li>
+              <li>🔄 <strong>3. 智慧寫入與動態路由 (Inbound & Outbound)</strong>：AI 產出的結構化摘要寫入資料庫並自動賦予 Hashtags，同時可透由轉發路由動態發送告警信件給管理員！</li>
+            </ul>
+
+            <!-- 🖼️ 穿插 Cloudflare Email Routing 工作流程架構圖 -->
+            <div style="text-align: center; margin-top: 1rem;">
+              <img src="../assets/ai_email_cloudflare_routing_diagram.png" alt="Cloudflare Email Routing & AI Worker Architecture Diagram" style="max-width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--accent-amber); box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);">
+              <p style="font-size: 0.82rem; color: #94a3b8; margin-top: 0.4rem;">
+                圖三：Cloudflare Email Routing / Email Workers 與地端/雲端 AI API 之雙向自動化架構流程圖
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <h2>三、標準案例分析與雲端選型評估</h2>
 
       <div class="format-block">
         <div class="format-title">1. 使用者做了什麼？</div>
