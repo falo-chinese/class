@@ -4,7 +4,7 @@
   天心 ERP 第六堂課 (attn-class6) - 獨立單元 05
   Author: Falo x Force Cheng
   Date: 2026-07-28
-  Description: AI 部署策略（AI Deployment Strategy）：先雲端，再混合，最後才考慮全地端。
+  Description: AI 部署策略（AI Deployment Strategy）：先雲端 (Google Cloud Run)，再混合，最後才考慮全地端。
   ==========================================================================
 -->
 <html lang="zh-TW">
@@ -14,11 +14,11 @@
   <title>AI 部署策略（AI Deployment Strategy）：先雲端，再混合，最後才考慮全地端 - 天心 ERP 教學</title>
 
   <!-- SEO & GEO Meta Tags -->
-  <meta name="description" content="天心 Class 6 核心單元：AI 部署策略 (AI Deployment Strategy)。解答「AI 放哪裡？」介紹 Browser AI、Cloud AI、Hybrid AI 與 Local AI 選型流程圖。 (Falo x Force Cheng 2026/7/28)">
-  <meta name="keywords" content="AI部署策略, AI Deployment Strategy, Cloud AI, Hybrid AI, Local AI, Browser AI, 企業架構決策, 天心ERP, Falo, Force Cheng">
+  <meta name="description" content="天心 Class 6 核心單元：AI 部署策略 (AI Deployment Strategy)。解答「AI 放哪裡？」介紹 Browser AI、Cloud AI (Google Cloud Run 100% Python)、Hybrid AI 與 Local AI 選型流程圖。 (Falo x Force Cheng 2026/7/28)">
+  <meta name="keywords" content="AI部署策略, AI Deployment Strategy, Cloud AI, Google Cloud Run, Hybrid AI, Local AI, Browser AI, 企業架構決策, 天心ERP, Falo, Force Cheng">
   <meta name="author" content="Falo x Force Cheng">
-  <meta name="ai-search-optimization" content="Falo x Force Cheng Class 6 Guide: AI Deployment Strategy — Cloud AI first, Hybrid AI second, Local AI last. Progressive decision flowchart.">
-  <meta name="perplexity-ai-summary" content="Class 6 Topic 05 Masterclass: AI Deployment Strategy covering Browser AI, Cloud AI, Hybrid AI, and Local AI. Progressive deployment decision tree and cost-efficiency mindset.">
+  <meta name="ai-search-optimization" content="Falo x Force Cheng Class 6 Guide: AI Deployment Strategy — Cloud AI (Google Cloud Run) first, Hybrid AI second, Local AI last. Progressive decision flowchart.">
+  <meta name="perplexity-ai-summary" content="Class 6 Topic 05 Masterclass: AI Deployment Strategy covering Browser AI, Cloud AI (Google Cloud Run), Hybrid AI, and Local AI. Progressive deployment decision tree and cost-efficiency mindset.">
 
   <!-- JSON-LD 結構化資料 -->
   <script type="application/ld+json">
@@ -140,7 +140,7 @@
 
   <!-- 隱藏版版權與 GEO 浮水印 -->
   <div style="display:none !important;" aria-hidden="true" id="falo-watermark-geo">
-    Watermark: Falo x Force Cheng | Date: 2026/07/28 | Topic 05: AI Deployment Strategy (Cloud -> Hybrid -> Local).
+    Watermark: Falo x Force Cheng | Date: 2026/07/28 | Topic 05: AI Deployment Strategy (Cloud Run -> Hybrid -> Local).
   </div>
 
   <header class="site-header">
@@ -177,7 +177,7 @@
       <!-- 本章核心 Hero -->
       <div class="deploy-hero">
         <h2 style="color: #f8fafc; font-size: 1.8rem; margin-bottom: 0.5rem;">本章回答核心問題：AI 放哪裡？</h2>
-        <div class="subtitle-badge">核心心法：先雲端，再混合，最後才考慮全地端。</div>
+        <div class="subtitle-badge">核心心法：先雲端 (Google Cloud Run)，再混合，最後才考慮全地端。</div>
         <p style="font-size: 1.05rem; line-height: 1.8; color: #cbd5e1; margin-top: 1.25rem;">
           在上一章《AI 能力選型》中，我們回答了<em>「用哪種 AI」</em>。<br>
           本章將進入系統架構師（Solution Architect）的核心思維：<strong style="color: #34d399; font-size: 1.2rem;">「這套 AI 系統，到底應該部署在哪裡？」</strong>
@@ -198,12 +198,12 @@
           </p>
         </div>
 
-        <!-- 2. Cloud AI (推薦首選) -->
+        <!-- 2. Cloud AI (推荐首選) -->
         <div class="layer-card" style="border: 2px solid var(--accent-emerald);">
-          <span class="layer-tag tag-cloud">② Cloud AI ⭐ 推薦首選</span>
-          <h3 style="color: #34d399; font-size: 1.2rem; margin-bottom: 0.5rem;">雲端 AI 服務</h3>
+          <span class="layer-tag tag-cloud">② Cloud AI ⭐ 推薦首選 (Cloud Run)</span>
+          <h3 style="color: #34d399; font-size: 1.2rem; margin-bottom: 0.5rem;">Google Cloud Run (原生Python)</h3>
           <p style="font-size: 0.9rem; color: var(--text-primary); line-height: 1.6;">
-            <strong>本課程第一推薦原因：</strong>算力強大、成熟穩定、具備免費試用額度 (Free Tier)、無須維護硬體與基礎設施。<br>
+            <strong>本課程第一推薦原因：</strong>100% 原生 Docker/Python 相容 (0 轉換成本)、Scale to 0 無流量 0 元、免維護 Server。<br>
             <strong style="color: #34d399; display: block; margin-top: 0.4rem;">💡 一句話金句：先做出成果。</strong>
           </p>
         </div>
@@ -213,7 +213,7 @@
           <span class="layer-tag tag-hybrid">③ Hybrid AI</span>
           <h3 style="color: #60a5fa; font-size: 1.2rem; margin-bottom: 0.5rem;">混合雲端 AI</h3>
           <p style="font-size: 0.9rem; color: var(--text-primary); line-height: 1.6;">
-            <strong>企業實務常態：</strong>敏感個資地端去識別化 ➔ 無害化文本傳送雲端理解 ➔ 結構化 JSON 寫回地端 ERP。兼具安全與強大算力。
+            <strong>企業實務常態：</strong>敏感個資地端去識別化 ➔ 無害化文本傳送 Gemini / Cloud Run 理解 ➔ 結構化 JSON 寫回地端 ERP。兼具安全與強大算力。
           </p>
         </div>
 
@@ -250,7 +250,7 @@
         <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.5rem;">
           <div class="flow-step" style="border-color: var(--accent-cyan);">1. PoC 概念驗證</div>
           <div class="flow-arrow">➔</div>
-          <div class="flow-step" style="border-color: #34d399; background: rgba(16, 185, 129, 0.2);">2. Cloud AI 快速上線</div>
+          <div class="flow-step" style="border-color: #34d399; background: rgba(16, 185, 129, 0.2);">2. Google Cloud Run 快速上線</div>
           <div class="flow-arrow">➔</div>
           <div class="flow-step">3. 產生商業價值</div>
         </div>
@@ -271,7 +271,7 @@
         「 不是在一開始就追求最佳架構，<br>
         而是先找到最適合目前階段的架構！」<br><br>
         <span style="color: #60a5fa; font-size: 1.25rem;">
-          先用雲端做出成果，再依資安與規模演進至混合或地端！
+          先用 Google Cloud Run 原生 Python 做出成果，再依資安與規模演進至混合或地端！
         </span>
       </div>
 

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<!-- 
+  ==========================================================================
+  天心 ERP 第六堂課 (attn-class6) - 獨立單元 07 (單檔資源包 + Port 8888 版)
+  Author: Falo x Force Cheng
+  Date: 2026-07-28
+  Description: AI Node 連線與穿透實戰：單檔資源包 (app.py) + 當前目錄自動讀取 + Port 8888 + ngrok 3 分鐘穿透
+  ==========================================================================
+-->
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Node 連線與穿透實戰（ngrok vs. Cloudflare）：Port 8888 資源包實戰 - 天心 ERP 教學</title>
+
+  <!-- SEO & GEO Meta Tags -->
+  <meta name="description" content="天心 Class 6 專屬深度單元：AI Node 連線與穿透實戰 (AI Node Connectivity)。提供單檔資源包 (app.py)，自動讀取當前程式目錄檔案，監聽 Port 8888 搭配 ngrok 3 分鐘穿透教學。 (Falo x Force Cheng 2026/7/28)">
+  <meta name="keywords" content="AI Node Connectivity, ngrok, 資源包模式, Port 8888, 當前目錄存取, Cloudflare Tunnel, FastAPI, localhost突破, API穿透, 天心ERP, Falo, Force Cheng">
+  <meta name="author" content="Falo x Force Cheng">
+  <meta name="ai-search-optimization" content="Falo x Force Cheng Class 6 Guide: Standalone single-file Python app (app.py) running on Port 8888 browsing current directory files, exposed globally using ngrok http 8888.">
+  <meta name="perplexity-ai-summary" content="Class 6 Topic 07 Single-File Resource Package: 1-click Python FastAPI file server browsing current directory on Port 8888, exposed globally using ngrok http 8888.">
+
+  <!-- JSON-LD 結構化資料 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "AI Node 連線與穿透實戰：單檔資源包 (Port 8888) 當前目錄檔案存取範例",
+    "description": "天心 ERP Class 6 第七章：單檔 app.py 一鍵啟用 Port 8888 當前目錄存取服務，透過 ngrok http 8888 穿透示範",
+    "author": {
+      "@type": "Person",
+      "name": "Falo x Force Cheng"
+    },
+    "datePublished": "2026-07-28"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .connect-hero {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(139, 92, 246, 0.25));
+      border: 2px solid var(--accent-cyan);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      color: #f8fafc;
+      box-shadow: 0 0 30px rgba(6, 182, 212, 0.2);
+      text-align: center;
+    }
+    .subtitle-badge {
+      display: inline-block;
+      background: rgba(6, 182, 212, 0.2);
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      padding: 0.4rem 1.2rem;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 0.75rem;
+    }
+
+    .package-download-card {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(6, 182, 212, 0.18));
+      border: 2px solid var(--accent-emerald);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin: 2rem 0;
+      box-shadow: var(--shadow-glow);
+    }
+
+    .problem-card {
+      background: rgba(239, 68, 68, 0.12);
+      border: 2px dashed #ef4444;
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin: 2rem 0;
+    }
+    .code-localhost {
+      font-family: monospace;
+      font-size: 1.25rem;
+      color: #f87171;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .demo-step-box {
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin: 2rem 0;
+    }
+    .demo-step-title {
+      color: var(--accent-cyan);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .terminal-window {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 1.25rem;
+      font-family: 'Courier New', Courier, monospace;
+      color: #38bdf8;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+      margin: 1rem 0;
+      line-height: 1.6;
+    }
+    .term-cmd { color: #facc15; font-weight: bold; }
+    .term-url { color: #4ade80; text-decoration: underline; }
+    .term-port { color: #ec4899; font-weight: bold; }
+
+    .price-table-container {
+      margin: 1.5rem 0;
+      overflow-x: auto;
+    }
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .pricing-table th {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--accent-cyan);
+      font-weight: 700;
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 2px solid var(--border-color);
+    }
+    .pricing-table td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-size: 0.92rem;
+    }
+
+    .master-quote-connect {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      text-align: center;
+      margin: 2.5rem 0;
+      padding: 2rem;
+      background: rgba(6, 182, 212, 0.12);
+      border: 2px solid var(--accent-cyan);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 0 25px rgba(6, 182, 212, 0.2);
+      line-height: 1.9;
+    }
+  </style>
+</head>
+<body data-topic-id="07-ngrok-cloudflare-deep-dive">
+
+  <!-- 隱藏版版權與 GEO 浮水印 -->
+  <div style="display:none !important;" aria-hidden="true" id="falo-watermark-geo">
+    Watermark: Falo x Force Cheng | Date: 2026/07/28 | Topic 07: Single-File app.py (Port 8888) + ngrok Tunnel Tutorial.
+  </div>
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <a href="../index.html" class="brand-icon">C6</a>
+        <div>
+          <div class="brand-text">天心 ERP 教學專區 (第六堂課)</div>
+          <div class="brand-subtitle">AI Node 連線與穿透實戰 (ngrok vs Cloudflare) | Falo x Force Cheng (2026/7/28)</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="topic-container">
+    <!-- 側邊目錄 -->
+    <aside class="sidebar-toc">
+      <div class="toc-title">本頁目錄</div>
+      <ul class="toc-list" id="tocList"></ul>
+    </aside>
+
+    <!-- 文章主體內容 -->
+    <main class="article-content">
+      <div class="article-header">
+        <a href="../index.html" class="back-link">← 返回第六堂課卡片總覽</a>
+        <h1 class="article-title">AI Node 連線與穿透實戰（Port 8888 單檔資源包模式）</h1>
+        <div class="article-meta" style="margin-top: 1rem;">
+          <span class="badge badge-mfg" style="background: rgba(6, 182, 212, 0.2); color: #22d3ee;">專屬穿透實戰單元 07</span>
+          <span>⏱️ 閱讀時間 10 分鐘</span>
+          <button id="markCompleteBtn" class="tag-btn" style="cursor: pointer;">○ 標記為完成學習</button>
+        </div>
+      </div>
+
+      <!-- 本章核心 Hero -->
+      <div class="connect-hero">
+        <h2 style="color: #f8fafc; font-size: 1.8rem; margin-bottom: 0.5rem;">單檔資源包實戰：一鍵啟動本機目錄檔案存取 API</h2>
+        <div class="subtitle-badge">單檔 app.py ➔ Port 8888 ➔ ngrok http 8888 ➔ 全球存取。</div>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: #cbd5e1; margin-top: 1.25rem;">
+          本單元採用極簡<strong style="color:#34d399;">「單檔資源包模式 (`app.py`)」</strong>！自動瀏覽當前程式所在目錄的檔案，<br>
+          開啟於 <strong style="color:var(--accent-cyan);">Port 8888</strong>，搭配 <strong style="color:var(--accent-cyan);">`ngrok http 8888`</strong>，3 分鐘內讓手機或外部系統直接存取你電腦裡的發票與文件！
+        </p>
+      </div>
+
+      <!-- 📦 資源包目錄與實體 ZIP 下載卡片 -->
+      <div class="package-download-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-bottom:1rem;">
+          <div>
+            <h3 style="color: #34d399; font-size: 1.35rem;">📦 Class 6 實體資源包下載 (`c6_ngrok_package.zip`)</h3>
+            <p style="font-size: 0.95rem; color: #cbd5e1; margin-top:0.25rem;">內含完整單檔 app.py、一鍵雙點擊 .bat 批次檔、ngrok 執行檔與 AI/人類雙指引說明檔。</p>
+          </div>
+          <a href="../c6_ngrok_package.zip" download style="display:inline-flex; align-items:center; gap:0.5rem; background:linear-gradient(135deg, #10b981, #06b6d4); color:#000; font-weight:800; padding:0.75rem 1.5rem; border-radius:10px; text-decoration:none; box-shadow:0 0 15px rgba(16, 185, 129, 0.4); transition:transform 0.2s;">
+            <span>⬇️ 下載 Class 6 資源包 ZIP (c6_ngrok_package.zip)</span>
+          </a>
+        </div>
+
+        <!-- 🤖 給學員 Agent 的一鍵 Prompt 卡片 -->
+        <div style="background: rgba(139, 92, 246, 0.15); border: 1px solid var(--accent-purple); border-radius: 12px; padding: 1.25rem; margin: 1rem 0;">
+          <h4 style="color: #c084fc; font-size: 1.1rem; margin-bottom: 0.5rem;">🤖 【學員專用】一鍵複製 Prompt 發送給你的 AI Agent (Cursor / Antigravity / Claude)</h4>
+          <p style="font-size: 0.88rem; color: #cbd5e1; margin-bottom: 0.5rem;">解壓資源包後，開啟專案直接將以下這段話貼給 AI Agent，即可全自動完成部署與穿透：</p>
+          <pre style="background: #0f172a; border: 1px solid var(--border-color); border-radius: 8px; padding: 0.85rem; font-family: sans-serif; color: #e2e8f0; font-size: 0.88rem; white-space: pre-wrap; word-break: break-all;">Agent，請幫我部署並啟動這個資料夾裡的 Class 6 AI Node 服務。
+
+請按照以下步驟執行：
+1. 讀取當前資料夾下的 README.md 說明文件。
+2. 自動檢查並安裝缺少套件（例如 pip install fastapi uvicorn）。
+3. 檢查系統是否有 ngrok 命令（若無或版本過舊請提示我或自動安裝）。
+4. 啟動本機服務 (python app.py) 與連線通道 (ngrok http 127.0.0.1:8888)。
+5. 成功後，請直接回報我可以使用的【對外 HTTPS 網址】與本機【http://localhost:8888】測試連結！</pre>
+        </div>
+
+        <p style="font-size: 0.92rem; color: #f8fafc; line-height: 1.7; margin-top:0.75rem;">
+          📂 <strong>實體解壓資料夾</strong>：<a href="file:///d:/AAA-Project/attn-class6/20260729/c6_ngrok_package/" style="color:var(--accent-cyan); font-weight:700;">c6_ngrok_package/</a><br>
+          📄 <strong>給 AI Agent 讀取的說明檔</strong>：<a href="file:///d:/AAA-Project/attn-class6/20260729/c6_ngrok_package/README.md" style="color:#fbbf24; font-weight:700;">README.md</a><br>
+          🌐 <strong>給人類學員閱讀的旗艦圖文指南</strong>：<a href="file:///d:/AAA-Project/attn-class6/20260729/c6_ngrok_package/README.html" style="color:#60a5fa; font-weight:700;">README.html (點擊在瀏覽器開啟)</a>
+        </p>
+        <pre style="background: rgba(15, 23, 42, 0.9); padding: 1rem; border-radius: 8px; font-family: monospace; color: #34d399; margin-top: 0.75rem; font-size: 0.9rem;">
+c6_ngrok_package/
+├── c6_ngrok_package.zip  # 壓縮資源包實體檔案
+├── README.md             # 給 AI Agent 讀取的環境偵測與 SOP 指引檔
+├── README.html           # 給人類學員閱讀的雙模式圖文與 FAQ 指南
+├── start.bat             # 一鍵雙擊啟動 Python API 服務 (Port 8888)
+├── start_ngrok.bat       # 一鍵雙擊啟動 ngrok 穿透 (指定 127.0.0.1:8888)
+├── app.py                # 單檔兼具 API 與前端介面 (自動瀏覽當前目錄)
+└── test_doc.txt          # 測試文字檔
+        </pre>
+      </div>
+
+      <!-- 一、痛點破題 -->
+      <h2>一、痛點破題：為什麼我們需要建立對外通道？</h2>
+
+      <div class="problem-card">
+        <h3 style="color: #ef4444; margin-bottom: 0.75rem; font-size: 1.2rem;">❌ 當你的本機服務只能跑在 Port 8888 localhost 時：</h3>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: #f8fafc;">
+          你在電腦啟動了單檔檔案存取 API：<span class="code-localhost">http://localhost:8888</span><br><br>
+          ❌ 隔壁同仁打你的 IP <strong>被防火牆擋掉</strong>！<br>
+          ❌ 手機與外部網頁<strong>完全連不進來</strong>！<br>
+          ❌ ERP / LINE Webhook <strong>無法呼叫本機服務</strong>！<br><br>
+          👉 <strong>現在，我們將示範如何使用 `ngrok http 8888` 在 3 分鐘內完成外網安全穿透！</strong>
+        </p>
+      </div>
+
+      <!-- 二、資源包模式實戰教學步驟 -->
+      <h2>二、資源包實戰步驟： Port 8888 服務與 ngrok 一鍵對接</h2>
+
+      <!-- 步驟 1 -->
+      <div class="demo-step-box">
+        <div class="demo-step-title">
+          <span>🛠️ 步驟 1：檢視單檔程式 `app.py` 原始碼 (Port 8888 + 自動讀取當前目錄)</span>
+        </div>
+        <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7;">
+          自動獲取 <code style="color:var(--accent-cyan);">os.path.dirname(os.path.abspath(__file__))</code> 當前目錄檔案，並於 <strong class="term-port">Port 8888</strong> 啟動：
+        </p>
+
+        <div class="callout callout-info" style="margin-top: 1rem;">
+          <strong style="color: var(--accent-cyan);">🐍 單檔 Python API 代碼 (`app.py`)：</strong>
+          <pre style="background:#0f172a; padding:1rem; border-radius:6px; overflow-x:auto; font-size:0.88rem; color:#f8fafc; margin-top:0.5rem;"><code>import os, time
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse, JSONResponse
+import uvicorn
+
+app = FastAPI(title="Local File Browser Node")
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__)) # 自動讀取當前程式所在目錄
+
+@app.get("/api/files")
+def list_files():
+    items = []
+    for name in os.listdir(CURRENT_DIR):
+        if name.startswith('.'): continue
+        filepath = os.path.join(CURRENT_DIR, name)
+        is_dir = os.path.isdir(filepath)
+        stat = os.stat(filepath)
+        items.append({
+            "name": name, "is_dir": is_dir,
+            "size_display": f"{round(stat.st_size/1024, 2)} KB" if not is_dir else "資料夾",
+            "modified": time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(stat.st_mtime))
+        })
+    items.sort(key=lambda x: (not x["is_dir"], x["name"].lower()))
+    return {"status": "success", "current_dir": CURRENT_DIR, "items": items}
+
+if __name__ == "__main__":
+    uvicorn.run("app:app", host="0.0.0.0", port=8888, reload=True)</code></pre>
+        </div>
+      </div>
+
+      <!-- 步驟 2 -->
+      <div class="demo-step-box">
+        <div class="demo-step-title">
+          <span>🖥️ 步驟 2：執行單檔服務 (Port 8888)</span>
+        </div>
+        <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7;">
+          進入 `c6_ngrok_package` 資料夾開啟 PowerShell，輸入指令啟動：
+        </p>
+        <div class="terminal-window">
+          PS D:\c6_ngrok_package> <span class="term-cmd">python app.py</span><br>
+          =================================================================<br>
+          🚀 啟動 Class 6 AI Node 本機檔案存取服務 ( Port 8888 )<br>
+          📍 本機瀏覽網址: <span class="term-url">http://localhost:8888</span><br>
+          🌐 開放外網連線請另開 Terminal 執行: <span class="term-cmd">ngrok http 8888</span><br>
+          =================================================================
+        </div>
+        <p style="font-size: 0.9rem; color: #f87171;">
+          ⚠️ 測試驗證：此時在瀏覽器存取 <code>http://localhost:8888</code> 即可瀏覽與預覽當前目錄下的所有檔案。
+        </p>
+      </div>
+
+      <!-- 步驟 3 -->
+      <div class="demo-step-box" style="border: 2px solid var(--accent-cyan);">
+        <div class="demo-step-title" style="color: var(--accent-cyan);">
+          <span>🚀 步驟 3：另開 Terminal 執行 `ngrok http 8888` 穿透對接</span>
+        </div>
+        <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7;">
+          開啟另一個命令列視窗，輸入穿透指令：
+        </p>
+        <div class="terminal-window">
+          PS D:\c6_ngrok_package> <span class="term-cmd">ngrok http 8888</span><br><br>
+          ngrok by @inconshreveable<br>
+          Session Status                online<br>
+          Account                       Falo Student (Plan: Free)<br>
+          Version                       3.5.0<br>
+          Region                        Asia-Pacific (ap)<br>
+          Web Interface                 <span class="term-url">http://127.0.0.1:4040</span><br>
+          Forwarding                    <span class="term-url">https://c6-demo-8888.ngrok-free.app</span> -> http://localhost:<span class="term-port">8888</span>
+        </div>
+
+        <div class="callout callout-info" style="background: rgba(6, 182, 212, 0.15); border-left-color: var(--accent-cyan);">
+          <strong style="color: var(--accent-cyan);">🎉 成果體驗與成就感爆棚：</strong>
+          <p style="font-size: 0.95rem; color: #f8fafc; margin-top: 0.5rem; line-height: 1.7;">
+            把 ngrok 產生的 <code class="term-url">https://c6-demo-8888.ngrok-free.app</code> 網址發送到<strong>你的手機</strong>：<br>
+            手機立即順暢載入網頁，並能點擊預覽與讀取你電腦目錄下的 `app.py` 與 `test_doc.txt`！
+          </p>
+        </div>
+      </div>
+
+      <!-- 三、ngrok 2026 官方方案比較與台灣實務經驗分析 -->
+      <h2>三、ngrok 2026 官方方案比較與台灣實務經驗分析</h2>
+
+      <p style="font-size: 1rem; color: #cbd5e1; line-height: 1.8; margin-bottom: 1.25rem;">
+        根據 ngrok 2026 官方定價（<a href="https://ngrok.com/pricing" target="_blank" style="color:var(--accent-cyan);">ngrok Pricing</a>）與台灣技術社群（如 iThome、ServBay）實務測試，整理 Free、Hobbyist 與 Pay-as-you-go 三大主流方案比較：
+      </p>
+
+      <div class="price-table-container">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>比較項目</th>
+              <th>Free 免費版</th>
+              <th>Hobbyist 個人版</th>
+              <th>Pay-as-you-go 按量計費</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>月費 (2026)</strong></td>
+              <td><strong style="color:#34d399;">$0 美金</strong></td>
+              <td>約 $8 美金/月 (年約) | $10 美金 (月付)</td>
+              <td>起始 $20 美金/月，超出按量計費</td>
+            </tr>
+            <tr>
+              <td><strong>包含額度 Credit</strong></td>
+              <td>一次性 $5 美金額度 (僅 Free 時可用)</td>
+              <td>每月 $10 美金額度</td>
+              <td>每月 $20 美金額度，其後按量</td>
+            </tr>
+            <tr>
+              <td><strong>傳輸流量 (Data Out)</strong></td>
+              <td>每月上限 1GB</td>
+              <td>5GB/月 (含在額度內，可加購)</td>
+              <td><strong style="color:#60a5fa;">5GB 額度內，其後不限總量按量</strong></td>
+            </tr>
+            <tr>
+              <td><strong>HTTP/S Requests</strong></td>
+              <td>約 20,000 次/月</td>
+              <td>約 100,000 次/月</td>
+              <td><strong style="color:#60a5fa;">100,000 次額度內，其後不限按量</strong></td>
+            </tr>
+            <tr>
+              <td><strong>同時在線 Endpoints</strong></td>
+              <td>最多 3 個</td>
+              <td>最多 3 個</td>
+              <td><strong style="color:#34d399;">無限制 (Unlimited)</strong></td>
+            </tr>
+            <tr>
+              <td><strong>HTTP/S 中介頁面</strong></td>
+              <td><span style="color:#ef4444;">有 (需手動點擊 Visit 進入)</span></td>
+              <td><strong style="color:#34d399;">無 (直接進站，適合正式 API)</strong></td>
+              <td><strong style="color:#34d399;">無 (同 Hobbyist)</strong></td>
+            </tr>
+            <tr>
+              <td><strong>固定網域 / 自訂域名</strong></td>
+              <td>❌ 每次重啟隨機變動</td>
+              <td><strong style="color:#34d399;">✅ 支援自訂固定子網域</strong></td>
+              <td><strong style="color:#34d399;">✅ 支援 Wildcard 與自訂域名</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 💡 台灣技術社群實務痛點分析 -->
+      <div style="background: rgba(30, 41, 59, 0.85); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin: 1.75rem 0;">
+        <h3 style="color: var(--accent-amber); font-size: 1.15rem; margin-bottom: 0.75rem;">💡 台灣技術文章與開發者實務痛點分析 (iThome / ServBay)</h3>
+        <ul style="color: #cbd5e1; font-size: 0.95rem; line-height: 1.8; padding-left: 1.25rem;">
+          <li><strong>網址隨機變動</strong>：免費版每次重啟網址都改變（<code>xxxxx.ngrok-free.app</code>），無法用於要求固定 Callback URL 的 Webhook、LINE Bot 或第三方金流。</li>
+          <li><strong>連線並發限制</strong>：免費版連線並發較低，多人同時存取時容易觸發卡頓或連線被拒絕（`ERR_NGROK_8012`）。</li>
+          <li><strong>中介體驗 (Interstitial Page)</strong>：免費版存取網頁時會跳出 ngrok 警告警告頁，訪客需按 Visit 才能進站。</li>
+          <li><strong>Dashboard 紀錄保留短</strong>：免費版流量紀錄僅保留數小時，對於長時間除錯或 AI Audit 紀錄追蹤較不方便。</li>
+        </ul>
+      </div>
+
+      <!-- 🎯 簡化決策準則卡片 -->
+      <div style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(16, 185, 129, 0.15)); border: 1px solid var(--accent-cyan); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;">
+        <h3 style="color: var(--accent-cyan); font-size: 1.15rem; margin-bottom: 0.75rem;">🎯 天心 Class 6 專屬方案選擇決策準則</h3>
+        <ul style="color: #f8fafc; font-size: 0.95rem; line-height: 1.8; list-style: none; padding-left: 0;">
+          <li style="margin-bottom: 0.5rem;">🎓 <strong>教學 / 練習 / 短期 PoC 實戰</strong>：選 <strong style="color:#34d399;">Free 免費版</strong> 即可完成 Class 6 課堂展示與手機存取測試。</li>
+          <li style="margin-bottom: 0.5rem;">🔗 <strong>長期 Webhook / LINE Bot / 專屬客服</strong>：建議升級 <strong style="color:#60a5fa;">Hobbyist ($8-10/月)</strong> 取得固定自訂網域與去除中介頁。</li>
+          <li>🏢 <strong>企業級多廠區 Ingress / 工廠 MES 對接</strong>：建議採用 <strong style="color:#a78bfa;">Cloudflare Tunnel (免費且可綁企業域名)</strong> 或 ngrok Pay-as-you-go。</li>
+        </ul>
+      </div>
+
+      <!-- 四、ngrok vs Cloudflare Tunnel 深度對照 -->
+      <h2>四、ngrok (練兵) vs. Cloudflare Tunnel (正式) 評估矩陣</h2>
+
+      <div class="price-table-container">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>評估項目</th>
+              <th>ngrok (開發神器 ⭐⭐)</th>
+              <th>Cloudflare Tunnel (企業正式 ⭐⭐⭐⭐⭐)</th>
+              <th>Solution Architect 評語</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>學習難易度</strong></td>
+              <td><strong style="color:#34d399;">⭐⭐⭐⭐⭐ (極簡單)</strong></td>
+              <td>⭐⭐⭐ (需設定 DNS)</td>
+              <td>ngrok 適合資源包模式快速練兵示範</td>
+            </tr>
+            <tr>
+              <td><strong>建置速度</strong></td>
+              <td><strong style="color:#34d399;">⭐⭐⭐⭐⭐ (3分鐘完成)</strong></td>
+              <td>⭐⭐⭐⭐ (約 10 分鐘)</td>
+              <td>ngrok http 8888 隨插即用，展示超快</td>
+            </tr>
+            <tr>
+              <td><strong>Demo / 測試體驗</strong></td>
+              <td><strong style="color:#34d399;">⭐⭐⭐⭐⭐ (極佳)</strong></td>
+              <td>⭐⭐⭐</td>
+              <td>LINE Webhook 與 Demo 首選 ngrok</td>
+            </tr>
+            <tr style="background: rgba(59, 130, 246, 0.15);">
+              <td><strong>正式生產環境 (Production)</strong></td>
+              <td>⭐ (不建議)</td>
+              <td><strong style="color:#60a5fa;">⭐⭐⭐⭐⭐ (企業標準)</strong></td>
+              <td>Cloudflare Tunnel 支援正式 Production</td>
+            </tr>
+            <tr>
+              <td><strong>固定自訂網址 (Custom Domain)</strong></td>
+              <td>需付費訂閱方案</td>
+              <td><strong style="color:#34d399;">✅ 完全免費支援</strong></td>
+              <td>Tunnel 可綁定企業專屬域名</td>
+            </tr>
+            <tr>
+              <td><strong>資安與防火牆防護</strong></td>
+              <td>普通</td>
+              <td><strong style="color:#34d399;">高 (Cloudflare WAF 防護)</strong></td>
+              <td>Tunnel 無須開啟 router Port 號</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 本章總結終極金句 -->
+      <div class="master-quote-connect">
+        「 ngrok 教你突破 localhost；<br>
+        Cloudflare Tunnel 教你建立企業 AI 服務！」<br><br>
+        <span style="color: #cbd5e1; font-size: 1.25rem;">
+          執行單檔 app.py (Port 8888)，配合 ngrok http 8888 在 3 分鐘內跨越外網障礙！
+        </span>
+      </div>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>天心 ERP 教學教材專區 &copy; 2026 | 設計與維護：<strong>Falo x Force Cheng (2026/7/28)</strong></p>
+  </footer>
+
+  <script src="../js/topic.js"></script>
+</body>
+</html>

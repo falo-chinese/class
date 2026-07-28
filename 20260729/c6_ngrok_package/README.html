@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class 6 AI Node 連線與 ngrok 穿透實戰指南 (人類與 AI 雙模式旗艦版)</title>
+  <style>
+    :root {
+      --bg-slate: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.85);
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
+      --accent-purple: #8b5cf6;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif; }
+    body { background: var(--bg-slate); color: var(--text-primary); padding: 2rem 1rem; display: flex; justify-content: center; }
+    .container { max-width: 950px; width: 100%; }
+    
+    .hero-header {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.25), rgba(139, 92, 246, 0.25));
+      border: 2px solid var(--accent-cyan);
+      border-radius: 16px;
+      padding: 2.25rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      box-shadow: 0 0 35px rgba(6, 182, 212, 0.18);
+    }
+    .hero-header h1 { font-size: 1.9rem; color: #fff; margin-bottom: 0.5rem; }
+    .hero-header p { color: #cbd5e1; font-size: 1.05rem; line-height: 1.6; }
+    .badge { display: inline-block; background: rgba(6, 182, 212, 0.2); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); padding: 0.4rem 1.2rem; border-radius: 20px; font-weight: 700; font-size: 0.92rem; margin-top: 0.85rem; }
+
+    .prompt-box {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(6, 182, 212, 0.15));
+      border: 2px solid var(--accent-purple);
+      border-radius: 14px;
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 25px rgba(139, 92, 246, 0.2);
+    }
+
+    .mode-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+    @media (max-width: 768px) { .mode-grid { grid-template-columns: 1fr; } }
+    .mode-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; backdrop-filter: blur(10px); }
+
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px);
+    }
+    .step-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+    .step-number { width: 36px; height: 36px; background: var(--accent-cyan); color: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; }
+    .step-title { font-size: 1.25rem; font-weight: 700; color: #fff; }
+
+    .code-box {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      font-family: 'Courier New', Courier, monospace;
+      color: #38bdf8;
+      margin: 0.75rem 0;
+      line-height: 1.6;
+      word-break: break-all;
+    }
+    .cmd-highlight { color: #facc15; font-weight: bold; }
+    .url-highlight { color: #4ade80; text-decoration: underline; }
+
+    .btn-link { display: inline-block; background: linear-gradient(135deg, var(--accent-cyan), #3b82f6); color: #000; font-weight: 800; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; margin-top: 0.5rem; transition: transform 0.2s; }
+    .btn-link:hover { transform: translateY(-2px); }
+
+    .faq-card {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-top: 1rem;
+    }
+    .faq-title { font-weight: 700; color: var(--accent-cyan); margin-bottom: 0.4rem; font-size: 1.05rem; }
+    .faq-desc { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; }
+
+    .master-quote {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      text-align: center;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: rgba(6, 182, 212, 0.12);
+      border: 2px solid var(--accent-cyan);
+      border-radius: 14px;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="hero-header">
+      <h1>🚀 天心 Class 6 - AI Node 連線與 ngrok 穿透指南</h1>
+      <p>支援『一鍵點擊 .bat 批次檔』與『CMD 手動命令列』雙操作模式，手把手帶您突破 localhost！</p>
+      <div class="badge">資源包旗艦版指南 (Port 8888)</div>
+    </div>
+
+    <!-- 🤖 給學員 Agent 的 Prompt 複製卡片 -->
+    <div class="prompt-box">
+      <h3 style="color: var(--accent-purple); font-size: 1.3rem; margin-bottom: 0.5rem;">🤖 學員專用：複製這段 Prompt 傳給你的 AI Agent (如 Cursor / Antigravity / Claude)</h3>
+      <p style="font-size: 0.92rem; color: #cbd5e1; margin-bottom: 0.75rem;">
+        如果您想讓您的 AI Agent 自動為您完成環境檢測、安裝套件與啟動服務，請點擊複製並貼給您的 AI Agent：
+      </p>
+      <div class="code-box" style="background:#0f172a; border-color:var(--accent-purple); color:#e2e8f0; font-family:-apple-system, sans-serif; white-space:pre-wrap;">Agent，請幫我部署並啟動這個資料夾裡的 Class 6 AI Node 服務。
+
+請按照以下步驟執行：
+1. 讀取當前資料夾下的 README.md 說明文件。
+2. 自動檢查並安裝缺少套件（例如 pip install fastapi uvicorn）。
+3. 檢查系統是否有 ngrok 命令（若無或版本過舊請提示我或自動安裝）。
+4. 啟動本機服務 (python app.py) 與連線通道 (ngrok http 127.0.0.1:8888)。
+5. 成功後，請直接回報我可以使用的【對外 HTTPS 網址】與本機【http://localhost:8888】測試連結！</div>
+    </div>
+
+    <!-- 心法金句卡片 -->
+    <div class="master-quote">
+      「 ngrok 是練兵，Cloudflare 是正式，Tunnel 是延伸！」<br>
+      <span style="font-size:1rem; color:#cbd5e1; font-weight:normal;">
+        ngrok 幫助學員在 3 分鐘內體驗本機 AI 被外部呼叫；Cloudflare Tunnel 幫助企業建立穩定安穩的地端對外 API！
+      </span>
+    </div>
+
+    <!-- 雙操作模式總覽 -->
+    <h2 style="color: var(--accent-cyan); margin-bottom: 1rem;">💡 本資源包支援兩種操作模式（皆可使用）：</h2>
+    <div class="mode-grid">
+      <!-- 模式一 -->
+      <div class="mode-card" style="border-color: var(--accent-emerald);">
+        <h3 style="color: var(--accent-emerald); font-size: 1.2rem; margin-bottom: 0.5rem;">🚀 模式一：一鍵雙擊 .bat 批次檔</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+          <strong>最速體驗：</strong><br>
+          1. 雙擊 <code>start.bat</code> (啟動 Port 8888 服務)<br>
+          2. 雙擊 <code>start_ngrok.bat</code> (啟動對外穿透)
+        </p>
+      </div>
+
+      <!-- 模式二 -->
+      <div class="mode-card" style="border-color: var(--accent-amber);">
+        <h3 style="color: var(--accent-amber); font-size: 1.2rem; margin-bottom: 0.5rem;">💻 模式二：CMD 手動指令模式</h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+          <strong>工程師深度實戰：</strong><br>
+          在 CMD 或 PowerShell 中手動輸入命令，掌握命令列參數與指令細節。
+        </p>
+      </div>
+    </div>
+
+    <!-- 步驟 1 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <div class="step-title">啟動本機 Python 檔案服務 (Port 8888)</div>
+      </div>
+
+      <div style="margin-top: 0.5rem;">
+        <strong style="color: var(--accent-emerald);">【方式 A：點擊批次檔】</strong>
+        <div class="code-box">
+          雙擊運行：<span class="cmd-highlight">start.bat</span>
+        </div>
+      </div>
+
+      <div style="margin-top: 0.75rem;">
+        <strong style="color: var(--accent-amber);">【方式 B：CMD / PowerShell 手動命令】</strong>
+        <div class="code-box">
+          cd D:\AAA-Project\attn-class6\20260729\c6_ngrok_package<br>
+          <span class="cmd-highlight">python app.py</span>
+        </div>
+      </div>
+
+      <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">
+        ✅ 本機驗證網址：<span class="url-highlight">http://localhost:8888</span>（能看到當前目錄檔案即表示服務成功！）
+      </p>
+    </div>
+
+    <!-- 步驟 2 -->
+    <div class="step-card" style="border-color: var(--accent-cyan);">
+      <div class="step-header">
+        <div class="step-number" style="background: var(--accent-cyan);">2</div>
+        <div class="step-title">安裝 ngrok (若您的電腦尚未安裝)</div>
+      </div>
+      <p style="color: var(--text-secondary); line-height: 1.6;">
+        若執行 <code>ngrok</code> 顯示 <em>'ngrok' 不是內部或外部命令</em>，請選擇以下任一方式安裝：
+      </p>
+
+      <div style="margin-top: 0.75rem;">
+        <strong>CMD / PowerShell 一鍵安裝：</strong>
+        <div class="code-box">
+          <span class="cmd-highlight">winget install ngrok.ngrok</span>
+        </div>
+      </div>
+
+      <div style="margin-top: 0.75rem;">
+        <strong>官方免安裝檔下載：</strong><br>
+        前往 <a href="https://ngrok.com/download" target="_blank" class="btn-link">前往 ngrok 官方下載頁面 ➔</a><br>
+        <span style="font-size: 0.88rem; color: var(--text-secondary); display: inline-block; margin-top: 0.4rem;">解壓後將 <code>ngrok.exe</code> 直接放在本資料夾目錄下即可！</span>
+      </div>
+    </div>
+
+    <!-- 步驟 3 -->
+    <div class="step-card">
+      <div class="step-header">
+        <div class="step-number" style="background: var(--accent-emerald);">3</div>
+        <div class="step-title">綁定免費 Authtoken (首次使用必做一次)</div>
+      </div>
+      <p style="color: var(--text-secondary); line-height: 1.6;">
+        前往 ngrok 官網免費註冊帳號並複製您的 Authtoken：
+      </p>
+      <a href="https://dashboard.ngrok.com/signup" target="_blank" class="btn-link" style="background: var(--accent-emerald);">1. 前往 ngrok 官網免費註冊 ➔</a>
+      
+      <p style="color: var(--text-secondary); line-height: 1.6; margin-top: 0.75rem;">
+        開啓 CMD 視窗貼上您的 Token 進行綁定：
+      </p>
+      <div class="code-box">
+        <span class="cmd-highlight">ngrok config add-authtoken &lt;您的Authtoken&gt;</span>
+      </div>
+    </div>
+
+    <!-- 步驟 4 -->
+    <div class="step-card" style="border-color: var(--accent-purple);">
+      <div class="step-header">
+        <div class="step-number" style="background: var(--accent-purple); color: #fff;">4</div>
+        <div class="step-title">開啟對外連線通道 (雙模式)</div>
+      </div>
+
+      <div style="margin-top: 0.5rem;">
+        <strong style="color: var(--accent-emerald);">【方式 A：點擊批次檔】</strong>
+        <div class="code-box">
+          雙擊運行：<span class="cmd-highlight">start_ngrok.bat</span>
+        </div>
+      </div>
+
+      <div style="margin-top: 0.75rem;">
+        <strong style="color: var(--accent-amber);">【方式 B：CMD / PowerShell 手動命令】</strong>
+        <div class="code-box">
+          另開 CMD 視窗輸入：<br>
+          <span class="cmd-highlight">ngrok http 127.0.0.1:8888</span>
+        </div>
+      </div>
+
+      <div class="code-box" style="margin-top: 1rem;">
+        Forwarding: <span class="url-highlight">https://xxxx-xx-xx.ngrok-free.app</span> -&gt; http://127.0.0.1:8888<br>
+        Web Interface: <span class="url-highlight">http://127.0.0.1:4040</span>
+      </div>
+
+      <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; border-radius: 12px; padding: 1.25rem; margin-top: 1rem;">
+        <h4 style="color: #34d399; margin-bottom: 0.4rem;">🎉 成功連通外網與手機！</h4>
+        <p style="font-size: 0.92rem; color: #f8fafc; line-height: 1.6;">
+          複製那串 <code>https://xxxx.ngrok-free.app</code> 網址發送到您的手機開啟，手機就能隨時存取您電腦該目錄下的發票與文件囉！
+        </p>
+      </div>
+    </div>
+
+    <!-- 常見問題 FAQ -->
+    <h2 style="color: var(--accent-amber); margin: 2rem 0 1rem 0;">❓ 學員常見問題 (FAQ & Troubleshooting)</h2>
+
+    <div class="faq-card">
+      <div class="faq-title">Q1: 為什麼點擊對外網址出現 ERR_NGROK_8012 錯誤？</div>
+      <div class="faq-desc">
+        代表 ngrok 已連通，但您電腦上的 Python 服務還沒啟動！請記得先雙擊 <code>start.bat</code>（保持視窗開啟），再開啟 ngrok 網址。
+      </div>
+    </div>
+
+    <div class="faq-card">
+      <div class="faq-title">Q2: ngrok 的網址每次重啟都會變嗎？</div>
+      <div class="faq-desc">
+        是的！ngrok 免費版每次重啟會生成全新的隨機 URL。這正是為什麼 ngrok 被定位為「開發與 Quick Demo 練兵神器」；若企業需要永久固定域名，建議採用 Cloudflare Tunnel 方案。
+      </div>
+    </div>
+
+    <div class="faq-card">
+      <div class="faq-title">Q3: 如何即時監控外部打進來的 API 請求？</div>
+      <div class="faq-desc">
+        ngrok 啟動後，請在瀏覽器開啟 <a href="http://127.0.0.1:4040" target="_blank" style="color:var(--accent-cyan);">http://127.0.0.1:4040</a>，即可看到本機即時的 Traffic Inspector 儀表板，實時觀察請求的 Header 與 JSON 內容。
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

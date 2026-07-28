@@ -88,7 +88,8 @@
       <input type="text" id="searchInput" class="search-input" placeholder="搜尋第六堂課主題或關鍵字 (例如：AI選型, Gemini, Workflow, Decision, HTML First)...">
     </div>
     <div class="filter-tags">
-      <button class="tag-btn active" data-category="all">全部網頁 (9)</button>
+      <button class="tag-btn active" data-category="all">全部網頁 (10)</button>
+      <button class="tag-btn" data-category="connect">AI 對外連線技術</button>
       <button class="tag-btn" data-category="service">AI 服務架構</button>
       <button class="tag-btn" data-category="select">AI 能力選型</button>
       <button class="tag-btn" data-category="deploy">AI 部署策略</button>
@@ -103,69 +104,13 @@
   <main class="main-content">
     <div class="cards-grid" id="cardsGrid">
 
-      <!-- 獨立單元 06：AI 服務架構 (AI Service Architecture) -->
-      <div class="topic-card" data-category="service" data-topic-id="06-ai-service-architecture">
-        <div class="card-header">
-          <span class="badge badge-mfg" style="background: rgba(139, 92, 246, 0.2); color: #c084fc;">AI 服務架構</span>
-          <span class="card-time">⏱️ 閱讀 9 分鐘</span>
-        </div>
-        <h2 class="card-title">AI 服務架構（AI Service Architecture）：讓 AI 從一台電腦，變成企業可使用的服務</h2>
-        <p class="card-desc">解構如何將 AI Node 封裝為標準對外 API Service！收錄 Google Apps Script (GAS)、Cloudflare Workers/Pages、Cloudflare Tunnel/ngrok 與混合 Gateway。(Falo x Force Cheng 2026/7/28)</p>
-        <div class="card-footer">
-          <a href="topics/06-ai-service-architecture.html" class="card-btn" target="_blank" rel="noopener noreferrer">閱讀服務架構心法 (新視窗) ➔</a>
-          <button class="complete-toggle" title="標記為已完成">○ 未完成</button>
-        </div>
-      </div>
-
-      <!-- 獨立單元 05：AI 部署策略 (AI Deployment Strategy) -->
-      <div class="topic-card" data-category="deploy" data-topic-id="05-ai-deployment-strategy">
-        <div class="card-header">
-          <span class="badge badge-mfg" style="background: rgba(16, 185, 129, 0.2); color: #34d399;">AI 部署策略</span>
-          <span class="card-time">⏱️ 閱讀 8 分鐘</span>
-        </div>
-        <h2 class="card-title">AI 部署策略（AI Deployment Strategy）：先雲端，再混合，最後才考慮全地端</h2>
-        <p class="card-desc">「AI 放哪裡？」解構 Browser AI、Cloud AI、Hybrid AI 與 Local AI 的四層演進架構。不是在一開始追求最佳架構，而是先找到最適合目前階段的架構！(Falo x Force Cheng 2026/7/28)</p>
-        <div class="card-footer">
-          <a href="topics/05-ai-deployment-strategy.html" class="card-btn" target="_blank" rel="noopener noreferrer">閱讀部署策略心法 (新視窗) ➔</a>
-          <button class="complete-toggle" title="標記為已完成">○ 未完成</button>
-        </div>
-      </div>
-
-      <!-- 獨立單元 04：AI 能力選型 (Choosing the Right AI) -->
-      <div class="topic-card" data-category="select" data-topic-id="04-choosing-the-right-ai">
-        <div class="card-header">
-          <span class="badge badge-faq" style="background: rgba(244, 63, 94, 0.2); color: #fb7185;">AI 能力選型</span>
-          <span class="card-time">⏱️ 閱讀 7 分鐘</span>
-        </div>
-        <h2 class="card-title">AI 能力選型（Choosing the Right AI）：AI 那麼多，到底怎麼選？</h2>
-        <p class="card-desc">「不要先選 AI 再找需求，而是先理解需求再選擇最適合的 AI！」建立需求導向的選型思維，並說明示範推薦 Google 生態系但絕不安裝單一廠商綁定。(Falo x Force Cheng 2026/7/28)</p>
-        <div class="card-footer">
-          <a href="topics/04-choosing-the-right-ai.html" class="card-btn" target="_blank" rel="noopener noreferrer">閱讀 AI 選型心法 (新視窗) ➔</a>
-          <button class="complete-toggle" title="標記為已完成">○ 未完成</button>
-        </div>
-      </div>
-
-      <!-- 實務案例單元 03：AI API 在企業 Workflow 中的角色 -->
-      <div class="topic-card" data-category="workflow" data-topic-id="03-ai-api-in-enterprise-workflow">
-        <div class="card-header">
-          <span class="badge badge-psi" style="background: rgba(6, 182, 212, 0.2); color: #22d3ee;">AI Workflow 案例</span>
-          <span class="card-time">⏱️ 閱讀 8 分鐘</span>
-        </div>
-        <h2 class="card-title">AI API 在企業 Workflow 中的角色（案例教學：OCR 自動建立 ERP 資料）</h2>
-        <p class="card-desc">「AI API 在企業系統中只是 Workflow 中的一個智慧節點！」實務拆解 OCR + LLM 能力分工版與 Gemini 多模態一步到位版，解析成本、準確率與維護性 7 大考量。(Falo x Force Cheng 2026/7/28)</p>
-        <div class="card-footer">
-          <a href="topics/03-ai-api-in-enterprise-workflow.html" class="card-btn" target="_btn" rel="noopener noreferrer">閱讀 Workflow 案例 (新視窗) ➔</a>
-          <button class="complete-toggle" title="標記為已完成">○ 未完成</button>
-        </div>
-      </div>
-
-      <!-- Class 6 官方總開場卡片：從 AI Coding 到 AI Product -->
+      <!-- [ 00 ] Class 6 官方總開場卡片：從 AI Coding 到 AI Product -->
       <div class="topic-card" data-category="opening" data-topic-id="00-from-ai-coding-to-ai-product">
         <div class="card-header">
-          <span class="badge badge-sys" style="background: rgba(59, 130, 246, 0.25); color: #60a5fa;">Class 6 破題開場</span>
+          <span class="badge badge-sys" style="background: rgba(59, 130, 246, 0.25); color: #60a5fa;">[ 00 ] 破題開場</span>
           <span class="card-time">⏱️ 閱讀 7 分鐘</span>
         </div>
-        <h2 class="card-title">Class 6 總開場破題：從 AI Coding 到 AI Product</h2>
+        <h2 class="card-title">【00】Class 6 總開場破題：從 AI Coding 到 AI Product</h2>
         <p class="card-desc">「前五堂課，你已經學會了如何利用 AI 寫程式。第六堂課，要學的是如何把 AI 寫出來的能力，變成真正可以讓企業使用、持續維護、持續創造價值的 Application！」(Falo x Force Cheng 2026/7/28)</p>
         <div class="card-footer">
           <a href="topics/00-from-ai-coding-to-ai-product.html" class="card-btn" target="_blank" rel="noopener noreferrer">閱讀開場破題心法 (新視窗) ➔</a>
@@ -173,27 +118,13 @@
         </div>
       </div>
 
-      <!-- 獨立核心主題：AI 時代，本科資訊人的核心競爭力：AI for Decision Making -->
-      <div class="topic-card" data-category="decision" data-topic-id="02-technology-selection">
-        <div class="card-header">
-          <span class="badge badge-fin">AI for Decision Making</span>
-          <span class="card-time">⏱️ 閱讀 8 分鐘</span>
-        </div>
-        <h2 class="card-title">AI 時代，本科資訊人的核心競爭力：AI for Decision Making</h2>
-        <p class="card-desc">「AI 讓每個人都更容易寫出程式。但真正有價值的人，是能幫企業做出正確決策的人！」解析從『完成需求』到『重新定義需求』、Solution Design 核心流程與工程師大轉型。(Falo x Force Cheng 2026/7/28)</p>
-        <div class="card-footer">
-          <a href="topics/02-technology-selection.html" class="card-btn" target="_blank" rel="noopener noreferrer">閱讀決策心法 (新視窗) ➔</a>
-          <button class="complete-toggle" title="標記為已完成">○ 未完成</button>
-        </div>
-      </div>
-
-      <!-- 旗艦核心卡片：FALO AI Native 開發原則 (HTML First) + 架構藍圖 -->
+      <!-- [ 01 ] 旗艦核心卡片：FALO AI Native 開發原則 (HTML First) + 架構藍圖 -->
       <div class="topic-card" data-category="arch" data-topic-id="01-architecture-guide">
         <div class="card-header">
-          <span class="badge badge-mfg">旗艦核心教材</span>
+          <span class="badge badge-mfg">[ 01 ] 旗艦架構</span>
           <span class="card-time">⏱️ 閱讀 12 分鐘</span>
         </div>
-        <h2 class="card-title">AI Native 的技術選型原則：HTML First 與架構藍圖</h2>
+        <h2 class="card-title">【01】AI Native 的技術選型原則：HTML First 與架構藍圖</h2>
         <p class="card-desc">「HTML 是介面，Python 是能力。凡是 HTML 能做的，就讓 HTML 做；只有 HTML 不適合的工作，才交給 Python。」收錄工作技術選型對照表與架構對照圖解 (Falo x Force Cheng 2026/7/28 設計)。</p>
         <div class="card-footer">
           <a href="topics/01-architecture-guide.html" class="card-btn" target="_blank" rel="noopener noreferrer">閱讀選型原則與藍圖 (新視窗) ➔</a>
@@ -201,27 +132,111 @@
         </div>
       </div>
 
-      <!-- Claude 5 上下文工程指南卡片 -->
-      <div class="topic-card" data-category="ai" data-topic-id="claude-5-context-engineering">
+      <!-- [ 02 ] 獨立核心主題：AI 時代，本科資訊人的核心競爭力：AI for Decision Making -->
+      <div class="topic-card" data-category="decision" data-topic-id="02-technology-selection">
         <div class="card-header">
-          <span class="badge badge-psi">AI 與大數據</span>
+          <span class="badge badge-fin">[ 02 ] 決策心法</span>
           <span class="card-time">⏱️ 閱讀 8 分鐘</span>
         </div>
-        <h2 class="card-title">2026最新Skill指南｜官方揭Claude 5世代新規：不用給大量範例</h2>
-        <p class="card-desc">Anthropic 揭曉 Claude 5 世代上下文工程指南：主張減少過度約束與大量範例，精簡 CLAUDE.md 並活用 Skills 按需載入。（含原始出處標示）</p>
+        <h2 class="card-title">【02】AI 時代，本科資訊人的核心競爭力：AI for Decision Making</h2>
+        <p class="card-desc">「AI 讓每個人都更容易寫出程式。但真正有價值的人，是能幫企業做出正確決策的人！」解析從『完成需求』到『重新定義需求』、Solution Design 核心流程與工程師大轉型。(Falo x Force Cheng 2026/7/28)</p>
         <div class="card-footer">
-          <a href="topics/claude-5-context-engineering.html" class="card-btn" target="_blank" rel="noopener noreferrer">前往閱讀網頁 (新視窗) ➔</a>
+          <a href="topics/02-technology-selection.html" class="card-btn" target="_blank" rel="noopener noreferrer">閱讀決策心法 (新視窗) ➔</a>
           <button class="complete-toggle" title="標記為已完成">○ 未完成</button>
         </div>
       </div>
 
-      <!-- 開發/擴充範本卡片 -->
+      <!-- [ 03 ] 實務案例單元 03：AI API 在企業 Workflow 中的角色 -->
+      <div class="topic-card" data-category="workflow" data-topic-id="03-ai-api-in-enterprise-workflow">
+        <div class="card-header">
+          <span class="badge badge-psi" style="background: rgba(6, 182, 212, 0.2); color: #22d3ee;">[ 03 ] Workflow 案例</span>
+          <span class="card-time">⏱️ 閱讀 8 分鐘</span>
+        </div>
+        <h2 class="card-title">【03】AI API 在企業 Workflow 中的角色（案例教學：OCR 自動建立 ERP 資料）</h2>
+        <p class="card-desc">「AI API 在企業系統中只是 Workflow 中的一個智慧節點！」實務拆解 OCR + LLM 能力分工版與 Gemini 多模態一步到位版，解析成本、準確率與維護性 7 大考量。(Falo x Force Cheng 2026/7/28)</p>
+        <div class="card-footer">
+          <a href="topics/03-ai-api-in-enterprise-workflow.html" class="card-btn" target="_blank" rel="noopener noreferrer">閱讀 Workflow 案例 (新視窗) ➔</a>
+          <button class="complete-toggle" title="標記為已完成">○ 未完成</button>
+        </div>
+      </div>
+
+      <!-- [ 04 ] 獨立單元 04：AI 能力選型 (Choosing the Right AI) -->
+      <div class="topic-card" data-category="select" data-topic-id="04-choosing-the-right-ai">
+        <div class="card-header">
+          <span class="badge badge-faq" style="background: rgba(244, 63, 94, 0.2); color: #fb7185;">[ 04 ] AI 能力選型</span>
+          <span class="card-time">⏱️ 閱讀 7 分鐘</span>
+        </div>
+        <h2 class="card-title">【04】AI 能力選型（Choosing the Right AI）：AI 那麼多，到底怎麼選？</h2>
+        <p class="card-desc">「不要先選 AI 再找需求，而是先理解需求再選擇最適合的 AI！」建立需求導向的選型思維，收錄新台幣 1 元辨識發票矩陣、專用 OCR vs LLM 超級矩陣與資訊人核心價值。(Falo x Force Cheng 2026/7/28)</p>
+        <div class="card-footer">
+          <a href="topics/04-choosing-the-right-ai.html" class="card-btn" target="_blank" rel="noopener noreferrer">閱讀 AI 選型心法 (新視窗) ➔</a>
+          <button class="complete-toggle" title="標記為已完成">○ 未完成</button>
+        </div>
+      </div>
+
+      <!-- [ 05 ] 獨立單元 05：AI 部署策略 (AI Deployment Strategy) -->
+      <div class="topic-card" data-category="deploy" data-topic-id="05-ai-deployment-strategy">
+        <div class="card-header">
+          <span class="badge badge-mfg" style="background: rgba(16, 185, 129, 0.2); color: #34d399;">[ 05 ] AI 部署策略</span>
+          <span class="card-time">⏱️ 閱讀 8 分鐘</span>
+        </div>
+        <h2 class="card-title">【05】AI 部署策略（AI Deployment Strategy）：先雲端，再混合，最後才考慮全地端</h2>
+        <p class="card-desc">「AI 放哪裡？」解構 Browser AI、Cloud AI (Google Cloud Run 原生 Python)、Hybrid AI 與 Local AI 的四層演進架構。不是在一開始追求最佳架構，而是先找到最適合目前階段的架構！(Falo x Force Cheng 2026/7/28)</p>
+        <div class="card-footer">
+          <a href="topics/05-ai-deployment-strategy.html" class="card-btn" target="_blank" rel="noopener noreferrer">閱讀部署策略心法 (新視窗) ➔</a>
+          <button class="complete-toggle" title="標記為已完成">○ 未完成</button>
+        </div>
+      </div>
+
+      <!-- [ 06 ] 獨立單元 06：AI 服務架構 (AI Service Architecture) -->
+      <div class="topic-card" data-category="service" data-topic-id="06-ai-service-architecture">
+        <div class="card-header">
+          <span class="badge badge-mfg" style="background: rgba(139, 92, 246, 0.2); color: #c084fc;">[ 06 ] AI 服務架構</span>
+          <span class="card-time">⏱️ 閱讀 9 分鐘</span>
+        </div>
+        <h2 class="card-title">【06】AI 服務架構（AI Service Architecture）：讓 AI 從一台電腦，變成企業可使用的服務</h2>
+        <p class="card-desc">解構如何將 Python AI Node 封裝為標準對外 API Service！旗艦推薦 Cloudflare + CF Tunnel 直連地端 AI 算力（效益高於 Cloud Run）、GAS 快速小工具與 ngrok 練兵。(Falo x Force Cheng 2026/7/28)</p>
+        <div class="card-footer">
+          <a href="topics/06-ai-service-architecture.html" class="card-btn" target="_blank" rel="noopener noreferrer">閱讀服務架構心法 (新視窗) ➔</a>
+          <button class="complete-toggle" title="標記為已完成">○ 未完成</button>
+        </div>
+      </div>
+
+      <!-- [ 07 ] 專屬深度單元 07：AI Node 連線與穿透實戰 (ngrok vs Cloudflare) -->
+      <div class="topic-card" data-category="connect" data-topic-id="07-ngrok-cloudflare-deep-dive">
+        <div class="card-header">
+          <span class="badge badge-mfg" style="background: rgba(6, 182, 212, 0.2); color: #22d3ee;">[ 07 ] 對外連線實戰</span>
+          <span class="card-time">⏱️ 閱讀 10 分鐘</span>
+        </div>
+        <h2 class="card-title">【07】AI Node 連線與穿透實戰（ngrok, GCP & Cloudflare）：突破 localhost 到全球可存取</h2>
+        <p class="card-desc">專屬深度實戰頁面！直擊「我的 AI 只能在 localhost 跑，怎麼讓別人用？」對照 ngrok (開發與 Demo 練兵)、Google Cloud Run (Python 正式部署) 與 Cloudflare Tunnel 的突破與演進。(Falo x Force Cheng 2026/7/28)</p>
+        <div class="card-footer">
+          <a href="topics/07-ngrok-cloudflare-deep-dive.html" class="card-btn" target="_blank" rel="noopener noreferrer">閱讀穿透實戰心法 (新視窗) ➔</a>
+          <button class="complete-toggle" title="標記為已完成">○ 未完成</button>
+        </div>
+      </div>
+
+      <!-- [ 附錄 A ] Claude 5 上下文工程指南卡片 -->
+      <div class="topic-card" data-category="ai" data-topic-id="claude-5-context-engineering">
+        <div class="card-header">
+          <span class="badge badge-psi">[ 附錄 A ] AI 指南</span>
+          <span class="card-time">⏱️ 閱讀 8 分鐘</span>
+        </div>
+        <h2 class="card-title">【附錄 A】2026最新Skill指南｜官方揭Claude 5世代新規：不用給大量範例</h2>
+        <p class="card-desc">Anthropic 揭曉 Claude 5 世代上下文工程指南：主張減少過度約束與大量範例，精簡 CLAUDE.md 並活用 Skills 按需載入。（含原始出處標示）</p>
+        <div class="card-footer">
+          <a href="topics/claude-5-context-engineering.html" class="card-btn" target="_blank" rel="noopener noreferrer">前往閱讀指南 (新視窗) ➔</a>
+          <button class="complete-toggle" title="標記為已完成">○ 未完成</button>
+        </div>
+      </div>
+
+      <!-- [ 附錄 B ] 開發/擴充範本卡片 -->
       <div class="topic-card" data-category="c6" data-topic-id="template">
         <div class="card-header">
-          <span class="badge badge-faq">新增主題範本</span>
+          <span class="badge badge-faq">[ 附錄 B ] 空白範本</span>
           <span class="card-time">HTML 範本</span>
         </div>
-        <h2 class="card-title">獨立主題 HTML 空白範本檔</h2>
+        <h2 class="card-title">【附錄 B】獨立主題 HTML 空白範本檔</h2>
         <p class="card-desc">供後續撰寫第六堂課新主題時複製使用的空白範本網頁，具備自動生成目錄、動態響應式排版。</p>
         <div class="card-footer">
           <a href="topics/template.html" class="card-btn" target="_blank" rel="noopener noreferrer">檢視範本網頁 (新視窗) ➔</a>
