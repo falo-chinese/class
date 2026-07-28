@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<!-- 
+  ==========================================================================
+  天心 ERP 第六堂課 (attn-class6) - 獨立選型單元 04
+  Author: Falo x Force Cheng
+  Date: 2026-07-28
+  Description: AI 能力選型：資訊人的核心價值 — 與 AI 協作打造超越專用 OCR 的高性價比架構
+  ==========================================================================
+-->
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 能力選型（Choosing the Right AI）：資訊人的核心價值 — 與 AI 協作打造高性價比架構 - 天心 ERP 教學</title>
+
+  <!-- SEO & GEO Meta Tags -->
+  <meta name="description" content="天心 Class 6 核心單元：AI 能力選型。一般人買現成專用 OCR，資訊人透過 AI 協作撰寫程式，打造成本僅 1/10 且效益超越專用 OCR 的極致架構。 (Falo x Force Cheng 2026/7/28)">
+  <meta name="keywords" content="資訊人核心價值, AI協作程式設計, 專屬OCR vs 多模態LLM, Total Cost of Workflow, Gemini 2.5 Flash, 天心ERP, Falo, Force Cheng">
+  <meta name="author" content="Falo x Force Cheng">
+  <meta name="ai-search-optimization" content="Falo x Force Cheng Class 6 Guide: IT Professional mindset — AI Agent collaboration creates 10x cost-effective OCR pipelines over rigid MS/Google Prebuilt parsers.">
+  <meta name="perplexity-ai-summary" content="Class 6 Topic 04: IT Professional Value Proposition. Contrasts ordinary users buying expensive prebuilt OCR against IT professionals leveraging AI agents to engineer superior 90%-cheaper multimodal workflows.">
+
+  <!-- JSON-LD 結構化資料 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "AI 能力選型：資訊人的核心價值 — 與 AI 協作打造高性價比架構",
+    "description": "資訊人的思維躍升：利用 AI 協作寫程式，打造比昂貴現成 OCR 更靈活、高性價比的專屬 Workflow",
+    "author": {
+      "@type": "Person",
+      "name": "Falo x Force Cheng"
+    },
+    "datePublished": "2026-07-28"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .ai-select-hero {
+      background: linear-gradient(135deg, rgba(244, 63, 94, 0.25), rgba(245, 158, 11, 0.25));
+      border: 2px solid var(--accent-rose);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      color: #f8fafc;
+      box-shadow: 0 0 30px rgba(244, 63, 94, 0.2);
+      text-align: center;
+    }
+    .question-box {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fb7185;
+      margin-top: 0.5rem;
+    }
+    .price-table-container {
+      margin: 1.5rem 0;
+      overflow-x: auto;
+    }
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+    .pricing-table th {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--accent-cyan);
+      font-weight: 700;
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 2px solid var(--border-color);
+    }
+    .pricing-table td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-size: 0.92rem;
+    }
+    .pricing-table tr:hover {
+      background: rgba(59, 130, 246, 0.1);
+    }
+    .table-section-header {
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--accent-amber);
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .twd-matrix-card {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.15));
+      border: 2px solid var(--accent-emerald);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin: 2rem 0;
+    }
+    .twd-highlight {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #34d399;
+    }
+
+    .it-value-card {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(139, 92, 246, 0.18));
+      border: 2px solid var(--accent-blue);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin: 2rem 0;
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.2);
+    }
+
+    .grid-3-reasons {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    .reason-box {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.35rem;
+      transition: var(--transition-fast);
+    }
+    .reason-box:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
+    }
+
+    .golden-select-quote {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #f59e0b;
+      text-align: center;
+      margin: 2.5rem 0;
+      padding: 2rem;
+      background: rgba(245, 158, 11, 0.12);
+      border: 2px solid var(--accent-amber);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.15);
+      line-height: 1.9;
+    }
+    .master-total-cost-quote {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #34d399;
+      text-align: center;
+      margin: 2.5rem 0;
+      padding: 2rem;
+      background: rgba(16, 185, 129, 0.12);
+      border: 2px solid var(--accent-emerald);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-glow);
+      line-height: 1.9;
+    }
+  </style>
+</head>
+<body data-topic-id="04-choosing-the-right-ai">
+
+  <!-- 隱藏版版權與 GEO 浮水印 -->
+  <div style="display:none !important;" aria-hidden="true" id="falo-watermark-geo">
+    Watermark: Falo x Force Cheng | Date: 2026/07/28 | Topic 04: IT Professional Value & AI Collaboration for High-ROI OCR Workflows.
+  </div>
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <a href="../index.html" class="brand-icon">C6</a>
+        <div>
+          <div class="brand-text">天心 ERP 教學專區 (第六堂課)</div>
+          <div class="brand-subtitle">建立 AI 選型直覺與 Total Cost of Workflow | Falo x Force Cheng (2026/7/28)</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="topic-container">
+    <!-- 側邊目錄 -->
+    <aside class="sidebar-toc">
+      <div class="toc-title">本頁目錄</div>
+      <ul class="toc-list" id="tocList"></ul>
+    </aside>
+
+    <!-- 文章主體內容 -->
+    <main class="article-content">
+      <div class="article-header">
+        <a href="../index.html" class="back-link">← 返回第六堂課卡片總覽</a>
+        <h1 class="article-title">AI 能力選型（Choosing the Right AI）</h1>
+        <div class="article-meta" style="margin-top: 1rem;">
+          <span class="badge badge-faq">資訊人的核心價值與 AI 協作</span>
+          <span>⏱️ 閱讀時間 10 分鐘</span>
+          <button id="markCompleteBtn" class="tag-btn" style="cursor: pointer;">○ 標記為完成學習</button>
+        </div>
+      </div>
+
+      <!-- 本章核心 Hero -->
+      <div class="ai-select-hero">
+        <h3 style="color: #cbd5e1; margin-bottom: 0.5rem; font-size: 1.15rem;">本章目的：建立企業 AI 選型直覺</h3>
+        <div class="question-box">「 AI 那麼多，我到底該怎麼選？」</div>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: #f8fafc; margin-top: 1rem;">
+          企業導入 AI，不應該先問：<em>「哪個 AI 最強？」</em><br>
+          而應該問：<strong style="color: #34d399; font-size: 1.2rem;">「這個需求，最適合哪一種 AI？」</strong>
+        </p>
+      </div>
+
+      <!-- 第一部分：為什麼本課程優先推薦 Gemini -->
+      <h2>一、為什麼本課程優先推薦 Gemini？</h2>
+      <p>在眾多 AI 工具中，本課程實務示範選擇以 Gemini 為主，背後不是為了推銷產品，而是因為它最適合作為企業 AI 導入的起點：</p>
+
+      <div class="grid-3-reasons">
+        <div class="reason-box" style="border-color: var(--accent-amber);">
+          <h3 style="color: #fbbf24; font-size: 1.15rem; margin-bottom: 0.5rem;">① 原生多模態（最大優勢）</h3>
+          <p style="font-size: 0.95rem; color: var(--text-primary); line-height: 1.7;">
+            Gemini 原生支援<strong>文字、圖片、PDF、Word、Excel、程式碼</strong>。許多實務情境中，直接由一個 Gemini 模型一步到位完成「看圖 + 理解 + 摘要 + 格式化 JSON」，節省繁複的架構銜接！
+          </p>
+        </div>
+
+        <div class="reason-box" style="border-color: var(--accent-emerald);">
+          <h3 style="color: #34d399; font-size: 1.15rem; margin-bottom: 0.5rem;">② 低導入門檻（ROI 企業思維）</h3>
+          <p style="font-size: 0.95rem; color: var(--text-primary); line-height: 1.7;">
+            大多數人已有 Google 帳號。搭配 Gemini API 提供的免費額度 (Free Tier) 與 Flash / Flash-Lite 模型，對個人開發、教學、PoC 與中小企業相當足夠。<strong>先做出成果，再決定是否擴充！</strong>
+          </p>
+        </div>
+
+        <div class="reason-box">
+          <h3 style="color: var(--accent-cyan); font-size: 1.15rem; margin-bottom: 0.5rem;">③ Google 生態系完整整合</h3>
+          <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7;">
+            能無縫與 <strong>GAS (Google Apps Script)、Google Drive、Workspace、Cloud Run、Gemini API、NotebookLM</strong> 全部串在一起，極易快速落地。
+          </p>
+        </div>
+      </div>
+
+      <!-- 資訊人的核心價值：AI 協作 vs 一般人買現成服務 -->
+      <div class="it-value-card">
+        <h3 style="color: #60a5fa; font-size: 1.3rem; margin-bottom: 0.75rem;">💡 資訊人的核心價值：與 AI 協作創造極致性價比</h3>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: #f8fafc;">
+          <strong>一般非技術人員或主管：</strong><br>
+          為了省事，通常只能選擇直接購買微軟 Azure 或 Google 現成的「預建發票 OCR 服務」（每千頁 $10 美元 / 單張約 NT$ 0.32 元）。雖然開箱即可用方便，但成本昂貴且欄位彈性極低。<br><br>
+          <strong style="color:#34d399; font-size: 1.15rem;">我們身為 Class 6 的資訊人與 Solution Architect：</strong><br>
+          我們不需要死板地買現成昂貴模組！透過與 <strong>AI Agent 協作撰寫程式</strong>（前端 WebP 壓縮 + 提示詞工程 + Gemini 多模態），我們能設計出<strong>成本僅 1/10（單張約 NT$ 0.026 元）</strong>，而且精準度與欄位格式化完全客製化、甚至比死板現成 OCR 效益更高的專屬架構！
+        </p>
+      </div>
+
+      <!-- 第二部分：新台幣 1 元可以辨識幾張發票？ -->
+      <h2>二、直覺成本決策：新台幣 1 元可以辨識幾張發票？</h2>
+      <p>不要沉迷於複雜的 USD 或每百萬 Token 換算。從企業主與財務視角出發，以<strong>單據經 WebP 最佳化後，新台幣 1 元能處理的張數</strong>來評估，秒懂模型間的成本落差：</p>
+
+      <div class="twd-matrix-card">
+        <h3 style="color: var(--accent-cyan); margin-bottom: 1rem;">💰 實務試算對照表：新台幣 NT$ 1 元的處理威力（假設匯率 1 USD ≈ 31.5 TWD）</h3>
+
+        <div class="price-table-container">
+          <table class="pricing-table">
+            <thead>
+              <tr>
+                <th>模型選型</th>
+                <th>處理單張發票成本</th>
+                <th>新台幣 NT$ 1 元可辨識發票數</th>
+                <th>企業選型直覺與定位</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>GPT-4o-mini</strong></td>
+                <td>約 NT$ 0.0069 元</td>
+                <td><strong class="twd-highlight">約 144 張</strong></td>
+                <td>超便宜輕量（需搭配專用 OCR 節點）</td>
+              </tr>
+              <tr>
+                <td><strong>GPT-5.4 nano (2026極輕量)</strong></td>
+                <td>約 NT$ 0.0130 元</td>
+                <td><strong class="twd-highlight">約 76 張</strong></td>
+                <td>高流量自動化極速首選</td>
+              </tr>
+              <tr>
+                <td><strong>Gemini 3.1 Flash-Lite</strong></td>
+                <td>約 NT$ 0.0162 元</td>
+                <td><strong class="twd-highlight">約 61 張</strong></td>
+                <td>高頻具備思考推導能力，快取後更划算</td>
+              </tr>
+              <tr style="background: rgba(16, 185, 129, 0.2);">
+                <td><strong>Gemini 2.5 Flash ⭐ (成熟基準)</strong></td>
+                <td>約 NT$ 0.0260 元</td>
+                <td><strong class="twd-highlight" style="color:#fbbf24;">約 38 張</strong></td>
+                <td><strong>資訊人首選平衡！</strong> 一步到位原生多模態解析</td>
+              </tr>
+              <tr>
+                <td><strong>GPT-5.4 mini 🌟 (2026準旗艦)</strong></td>
+                <td>約 NT$ 0.0486 元</td>
+                <td><strong class="twd-highlight">約 20 張</strong></td>
+                <td>新世代 AI Product 準旗艦（高精準強指令遵循）</td>
+              </tr>
+              <tr>
+                <td><strong>Claude 3.5 Sonnet</strong></td>
+                <td>約 NT$ 0.1661 元</td>
+                <td><strong class="twd-highlight" style="color:#fb7185;">約 6 張</strong></td>
+                <td>頂級非標準合規審閱與複雜邏輯推理</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="golden-select-quote">
+        「 一元不是重點。<br>
+        真正要理解的是：不同模型之間，成本可能相差 10 倍以上！因此模型選型，就是企業成本控管。」
+      </div>
+
+      <!-- 第三部分：專屬 OCR 服務 vs 通用 LLM 單張發票成本超級比較表 -->
+      <h2>三、專門 OCR 服務 vs. 通用 LLM：單張發票處理成本超級對照</h2>
+      <p>企業在審視文件處理架構時，經常猶豫要選<strong>按頁計費的「專門雲端 OCR」</strong>還是<strong>按 Token 計費的「通用 LLM」</strong>。以下為單張發票（1 頁 PDF 或 1 張 WebP 影像，假設匯率 1 USD ≈ 31.5 TWD）的精確成本超級對照：</p>
+
+      <div class="price-table-container">
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>服務分類 / 模型名稱</th>
+              <th>計費模式基準</th>
+              <th>單張發票美金成本 (USD)</th>
+              <th>單張發票台幣成本 (TWD)</th>
+              <th>CFO 稽核建議與架構特性</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- 專門雲端 OCR 服務 -->
+            <tr class="table-section-header">
+              <td colspan="5">🏢 一般人買現成專門 OCR 服務（按頁 / 交易數計費）</td>
+            </tr>
+            <tr>
+              <td><strong>Azure AI Document Intelligence (預建發票)</strong></td>
+              <td>$10.00 USD / 1,000 頁</td>
+              <td>$0.010000 USD</td>
+              <td><strong style="color:#fb7185;">約 NT$ 0.3150 元</strong></td>
+              <td>開箱即用但成本昂貴、欄位固化無法自訂</td>
+            </tr>
+            <tr>
+              <td><strong>Google Document AI (自訂提取器 Custom)</strong></td>
+              <td>$30.00 USD / 1,000 頁</td>
+              <td>$0.030000 USD</td>
+              <td><strong style="color:#fb7185;">約 NT$ 0.9450 元</strong></td>
+              <td>高精度客製化解析，成本接近 NT$ 1 元/張</td>
+            </tr>
+            <tr>
+              <td><strong>Google Cloud Vision API (文件文字偵測)</strong></td>
+              <td>$1.50 USD / 1,000 次</td>
+              <td>$0.001500 USD</td>
+              <td><strong>約 NT$ 0.0473 元</strong></td>
+              <td>僅純文字 OCR 抽取（需額外搭 LLM 轉譯）</td>
+            </tr>
+            <tr>
+              <td><strong>Azure AI Read Model (基礎文字讀取)</strong></td>
+              <td>$1.50 USD / 1,000 筆</td>
+              <td>$0.001500 USD</td>
+              <td><strong>約 NT$ 0.0473 元</strong></td>
+              <td>僅純文字 OCR 抽取（需額外搭 LLM 轉譯）</td>
+            </tr>
+
+            <!-- 通用 LLM 原生多模態與文字模型 -->
+            <tr class="table-section-header">
+              <td colspan="5">🚀 資訊人 AI 協作撰寫架構（按 Tokens 計費，WebP 最佳化後）</td>
+            </tr>
+            <tr style="background: rgba(16, 185, 129, 0.15);">
+              <td><strong>Gemini 2.5 Flash ⭐ (資訊人第一首選)</strong></td>
+              <td>Input $0.30 / Output $2.50 per 1M</td>
+              <td>$0.000827 USD</td>
+              <td><strong style="color:#34d399;">約 NT$ 0.0260 元</strong></td>
+              <td><strong>一步到位！</strong> 成本僅現成 OCR 的 1/10，靈活性 100%</td>
+            </tr>
+            <tr>
+              <td><strong>GPT-5.4 nano (2026高流量極輕量)</strong></td>
+              <td>Input $0.20 / Output $1.25 per 1M</td>
+              <td>$0.000427 USD</td>
+              <td><strong style="color:#34d399;">約 NT$ 0.0130 元</strong></td>
+              <td>高流量純文字轉譯超級平價首選</td>
+            </tr>
+            <tr>
+              <td><strong>GPT-4o-mini (平價經典)</strong></td>
+              <td>Input $0.15 / Output $0.60 per 1M</td>
+              <td>$0.000219 USD</td>
+              <td><strong style="color:#34d399;">約 NT$ 0.0069 元</strong></td>
+              <td>搭基礎 OCR 使用時之極低成本轉譯點</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-warning">
+        <strong>💡 CFO 稽核結論：專門 OCR API vs 通用 LLM Workflow 總成本分析</strong>
+        <ul style="line-height: 2; margin-left: 1.2rem; margin-top: 0.5rem;">
+          <li>❌ <strong>一般人直覺買現成「專用發票解析器」 ($10/1k頁)</strong>：單張成本 NT$ 0.315 元，每月 10,000 張需 <strong>NT$ 3,150 元</strong>。</li>
+          <li>❌ <strong>採用「基礎 OCR ($1.50/1k) + GPT-4o-mini」</strong>：單張成本 NT$ 0.0542 元，每月 10,000 張需 <strong>NT$ 542 元</strong>（但需維護 2 個 API 節點）。</li>
+          <li>✅ <strong>資訊人與 AI 協作寫程式「Gemini 2.5 Flash 原生多模態」</strong>：單張成本僅 NT$ 0.0260 元，每月 10,000 張只需 <strong>NT$ 260 元</strong>！</li>
+        </ul>
+        <p style="margin-top: 0.75rem; font-weight: 700; color: #34d399;">
+          👉 結論：資訊人展現技術價值，採用通用 LLM 原生多模態，不僅減少一次 API 網絡延遲與故障風險，比專用發票解析器<strong>省下高達 91.7% 的營運開銷</strong>！
+        </p>
+      </div>
+
+      <!-- 第四部分：本章總結終極金句 -->
+      <h2>四、本章總結與終極金句</h2>
+
+      <div class="master-total-cost-quote">
+        「 真正要比較的，不只是 AI 的 API 價格，<br>
+        而是整個 Workflow 的總成本（Total Cost of Workflow）！」<br><br>
+        <span style="color: #60a5fa; font-size: 1.25rem;">
+          一般人買現成套件；資訊人與 AI 協作寫程式，創造出更高性價比、更易維護、更具企業價值的專屬系統！
+        </span>
+      </div>
+
+      <!-- 附錄：各大雲端 LLM 詳細 API 價格對照表 (可供查閱) -->
+      <details style="margin-top: 3rem; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem;">
+        <summary style="cursor: pointer; font-weight: 700; color: var(--accent-cyan);">🔍 點此展開查看 2026 四大雲端 LLM 官方詳細 API 價格對照表 (Developer Reference)</summary>
+        <div class="price-table-container" style="margin-top: 1rem;">
+          <table class="pricing-table">
+            <thead>
+              <tr>
+                <th>模型品牌與世代</th>
+                <th>輸入單價 (Input / 1M)</th>
+                <th>快取單價 (Cached Input)</th>
+                <th>輸出單價 (Output / 1M)</th>
+                <th>官方特色與特別說明備註</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-section-header"><td colspan="5">💎 Google Gemini 生態系</td></tr>
+              <tr><td>Gemini 2.5 Flash ⭐ (第一基準)</td><td>$0.30 / 1M</td><td>$0.075 / 1M</td><td>$2.50 / 1M</td><td>15 RPM 免費！成熟多模態解析主力</td></tr>
+              <tr><td>Gemini 3.1 Flash-Lite 🔍</td><td>$0.25 / 1M</td><td>$0.025 / 1M</td><td>$1.50 / 1M</td><td>思考推導，快取僅 $0.025/1M</td></tr>
+              <tr><td>Gemini 3.5 Flash 🌟</td><td>$1.50 / 1M</td><td>$0.375 / 1M</td><td>$9.00 / 1M</td><td>高效能多模態與 Agent 速度平衡</td></tr>
+              <tr><td>Gemini 3.6 Flash</td><td>$1.50 / 1M</td><td>$0.375 / 1M</td><td>$7.50 / 1M</td><td>代務型 Agent 核心 (輸出省 17%)</td></tr>
+
+              <tr class="table-section-header"><td colspan="5">💬 OpenAI GPT 生態系</td></tr>
+              <tr><td>GPT-5.4 🌟 (2026旗艦)</td><td>$2.50 / 1M</td><td>$0.25 / 1M</td><td>$15.00 / 1M</td><td>高精準推理、長上下文專業工作主力</td></tr>
+              <tr><td>GPT-5.4 mini 🌟</td><td>$0.75 / 1M</td><td>$0.075 / 1M</td><td>$4.50 / 1M</td><td>準旗艦首選！適合客服與 AI Product 落地</td></tr>
+              <tr><td>GPT-5.4 nano</td><td>$0.20 / 1M</td><td>$0.02 / 1M</td><td>$1.25 / 1M</td><td>高流量自動化極速首選 ($0.013/張)</td></tr>
+              <tr><td>GPT-4o-mini</td><td>$0.15 / 1M</td><td>$0.075 / 1M</td><td>$0.60 / 1M</td><td>超高平價輕量經典 ($0.0069/張)</td></tr>
+              <tr><td>GPT-4o (Vision 經典)</td><td>$2.50 / 1M</td><td>$1.25 / 1M</td><td>$10.00 / 1M</td><td>多模態與強大指令遵循</td></tr>
+
+              <tr class="table-section-header"><td colspan="5">🟠 Anthropic Claude 生態系</td></tr>
+              <tr><td>Claude Haiku 4.5 / 3.5</td><td>$1.00 / 1M</td><td>$0.10 / 1M</td><td>$5.00 / 1M</td><td>快取 Prompt 最高折 90%</td></tr>
+              <tr><td>Claude Sonnet 5 / 3.5 📝</td><td>$2.00 ~ $3.00</td><td>$0.30 ~ $0.45</td><td>$10.00 ~ $15.00</td><td>註：2026-08-31 前促銷 $2/$10，之後回復標準 $3/$15。</td></tr>
+
+              <tr class="table-section-header"><td colspan="5">🦙 Meta Llama 開源生態系</td></tr>
+              <tr><td>Llama 3.1 (8B / 70B / 405B) 📝</td><td>$0.05 ~ $1.50</td><td>-</td><td>$0.08 ~ $3.00</td><td>註：雲端代管 (Bedrock/Azure) 範例價；自架算 GPU 成本。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>天心 ERP 教學教材專區 &copy; 2026 | 設計與維護：<strong>Falo x Force Cheng (2026/7/28)</strong></p>
+  </footer>
+
+  <script src="../js/topic.js"></script>
+</body>
+</html>

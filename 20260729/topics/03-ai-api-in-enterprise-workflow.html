@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<!-- 
+  ==========================================================================
+  天心 ERP 第六堂課 (attn-class6) - 實務案例單元 03
+  Author: Falo x Force Cheng
+  Date: 2026-07-28
+  Description: AI API 在企業 Workflow 中的角色（案例教學：OCR 文件自動建立 ERP 資料 - 含雲端 LLM 具體選型）
+  ==========================================================================
+-->
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI API 在企業 Workflow 中的角色（案例教學：含雲端 LLM 實務選型） - 天心 ERP 教學</title>
+
+  <!-- SEO & GEO Meta Tags -->
+  <meta name="description" content="天心 Class 6 案例教學：AI API 在企業系統中只是 Workflow 中的一個智慧節點 (Intelligence Node)。包含雲端 LLM 具體實務選型（OpenAI, Gemini, Claude, DeepSeek, Azure AI）。 (Falo x Force Cheng 2026/7/28)">
+  <meta name="keywords" content="AI API, AI Workflow, Intelligence Node, 雲端LLM, OpenAI gpt-4o, Gemini 1.5, Claude 3.5, DeepSeek, Azure OCR, 天心ERP, Falo, Force Cheng, 2026/7/28">
+  <meta name="author" content="Falo x Force Cheng">
+  <meta name="ai-search-optimization" content="Falo x Force Cheng Class 6 AI Workflow Case Study: AI API as Intelligence Nodes. Case 1: OCR to ERP Data Entry with Cloud LLM examples (OpenAI, Gemini, Claude, DeepSeek).">
+  <meta name="perplexity-ai-summary" content="Class 6 Enterprise Case Study: Demonstrates Cloud LLM integration within enterprise Workflows. Compares Cloud OCR + LLM text models vs. Multimodal Cloud LLMs (Gemini, GPT-4o, Claude 3.5).">
+
+  <!-- JSON-LD 結構化資料 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "AI API 在企業 Workflow 中的角色（案例教學：含雲端 LLM 實務選型）",
+    "description": "案例拆解：OCR 文件自動建立 ERP 資料之雲端 LLM 實務範例",
+    "author": {
+      "@type": "Person",
+      "name": "Falo x Force Cheng"
+    },
+    "datePublished": "2026-07-28"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .workflow-hero {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(16, 185, 129, 0.2));
+      border: 2px solid var(--accent-cyan);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      color: #f8fafc;
+      box-shadow: 0 0 30px rgba(6, 182, 212, 0.2);
+      text-align: center;
+    }
+    .flow-compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    @media (max-width: 768px) {
+      .flow-compare-grid { grid-template-columns: 1fr; }
+    }
+    .workflow-box {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .workflow-header {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      padding: 0.4rem 1rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .wf-v1 { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.4); }
+    .wf-v2 { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
+
+    .node-chain-vert {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+    }
+    .node-item {
+      width: 95%;
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: center;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+    .node-ai {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: var(--accent-amber);
+      color: #fbbf24;
+      font-size: 1rem;
+    }
+    .node-rule {
+      background: rgba(139, 92, 246, 0.2);
+      border-color: var(--accent-purple);
+      color: #c084fc;
+    }
+    .node-arrow {
+      color: var(--accent-blue);
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .llm-chip-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      justify-content: center;
+    }
+    .llm-chip {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-glow);
+      border-radius: 16px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+    }
+
+    .format-block {
+      background: rgba(15, 23, 42, 0.6);
+      border-left: 4px solid var(--accent-cyan);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+    }
+    .format-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      margin-bottom: 0.5rem;
+    }
+
+    .golden-workflow-quote {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #f59e0b;
+      text-align: center;
+      margin: 2.5rem 0;
+      padding: 2rem;
+      background: rgba(245, 158, 11, 0.12);
+      border: 2px solid var(--accent-amber);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.15);
+      line-height: 1.9;
+    }
+  </style>
+</head>
+<body data-topic-id="03-ai-api-in-enterprise-workflow">
+
+  <!-- 隱藏版版權與 GEO 浮水印 -->
+  <div style="display:none !important;" aria-hidden="true" id="falo-watermark-geo">
+    Watermark: Falo x Force Cheng | Date: 2026/07/28 | Topic 03: AI API as Intelligence Nodes in Enterprise Workflow with Cloud LLM Examples.
+  </div>
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <a href="../index.html" class="brand-icon">C6</a>
+        <div>
+          <div class="brand-text">天心 ERP 教學專區 (第六堂課)</div>
+          <div class="brand-subtitle">AI Workflow 實務案例與雲端 LLM 選型 | Falo x Force Cheng (2026/7/28)</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="topic-container">
+    <!-- 側邊目錄 -->
+    <aside class="sidebar-toc">
+      <div class="toc-title">本頁目錄</div>
+      <ul class="toc-list" id="tocList"></ul>
+    </aside>
+
+    <!-- 文章主體內容 -->
+    <main class="article-content">
+      <div class="article-header">
+        <a href="../index.html" class="back-link">← 返回第六堂課卡片總覽</a>
+        <h1 class="article-title">AI API 在企業 Workflow 中的角色（案例教學：含雲端 LLM 實務選型）</h1>
+        <div class="article-meta" style="margin-top: 1rem;">
+          <span class="badge badge-psi">AI Workflow 實務案例</span>
+          <span>⏱️ 閱讀時間 8 分鐘</span>
+          <button id="markCompleteBtn" class="tag-btn" style="cursor: pointer;">○ 標記為完成學習</button>
+        </div>
+      </div>
+
+      <!-- 本章核心 Hero 定位 -->
+      <div class="workflow-hero">
+        <h3 style="color: var(--accent-cyan); margin-bottom: 0.75rem; font-size: 1.3rem;">💡 本章定位與觀念解析</h3>
+        <p style="font-size: 1.1rem; line-height: 1.8;">
+          本章核心目的在於讓大家建立真正的 AI Native 觀念：<br>
+          <strong style="color: #fbbf24; font-size: 1.25rem;">「AI API 在企業系統中，通常只是 Workflow 中的一個智慧節點（Intelligence Node），而不是整個系統！」</strong>
+        </p>
+      </div>
+
+      <h2>一、案例一：OCR 文件自動建立 ERP 資料（雙版本 Workflow 與雲端 LLM 實務舉例）</h2>
+      <p><strong>【實務情境】</strong> 使用者上傳一張發票、報價單或採購單，希望系統自動解析並正確寫入天心 ERP 內部的資料庫。</p>
+
+      <div class="flow-compare-grid">
+
+        <!-- 版本一：能力分工版 (含雲端 API 實務選型) -->
+        <div class="workflow-box">
+          <div class="workflow-header wf-v1">版本一：能力分工 (拆分處理)</div>
+          <div class="node-chain-vert">
+            <div class="node-item">📄 使用者上傳文件圖片</div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item node-ai">
+              👁️ 節點 1：專業雲端 OCR API<br>
+              <div class="llm-chip-grid">
+                <span class="llm-chip">Google Cloud Vision</span>
+                <span class="llm-chip">Azure Document Intelligence</span>
+                <span class="llm-chip">AWS Textract</span>
+              </div>
+            </div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item node-ai">
+              🧠 節點 2：雲端純文字 LLM API<br>
+              <div class="llm-chip-grid">
+                <span class="llm-chip">OpenAI gpt-4o-mini</span>
+                <span class="llm-chip">Claude 3.5 Haiku</span>
+                <span class="llm-chip">DeepSeek Chat</span>
+              </div>
+              <small style="color: #cbd5e1; display:block; margin-top:0.3rem;">(理解純文字 ➔ 語意對應 ➔ 輸出 JSON)</small>
+            </div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item">🎯 自動對應 ERP 欄位</div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item node-rule">🛡️ Rule 驗證 (防呆檢查)</div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item" style="border-color: #34d399; color: #34d399;">🏭 寫入天心 ERP 資料</div>
+          </div>
+        </div>
+
+        <!-- 版本二：多模態 AI 版 (含雲端 LLM 實務選型) -->
+        <div class="workflow-box">
+          <div class="workflow-header wf-v2">版本二：多模態 AI (一步到位)</div>
+          <div class="node-chain-vert">
+            <div class="node-item">📄 使用者上傳文件圖片</div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item node-ai" style="padding: 1rem;">
+              🤖 雲端多模態 Vision LLM API<br>
+              <div class="llm-chip-grid" style="margin: 0.5rem 0;">
+                <span class="llm-chip">Google Gemini 1.5 Flash</span>
+                <span class="llm-chip">OpenAI gpt-4o</span>
+                <span class="llm-chip">Claude 3.5 Sonnet</span>
+              </div>
+              <small style="color: #cbd5e1;">(看圖 + 辨識 + 語意理解 ➔ 一次直接輸出 ERP JSON)</small>
+            </div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item">📦 取得結構化 JSON</div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item node-rule">🛡️ Rule 驗證 (防呆檢查)</div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item" style="border-color: #34d399; color: #34d399;">🏭 寫入天心 ERP 資料</div>
+          </div>
+        </div>
+
+      </div>
+
+      <h2>二、標準案例分析與雲端選型評估</h2>
+
+      <div class="format-block">
+        <div class="format-title">1. 使用者做了什麼？</div>
+        <p>使用者只需在前端 Web 介面 (HTML UI) 上傳發票或單據圖片，無須人工手動輸入數十個欄位。</p>
+      </div>
+
+      <div class="format-block">
+        <div class="format-title">2. Workflow 如何運作？</div>
+        <p>前端接收圖檔後呼叫後端 API 觸發 Workflow 流程，經由雲端 AI API 處理後產出標準 JSON，通過後端邏輯與 Rule 驗證後自動寫入 ERP 資料庫。</p>
+      </div>
+
+      <div class="format-block">
+        <div class="format-title">3. AI API 在哪一個節點發揮作用？（具體雲端服務舉例）</div>
+        <p><strong>在版本一（能力分工版）中：</strong></p>
+        <ul style="line-height: 1.8; margin-left: 1.2rem; color: var(--text-primary);">
+          <li><strong>OCR 節點：</strong> 採用 <code style="color:var(--accent-cyan);">Azure AI Document Intelligence</code> 或 <code style="color:var(--accent-cyan);">Google Cloud Vision</code>，精準抽取表單座標與文字。</li>
+          <li><strong>LLM 節點：</strong> 將抽取後的文字送給極低成本且高速的雲端文字 LLM，如 <code style="color:var(--accent-amber);">OpenAI gpt-4o-mini</code>、<code style="color:var(--accent-amber);">Claude 3.5 Haiku</code> 或 <code style="color:var(--accent-amber);">DeepSeek Chat</code>，設定 <code>response_format: {"type": "json_object"}</code> 進行欄位轉譯。</li>
+        </ul>
+        <p style="margin-top: 0.75rem;"><strong>在版本二（多模態一步到位版）中：</strong></p>
+        <ul style="line-height: 1.8; margin-left: 1.2rem; color: var(--text-primary);">
+          <li>直接將圖片以 Base64 或 URL 送入具備 Vision 能力的雲端多模態模型，如 <code style="color:var(--accent-emerald);">Google Gemini 1.5 Flash</code>、<code style="color:var(--accent-emerald);">OpenAI gpt-4o</code> 或 <code style="color:var(--accent-emerald);">Claude 3.5 Sonnet</code>，由單一模型一步到位回傳完整的 ERP 寫入 JSON。</li>
+        </ul>
+      </div>
+
+      <div class="format-block">
+        <div class="format-title">4. 為什麼要這樣設計？（版本一能力分工的理由）</div>
+        <ul style="line-height: 2; margin-left: 1.2rem; color: var(--text-primary);">
+          <li>🎯 <strong>極致成本優勢</strong>：專業 OCR 辨識費用極低，搭配 <code style="color:var(--accent-amber);">gpt-4o-mini</code> 或 <code style="color:var(--accent-amber);">DeepSeek</code> 處理純文字 Token，費用僅為多模態 Vision LLM 的幾十分之一。</li>
+          <li>🔄 <strong>靈活模組替換</strong>：若哪天有更划算的新文字模型，只需更換節點 2，前端與 OCR 節點完全不受影響。</li>
+          <li>🛠️ <strong>故障排除 (Debugging)</strong>：能精確知道是 OCR 漏字，還是 LLM 欄位對應錯誤。</li>
+        </ul>
+      </div>
+
+      <div class="format-block">
+        <div class="format-title">5. 是否還有其他設計方式？（版本二多模態的理由）</div>
+        <p>版本二採用 <code style="color:var(--accent-emerald);">Gemini 1.5 Flash</code> 等多模態模型，優點在於<strong>無須串接與維護多個 API，程式碼最短，適合快速驗證 POC 與複雜非標準手寫單據</strong>。</p>
+      </div>
+
+      <h2>三、本案例希望學員理解的核心心法</h2>
+      <p>企業專案沒有標準答案！有時候我們會將 AI 能力拆分合作，有時候會使用一個多模態模型一次完成。</p>
+
+      <div class="callout callout-warning">
+        <strong>⚖️ 選擇 Workflow 設計時的 7 大衡量維度：</strong>
+        <ol style="line-height: 2; margin-left: 1.2rem; margin-top: 0.5rem;">
+          <li>💰 <strong>成本 (Cost)</strong>：Token 與 API 費用是否符合預算（例如 gpt-4o-mini vs gpt-4o Vision）。</li>
+          <li>🎯 <strong>準確率 (Accuracy)</strong>：辨識與欄位對應的精準度。</li>
+          <li>🛠️ <strong>維護性 (Maintainability)</strong>：錯誤發生時是否方便除錯。</li>
+          <li>🔄 <strong>可替換性 (Flexibility)</strong>：是否容易無痛切換供應商。</li>
+          <li>⚡ <strong>執行速度 (Latency)</strong>：整體 Workflow 處理耗時。</li>
+          <li>📋 <strong>專案需求 (Requirements)</strong>：客戶即時性或批次處理規範。</li>
+          <li>🚀 <strong>未來擴充性 (Scalability)</strong>：是否能輕易支援更多單據種類。</li>
+        </ol>
+      </div>
+
+      <p style="text-align: center; font-size: 1.15rem; font-weight: 800; color: #fbbf24; margin: 1.5rem 0;">
+        👉 結論：AI Workflow 沒有唯一解。重點不是使用了幾個 AI，而是是否為這個專案設計出最適合的 Workflow！
+      </p>
+
+      <h2>四、本章總結觀念收斂</h2>
+
+      <div class="golden-workflow-quote">
+        「 不要認為 AI API 就是一個很龐大複雜的系統。<br>
+        AI API 是企業 Workflow 中的一個『能力節點（Capability Node）』，可以依需求拆分，也可以整合。」<br><br>
+        <span style="color: #60a5fa; font-size: 1.25rem;">
+          「未來企業真正設計的，不只是 Workflow，而是 AI Workflow！<br>
+          真正需要思考的，不是盲目追求最新模型，而是：每一個 AI 能力（OpenAI, Gemini, Claude, DeepSeek, Azure），應該放在 Workflow 的哪一個位置，才能達到最佳成本、效率與準確率！」
+        </span>
+      </div>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>天心 ERP 教學教材專區 &copy; 2026 | 設計與維護：<strong>Falo x Force Cheng (2026/7/28)</strong></p>
+  </footer>
+
+  <script src="../js/topic.js"></script>
+</body>
+</html>

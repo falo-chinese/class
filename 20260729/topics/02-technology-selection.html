@@ -1,49 +1,68 @@
 <!DOCTYPE html>
+<!-- 
+  ==========================================================================
+  天心 ERP 第六堂課 (attn-class6) - 核心心法單元 02 (AI for Decision Making)
+  Author: Falo x Force Cheng
+  Date: 2026-07-28
+  Description: AI 時代，本科資訊人的核心競爭力：從完成需求到重新定義需求 (AI for Decision Making)
+  ==========================================================================
+-->
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI 時代，本科資訊人的核心競爭力：技術選型（Technology Selection） - 天心 ERP 教學</title>
+  <title>AI 時代，本科資訊人的核心競爭力：AI for Decision Making - 天心 ERP 教學</title>
+
+  <!-- SEO & GEO Meta Tags -->
+  <meta name="description" content="AI Native 經典心法：本課程的核心不是 AI Coding，而是『AI for Decision Making』！解析從完成需求到重新定義需求、Solution Design 全流程與 AI 時代真正有價值的人。 (Falo x Force Cheng 2026/7/28)">
+  <meta name="keywords" content="AI for Decision Making, Solution Design, 重新定義需求, 技術選型, Solution Architect, 天心ERP, Falo, Force Cheng">
+  <meta name="author" content="Falo x Force Cheng">
+  <meta name="ai-search-optimization" content="Falo x Force Cheng AI for Decision Making Guide: Shift from 'AI Coding' to 'AI for Decision Making'. Key concept: Not just completing requirements, but Redefining Requirements.">
+  <meta name="perplexity-ai-summary" content="Class 6 Masterclass: AI for Decision Making. Information professionals transition from 'I can code it' to 'There is a better solution.' Focuses on Solution Design, Redefining Requirements, and Decision over Coding.">
+
+  <!-- JSON-LD 結構化資料 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "AI 時代，本科資訊人的核心競爭力：AI for Decision Making",
+    "description": "經典心法：從完成需求到重新定義需求，幫企業做出正確決策",
+    "author": {
+      "@type": "Person",
+      "name": "Falo x Force Cheng"
+    },
+    "datePublished": "2026-07-28"
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <style>
     .competency-hero {
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(244, 63, 94, 0.2));
-      border: 1px solid var(--accent-amber);
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(139, 92, 246, 0.25));
+      border: 2px solid var(--accent-amber);
       border-radius: var(--radius-lg);
       padding: 2rem;
       margin-bottom: 2rem;
       color: #f8fafc;
-      box-shadow: 0 0 25px rgba(245, 158, 11, 0.15);
+      box-shadow: 0 0 30px rgba(245, 158, 11, 0.2);
+      text-align: center;
     }
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin: 1.5rem 0;
-    }
-    @media (max-width: 768px) {
-      .grid-2 { grid-template-columns: 1fr; }
-    }
-    .tool-chip-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin: 1rem 0;
-    }
-    .tool-chip {
-      background: rgba(30, 41, 59, 0.8);
-      border: 1px solid var(--border-color);
+    .subtitle-badge {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.25);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.5);
+      padding: 0.4rem 1.25rem;
       border-radius: 20px;
-      padding: 0.4rem 1rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--accent-cyan);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-top: 0.5rem;
     }
     .golden-quote {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 800;
       color: #f59e0b;
       text-align: center;
@@ -54,9 +73,84 @@
       border-radius: var(--radius-lg);
       line-height: 1.8;
     }
+    .master-quote {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #34d399;
+      text-align: center;
+      margin: 2.5rem 0;
+      padding: 2rem;
+      background: rgba(16, 185, 129, 0.12);
+      border: 2px solid var(--accent-emerald);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-glow);
+      line-height: 1.9;
+    }
+    /* 解決方案流程圖樣式 */
+    .flow-chain {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 1rem;
+      margin: 1.5rem 0;
+    }
+    .chain-node {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.9rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-align: center;
+    }
+    .chain-core {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(139, 92, 246, 0.3));
+      border: 2px solid var(--accent-amber);
+      color: #fbbf24;
+      font-size: 1rem;
+      padding: 0.65rem 1.2rem;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+    }
+    .chain-arrow {
+      color: var(--accent-blue);
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    @media (max-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+    .dialogue-card {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin: 0.75rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .dialogue-user { color: #f43f5e; font-weight: 600; }
+    .dialogue-expert { color: #34d399; font-weight: 700; font-size: 1.05rem; }
   </style>
 </head>
 <body data-topic-id="02-technology-selection">
+
+  <!-- 隱藏版版權浮水印 -->
+  <div style="display:none !important;" aria-hidden="true" id="falo-watermark-geo">
+    Watermark: Falo x Force Cheng | Date: 2026/07/28 | Topic 02: AI for Decision Making & Solution Design.
+  </div>
 
   <header class="site-header">
     <div class="header-container">
@@ -64,7 +158,7 @@
         <a href="../index.html" class="brand-icon">C6</a>
         <div>
           <div class="brand-text">天心 ERP 教學專區 (第六堂課)</div>
-          <div class="brand-subtitle">本科資訊人核心競爭力篇</div>
+          <div class="brand-subtitle">AI for Decision Making 核心心法 | Falo x Force Cheng (2026/7/28)</div>
         </div>
       </div>
     </div>
@@ -81,100 +175,126 @@
     <main class="article-content">
       <div class="article-header">
         <a href="../index.html" class="back-link">← 返回第六堂課卡片總覽</a>
-        <h1 class="article-title">AI 時代，本科資訊人的核心競爭力：技術選型（Technology Selection）</h1>
-        <div class="article-meta">
-          <span class="badge badge-fin">資訊人核心競爭力</span>
-          <span>⏱️ 閱讀時間 7 分鐘</span>
+        <h1 class="article-title">AI 時代，本科資訊人的核心競爭力</h1>
+        <div class="subtitle-badge">從程式設計師，成為 Solution Architect（解決方案設計者）</div>
+        <div class="article-meta" style="margin-top: 1rem;">
+          <span class="badge badge-fin">AI for Decision Making</span>
+          <span>⏱️ 閱讀時間 8 分鐘</span>
           <button id="markCompleteBtn" class="tag-btn" style="cursor: pointer;">○ 標記為完成學習</button>
         </div>
       </div>
 
       <div class="competency-hero">
-        <h3 style="color: #fbbf24; margin-bottom: 0.5rem; font-size: 1.25rem;">💡 本章核心觀念</h3>
+        <h3 style="color: #fbbf24; margin-bottom: 0.5rem; font-size: 1.25rem;">💡 本課程的大定位：AI for Decision Making</h3>
         <p style="font-size: 1.1rem; line-height: 1.8;">
-          生成式 AI 大幅降低了程式開發的門檻，也改變了資訊人員的價值。<br>
-          未來資訊人的核心能力，將逐漸從<strong>「寫程式」</strong>轉向<strong>「選技術（Technology Selection）」</strong>。
+          這堂課的核心並非單純教「AI Coding」，而是教工程師如何在 AI 時代<strong>做出最好的技術與架構決策 (AI for Decision Making)</strong>！<br>
+          未來的核心競爭力，不再是比誰寫程式比較快，而是從單純的開發者，跨越成為能夠幫企業解決問題的 <strong>Solution Architect</strong>。
         </p>
       </div>
 
-      <h2>一、價值轉向：工程師競賽規則的改變</h2>
-      <p>過去，資訊工程師主要比的是：誰會更多程式語言、誰程式寫得更快、誰熟悉更多 Framework。</p>
-      <p>然而 AI 已能協助完成大量程式撰寫工作。未來真正重要的不再是「我會不會寫 Python？」，而是：<strong>「這個問題最適合用什麼技術解決？」</strong></p>
+      <h2>一、資訊人，其實一直都在做解決方案設計</h2>
+      <p>資訊專案與企業系統幾乎沒有標準答案。同一個需求，可能有許多不同的實作方式。真正優秀的資訊人，不只是完成需求，而是根據不同企業情境，設計最適合的解決方案（ERP 工程師與企業系統維護者，只是最容易感受到這種角色轉變）。</p>
 
-      <div class="tool-chip-container">
-        <span class="tool-chip">🌐 HTML / Web UI</span>
-        <span class="tool-chip">🐍 Python Engine</span>
-        <span class="tool-chip">☁️ Cloudflare Workers</span>
-        <span class="tool-chip">📊 Google Apps Script</span>
-        <span class="tool-chip">🗄️ SQL</span>
-        <span class="tool-chip">🔄 n8n 自動化</span>
-        <span class="tool-chip">🤖 AI Agent</span>
-        <span class="tool-chip">⚡ Workflow</span>
-        <span class="tool-chip">🔌 各種 AI API</span>
+      <h2>二、Solution Design 高階設計流程圖</h2>
+      <p>在 AI Native 時代，絕對不要拿到需求就直接衝去 Coding。整堂課的核心就在於靈魂關卡——<strong>Solution Design</strong>：</p>
+
+      <!-- Solution Design 高階流程圖 -->
+      <div class="flow-chain">
+        <div class="chain-node">💼 客戶真正問題</div>
+        <div class="chain-arrow">➔</div>
+        <div class="chain-node">🔍 需求分析</div>
+        <div class="chain-arrow">➔</div>
+        <div class="chain-node chain-core">★ Solution Design ★</div>
+        <div class="chain-arrow">➔</div>
+        <div class="chain-node">🎯 技術選型</div>
+        <div class="chain-arrow">➔</div>
+        <div class="chain-node">🏛️ 架構設計</div>
+        <div class="chain-arrow">➔</div>
+        <div class="chain-node">🤖 AI 協作</div>
+        <div class="chain-arrow">➔</div>
+        <div class="chain-node">💻 Coding</div>
+        <div class="chain-arrow">➔</div>
+        <div class="chain-node">🧪 驗收與維運</div>
       </div>
 
-      <div class="callout callout-info">
-        <strong>🎯 好的工程師思維：</strong>
-        <p>每一種工具都有自己的優勢與適用場景。優秀的工程師，不是每件事情都使用同一種技術，而是能選擇最適合的方案。</p>
+      <div class="callout callout-tip" style="text-align: center;">
+        <strong>💡 關鍵啟示：</strong> Coding 只是其中一步！把注意力放在 Solution Design、技術選型與架構，才是真正的大腦靈魂所在。
       </div>
 
-      <h2>二、技術選型，比技術本身更重要</h2>
-      <p>在 AI 時代，許多技術都能完成同一件事情。真正的差異在於：</p>
+      <h2>三、從「完成需求」到「重新定義需求」</h2>
+      <p>以前工程師習慣回答：<em>「我可以做。」</em><br>
+      但在 AI 時代，真正厲害的架構師會說：<strong style="color: #34d399; font-size: 1.15rem;">「這件事，有更好的做法！」</strong></p>
 
-      <div class="grid-2">
-        <div class="step-card">
-          <h3><span class="step-number">1</span> 開發速度與維護成本</h3>
-          <p>是否能用最少的程式碼、最低的複雜度維護系統。</p>
+      <div style="margin: 1.5rem 0;">
+        <div class="dialogue-card">
+          <span class="dialogue-user">💬 客戶說：「我要開發一個 APP。」</span>
+          <span class="dialogue-expert">✨ 真正厲害的人：「用 HTML + RWD 就好！」</span>
         </div>
-        <div class="step-card">
-          <h3><span class="step-number">2</span> 執行效率與擴充能力</h3>
-          <p>架構是否具備彈性，能隨業務需求水平擴充。</p>
+        <div class="dialogue-card">
+          <span class="dialogue-user">💬 客戶說：「我要導入複雜的 AI。」</span>
+          <span class="dialogue-expert">✨ 真正厲害的人：「用 Rule Engine 規則引擎就好！」</span>
         </div>
-        <div class="step-card">
-          <h3><span class="step-number">3</span> 團隊協作與溝通</h3>
-          <p>標準化規格是否能讓團隊快速接手與分工。</p>
+        <div class="dialogue-card">
+          <span class="dialogue-user">💬 客戶說：「我要寫個 Python 伺服器。」</span>
+          <span class="dialogue-expert">✨ 真正厲害的人：「用 Google Apps Script (GAS) 就好！」</span>
         </div>
-        <div class="step-card">
-          <h3><span class="step-number">4</span> 長期維運成本 (TCO)</h3>
-          <p>計算雲端託管、伺服器與授權之總體擁有成本。</p>
+        <div class="dialogue-card">
+          <span class="dialogue-user">💬 客戶說：「我要自己架實體 Server。」</span>
+          <span class="dialogue-expert">✨ 真正厲害的人：「用 Cloudflare 邊緣託管就好！」</span>
         </div>
       </div>
-
-      <h2>三、ERP 企業系統更需要技術選型能力</h2>
-      <p>企業級 ERP 系統很少只依賴單一技術。真正的企業系統，是許多技術共同合作完成：</p>
-
-      <div class="step-card">
-        <ul style="line-height: 2; margin-left: 1.2rem; color: var(--text-primary);">
-          <li>🖥️ <strong>人機介面 UI</strong> ➔ 採用 <strong style="color: #34d399;">HTML</strong></li>
-          <li>🧠 <strong>AI 推理與 OCR</strong> ➔ 採用 <strong style="color: #fbbf24;">Python</strong></li>
-          <li>🔄 <strong>工作流程處理</strong> ➔ 採用 <strong style="color: #60a5fa;">Workflow 引擎</strong></li>
-          <li>⏱️ <strong>定時排程任務</strong> ➔ 採用 <strong style="color: #c084fc;">Cloudflare Cron</strong></li>
-          <li>🏭 <strong>ERP 串接與溝通</strong> ➔ 採用 <strong style="color: #fb7185;">REST API</strong></li>
-          <li>📊 <strong>報表與資料視覺化</strong> ➔ 採用 <strong style="color: #34d399;">HTML / PowerBI</strong></li>
-        </ul>
-      </div>
-
-      <h2>四、AI Native 工程師不可被取代的 5 大關鍵能力</h2>
-      <p>未來優秀的資訊人員，除了基礎程式能力，更需要具備以下難以被 AI 完全取代的核心價值：</p>
-
-      <ul style="line-height: 2.2; margin-left: 1.5rem; color: var(--text-secondary);">
-        <li>🏛️ <strong>架構設計 (Architecture)</strong>：規劃高可用與鬆耦合之整體系統藍圖。</li>
-        <li>🎯 <strong>技術選型 (Technology Selection)</strong>：在眾多工具中找出最佳成本效益解。</li>
-        <li>🤝 <strong>AI 協作能力 (Human + AI)</strong>：高效指揮 AI Agent 協助產出程式碼。</li>
-        <li>💰 <strong>成本與效益分析 (ROI)</strong>：為企業計算開發與維運的投資報酬率。</li>
-        <li>🛡️ <strong>系統治理與維運 (Governance)</strong>：資訊安全、合規性與維護品質控管。</li>
-      </ul>
 
       <div class="golden-quote">
-        「 AI 降低了寫程式的門檻，但提高了技術選型的重要性。<br>
-        未來的競爭力，不再只是『會不會寫程式』，而是是否能在眾多技術與 AI 工具之間，選擇最適合的解決方案！」
+        「 真正厲害的，不是『完成需求』，而是『重新定義需求』！」
+      </div>
+
+      <h2>四、AI 改變的不是 Coding，而是 Decision</h2>
+      
+      <div class="grid-2">
+        <div class="step-card">
+          <h3><span class="step-number">1</span> 以前工程師主要花時間：</h3>
+          <ul style="line-height: 2; margin-left: 1.2rem; color: var(--text-secondary);">
+            <li>❌ 寫程式與單純重複的語法輸入</li>
+            <li>❌ 一抓再抓語法錯誤與偵錯 Debug</li>
+          </ul>
+        </div>
+        <div class="step-card">
+          <h3><span class="step-number">2</span> 現在 AI 時代真正重要的是：</h3>
+          <ul style="line-height: 2; margin-left: 1.2rem; color: var(--accent-cyan);">
+            <li>✅ <strong>問題定義 (Problem Definition)</strong></li>
+            <li>✅ <strong>技術選型與架構 (Architecture)</strong></li>
+            <li>✅ <strong>驗收標準與治理 (Governance)</strong></li>
+            <li>✅ <strong>ROI 成本效益分析</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout callout-warning">
+        <strong>🤖 人與 AI 的智慧分工：</strong>
+        <p>AI 可以協助 Coding，但是 <strong>AI 不知道：客戶預算、法規、公司文化、維護成本與長期策略</strong>。這些決策 (Decision) 依然必須由專業資訊人掌控！</p>
+      </div>
+
+      <h2>五、本章希望學生真正帶走的核心觀念</h2>
+
+      <ul style="line-height: 2.2; margin-left: 1.5rem; color: var(--text-primary); font-size: 1.05rem;">
+        <li>🧠 <strong>Solution Thinking (解決方案思維)</strong>：從客戶真正的痛點出發，而非拿技術套問題。</li>
+        <li>🏛️ <strong>Architecture Thinking (架構思維)</strong>：考量安全、擴充與維運之全盤藍圖。</li>
+        <li>🎯 <strong>Technology Selection (技術選型)</strong>：沒有最好的技術，只有最適合當下需求的技術。</li>
+        <li>💰 <strong>ROI Thinking (成本效益思維)</strong>：為企業精算開發與長期營運總成本。</li>
+        <li>🤖 <strong>AI Collaboration (人機協作)</strong>：將 AI 作為最強後盾，專注高階決策。</li>
+      </ul>
+
+      <!-- 最終終極名言 -->
+      <div class="master-quote">
+        「 AI 讓每個人都更容易寫出程式。<br>
+        但真正有價值的人，是能幫企業做出正確決策的人 (AI for Decision Making)！」
       </div>
 
     </main>
   </div>
 
   <footer class="site-footer">
-    <p>天心 ERP 教學教材專區 &copy; 第六堂課 (attn-class6)</p>
+    <p>天心 ERP 教學教材專區 &copy; 2026 | 設計與維護：<strong>Falo x Force Cheng (2026/7/28)</strong></p>
   </footer>
 
   <script src="../js/topic.js"></script>

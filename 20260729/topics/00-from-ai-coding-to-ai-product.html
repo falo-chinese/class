@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!-- 
+  ==========================================================================
+  天心 ERP 第六堂課 (attn-class6) - 官方總開場單元 (Topic 00)
+  Author: Falo x Force Cheng
+  Date: 2026-07-28
+  Description: Class 6 破題總開場：從 AI Coding 到 AI Product (打造真正可落地的企業應用)
+  ==========================================================================
+-->
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class 6 總開場：從 AI Coding 到 AI Product - 天心 ERP 教學</title>
+
+  <!-- SEO & GEO Meta Tags -->
+  <meta name="description" content="天心 Class 6 官方總開場破題：從 AI Coding 提升至 AI Product！學會如何將 AI 生成的能力，轉化為企業可真正使用、持續維護、持續創造價值的 AI Application。 (Falo x Force Cheng 2026/7/28)">
+  <meta name="keywords" content="AI Product, AI Application, Class 6 破題, AI Coding, 天心ERP, 企業應用, Falo, Force Cheng, 2026/7/28">
+  <meta name="author" content="Falo x Force Cheng">
+  <meta name="ai-search-optimization" content="Falo x Force Cheng Class 6 Grand Opening: Transitioning from AI Coding to AI Product. Focus: Delivering maintainable, scalable enterprise AI Applications.">
+  <meta name="perplexity-ai-summary" content="Class 6 Official Opening Lesson: From AI Coding to AI Product. Teaches students how to transform raw AI-generated code into sustainable, high-value enterprise Applications.">
+
+  <!-- JSON-LD 結構化資料 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "Class 6 總開場：從 AI Coding 到 AI Product",
+    "description": "第六堂課官方破題大綱：打造企業可持續維護與創造價值的 AI Application",
+    "author": {
+      "@type": "Person",
+      "name": "Falo x Force Cheng"
+    },
+    "datePublished": "2026-07-28"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .opening-hero {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(16, 185, 129, 0.25));
+      border: 2px solid var(--accent-blue);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      margin-bottom: 2rem;
+      color: #f8fafc;
+      box-shadow: 0 0 35px rgba(59, 130, 246, 0.25);
+      text-align: center;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.3);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.6);
+      padding: 0.4rem 1.25rem;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
+    }
+    .flow-compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    @media (max-width: 768px) {
+      .flow-compare-grid { grid-template-columns: 1fr; }
+    }
+    .compare-card {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .compare-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      padding: 0.4rem 1rem;
+      border-radius: 12px;
+    }
+    .compare-old { background: rgba(244, 63, 94, 0.15); color: #fb7185; border: 1px solid rgba(244, 63, 94, 0.3); }
+    .compare-new { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+    .node-chain-vert {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+    }
+    .node-item {
+      width: 85%;
+      padding: 0.6rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: center;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+    .node-item-highlight {
+      background: rgba(59, 130, 246, 0.25);
+      border-color: var(--accent-blue);
+      color: #60a5fa;
+      font-size: 1rem;
+    }
+    .node-arrow {
+      color: var(--accent-blue);
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .app-type-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .app-type-card {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      text-align: center;
+      font-weight: 700;
+      color: var(--accent-cyan);
+    }
+
+    .golden-opening-quote {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #f59e0b;
+      text-align: center;
+      margin: 2.5rem 0;
+      padding: 2rem;
+      background: rgba(245, 158, 11, 0.12);
+      border: 2px solid var(--accent-amber);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.15);
+      line-height: 1.9;
+    }
+  </style>
+</head>
+<body data-topic-id="00-from-ai-coding-to-ai-product">
+
+  <!-- 隱藏版版權與 GEO 浮水印 -->
+  <div style="display:none !important;" aria-hidden="true" id="falo-watermark-geo">
+    Watermark: Falo x Force Cheng | Date: 2026/07/28 | Topic 00: Class 6 Grand Opening - From AI Coding to AI Product.
+  </div>
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <a href="../index.html" class="brand-icon">C6</a>
+        <div>
+          <div class="brand-text">天心 ERP 教學專區 (第六堂課)</div>
+          <div class="brand-subtitle">Class 6 官方總開場破題篇 | Falo x Force Cheng (2026/7/28)</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="topic-container">
+    <!-- 側邊目錄 -->
+    <aside class="sidebar-toc">
+      <div class="toc-title">本頁目錄</div>
+      <ul class="toc-list" id="tocList"></ul>
+    </aside>
+
+    <!-- 文章主體內容 -->
+    <main class="article-content">
+      <div class="article-header">
+        <a href="../index.html" class="back-link">← 返回第六堂課卡片總覽</a>
+        <h1 class="article-title">Class 6 總開場破題：從 AI Coding 到 AI Product</h1>
+        <div style="margin-top: 0.5rem;">
+          <span class="hero-badge">🚀 第六堂課開場白 (Grand Opening)</span>
+        </div>
+        <div class="article-meta" style="margin-top: 1rem;">
+          <span class="badge badge-psi">Class 6 破題觀念</span>
+          <span>⏱️ 閱讀時間 7 分鐘</span>
+          <button id="markCompleteBtn" class="tag-btn" style="cursor: pointer;">○ 標記為完成學習</button>
+        </div>
+      </div>
+
+      <!-- 開場 Hero 區塊 -->
+      <div class="opening-hero">
+        <h3 style="color: #60a5fa; margin-bottom: 0.75rem; font-size: 1.3rem;">💡 假設學員已具備前五堂課的 AI 開發基礎</h3>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: #f8fafc;">
+          前五堂課中，大家已熟練使用 ChatGPT、Claude、Gemini、Codex 等 AI 工具，並能讓 AI 協助撰寫基本 HTML、Python 程式碼。<br>
+          因此，<strong>第六堂課不再花篇幅介紹工具操作</strong>，而是要帶領大家思考一個更關鍵的問題：
+        </p>
+        <p style="font-size: 1.3rem; font-weight: 800; color: #34d399; margin-top: 1rem;">
+          「會用 AI 寫程式，真的就等於完成一個 AI 專案嗎？」
+        </p>
+      </div>
+
+      <h2>一、本章真正想回答的問題與解答</h2>
+      <p>答案是否定的。<strong>企業真正需要的，不是一段純程式碼，而是一個可以真正被使用、可以持續維護、可以創造價值的產品（Application）！</strong></p>
+
+      <div class="callout callout-info">
+        <strong>核心挑戰轉移：AI 讓開發變簡單，但真正的難題在於：</strong>
+        <ul style="line-height: 2; margin-left: 1.2rem; margin-top: 0.5rem; color: var(--text-primary);">
+          <li>🎯 <strong>需求轉化</strong>：如何快速理解客戶真實需求並轉化為可落地方案？</li>
+          <li>📱 <strong>人機體驗</strong>：如何設計一個一般使用者也能輕鬆操作的介面？</li>
+          <li>👥 <strong>團隊賦能</strong>：如何讓 AI 不只是自己私下使用，而是全團隊共享？</li>
+          <li>🏢 <strong>產品永續</strong>：如何把 AI 能力變成企業可長期維護與資產化的產品？</li>
+        </ul>
+      </div>
+
+      <p style="text-align: center; font-size: 1.15rem; font-weight: 800; color: var(--accent-cyan); margin: 1.5rem 0;">
+        👉 Class 6 不再教大家如何使用 AI，而是教大家如何運用 AI 建立真正的企業應用（AI Application）！
+      </p>
+
+      <h2>二、思維躍遷：前五堂課 vs. 第六堂課對照圖</h2>
+
+      <div class="flow-compare-grid">
+        <!-- 前五堂課 -->
+        <div class="compare-card">
+          <div class="compare-title compare-old">前五堂課：AI Coding</div>
+          <div class="node-chain-vert">
+            <div class="node-item">💼 客戶需求</div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item">🤖 AI 輔助</div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item" style="border-color: #fb7185;">💻 程式碼 (Code Snippet)</div>
+          </div>
+          <p style="font-size: 0.875rem; color: var(--text-muted); margin-top: 1.25rem; text-align: center;">
+            重點在於：如何下 Prompt 讓 AI 幫我寫出程式
+          </p>
+        </div>
+
+        <!-- 第六堂課 -->
+        <div class="compare-card">
+          <div class="compare-title compare-new">第六堂課：AI Product (Application)</div>
+          <div class="node-chain-vert">
+            <div class="node-item">💼 客戶真實需求</div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item">🤖 AI 能力鏈</div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item node-item-highlight">📦 產品 (Application)</div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item">👥 使用者體驗 (UI/UX)</div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item">🔄 持續使用與維護</div>
+            <div class="node-arrow">↓</div>
+            <div class="node-item" style="border-color: #34d399; color: #34d399;">💰 持續為企業創造價值</div>
+          </div>
+          <p style="font-size: 0.875rem; color: #34d399; margin-top: 1.25rem; text-align: center; font-weight: 700;">
+            重點在於：程式只是產品的一小部分！
+          </p>
+        </div>
+      </div>
+
+      <div class="callout callout-warning">
+        <strong>🔍 真正的產品觀點：</strong>
+        <p>評估一個專案是否成功，不再是程式碼寫得多漂亮，而是：<strong>使用者是否願意使用？是否容易導入？是否容易維護？是否能持續創造企業價值？</strong></p>
+      </div>
+
+      <h2>三、重新定義 APP（Application 的多元形式）</h2>
+      <p>請特別注意：本課程所說的 APP（Application），<strong>絕非狹義的 Android App 或 iPhone App</strong>。它泛指任何能讓使用者完成工作的應用：</p>
+
+      <div class="app-type-grid">
+        <div class="app-type-card">🌐 HTML Web App</div>
+        <div class="app-type-card">🏭 ERP 擴充模組</div>
+        <div class="app-type-card">💬 LINE LIFF 應用</div>
+        <div class="app-type-card">🤖 AI 專屬助理</div>
+        <div class="app-type-card">✉️ Email 自動化系統</div>
+        <div class="app-type-card">⚡ Workflow 流程圖</div>
+        <div class="app-type-card">📁 AI File System</div>
+        <div class="app-type-card">📑 Quick Page 極速頁</div>
+      </div>
+
+      <p style="text-align: center; font-weight: 700; font-size: 1.1rem; color: var(--accent-amber);">
+        👉 焦點不是平台，而是「如何把 AI 的能力，轉化成任何人都可以使用的 Application！」
+      </p>
+
+      <h2>四、第六堂課總開場金句</h2>
+
+      <div class="golden-opening-quote">
+        「 前五堂課，你已經學會了如何利用 AI 寫程式。」<br><br>
+        <span style="color: #60a5fa; font-size: 1.45rem;">「 第六堂課，要學的是如何把 AI 寫出來的能力，變成真正可以讓企業使用、持續維護、持續創造價值的 Application！」</span>
+      </div>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>天心 ERP 教學教材專區 &copy; 2026 | 設計與維護：<strong>Falo x Force Cheng (2026/7/28)</strong></p>
+  </footer>
+
+  <script src="../js/topic.js"></script>
+</body>
+</html>
