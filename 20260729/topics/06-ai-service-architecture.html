@@ -224,16 +224,37 @@
         </p>
       </div>
 
+      <!-- 🖼️ AI Node 對外服務演進圖 -->
+      <div style="text-align: center; margin: 2rem 0;">
+        <img src="../assets/ai_node_evolution.png" alt="AI Node 對外服務演進圖" style="max-width: 100%; height: auto; border-radius: 14px; border: 2px solid var(--accent-purple); box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);">
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.75rem;">圖：AI Node 從 localhost 演進至企業級 AI 服務 5 大階段 (Falo x Force Cheng 教學架構)</p>
+      </div>
+
       <!-- 旗艦聚焦：為什麼 Cloudflare + CF Tunnel 推薦等級最高？ -->
       <div class="cf-card">
         <h3 style="color: #60a5fa; font-size: 1.3rem; margin-bottom: 0.75rem;">⭐ 旗艦推薦：為什麼 Cloudflare (Workers/Pages + CF Tunnel) 推薦等級最高？</h3>
         <p style="font-size: 1.05rem; line-height: 1.8; color: #f8fafc;">
           雖然 Google Cloud Run 適合執行雲端重度服務，但在現代企業「保留地端算力/Python 節點」的架構下，<strong>Cloudflare 搭配 CF Tunnel</strong> 是整體體驗與資安最佳的旗艦推薦：
         </p>
+
+        <!-- 💡 核心原理：只改 NS (Name Server) 即可接管全球安全防護 -->
+        <div style="background: rgba(15, 23, 42, 0.8); border-left: 4px solid var(--accent-cyan); padding: 1.25rem; margin: 1.25rem 0; border-radius: 0 8px 8px 0;">
+          <h4 style="color: var(--accent-cyan); font-size: 1.1rem; margin-bottom: 0.5rem;">💡 核心原理：改動最少！只需要改變 Name Server (NS) 就能瞬間導入</h4>
+          <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7;">
+            完全不需要更動現有的實體主機 IP 或應用程式代碼！只需要去網域商（例如 <strong>GoDaddy</strong> 或<strong>國內有 VPS 服務的主機商</strong>）後台，將網域的 DNS <strong>Name Server (NS)</strong> 指向 Cloudflare 的兩組代管伺服器（如 <code>ns1.cloudflare.com</code>），全球流量就會自動通過 Cloudflare 全球 300+ 個邊緣安全節點！
+          </p>
+        </div>
+
         <ul style="line-height: 2; margin-left: 1.2rem; margin-top: 0.5rem; color: #f8fafc;">
           <li>🌉 <strong>CF Tunnel 直連地端 AI Node</strong>：不需要在路由器開 Port、不需要申請固定 IP，就能把地端 Python/GPU 算力安全穿透至全球固定 HTTPS 網址！</li>
-          <li>⚡ <strong>Cloudflare Edge Gateway 全球加速</strong>：全球 300+ 邊緣節點處理 CDN、原生 HTTPS、快取與 DDoS 防護，反應速度最快。</li>
-          <li>💵 <strong>極致性價比</strong>：Cloudflare 提供了市場上最高額度的免費邊緣運算，搭配地端硬體算力，節省巨量雲端運算費用。</li>
+          <li>🌐 <strong>網域搭配推薦</strong>：推薦至 <strong>GoDaddy</strong>（國際大廠，活動優惠多）或<strong>國內 VPS/網域服務商</strong>（可同時買域名+VPS、發票報帳、中文電話客服）購買專屬網域。</li>
+          <li>⚡ <strong>Cloudflare Edge Gateway 全球加速</strong>：全球 300+ 邊緣節點處理 CDN、原生免費 HTTPS SSL 憑證、快取與 DDoS 防禦，反應速度最快。</li>
+          <li>💵 <strong>極致 CP 值資費方案</strong>：
+            <ul style="margin-left: 1.2rem; margin-top: 0.3rem;">
+              <li><strong style="color:#34d399;">Free 免費版 ($0/月)</strong>：<strong style="color:#34d399;">完全就夠用！</strong> 包含免費 CDN、無上限 DDoS 防護、免費 SSL 憑證與免費 Tunnel 穿透。</li>
+              <li><strong style="color:#60a5fa;">USD $5 / 月 (Workers Paid)</strong>：<strong style="color:#60a5fa;">CP 值爆棚，更好用！</strong> 包含每月 <strong>1,000 萬次 API 請求</strong> 額度與 50ms CPU 時間，適合在邊緣層直接執行 AI 路由、JWT 驗證與 LINE Webhook 轉發！</li>
+            </ul>
+          </li>
           <li>📦 <strong>與重服務雲端 (Cloud Run) 的完美分工</strong>：重度雲端計算交給 Google Cloud Run；而地端 Python 算力連線與全域 Gateway 對外服務首選 Cloudflare + Tunnel！</li>
         </ul>
       </div>

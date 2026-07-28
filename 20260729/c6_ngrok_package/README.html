@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Class 6 AI Node 連線與 ngrok 穿透實戰指南 (人類與 AI 雙模式旗艦版)</title>
+  <title>Class 6 AI Node 連線與 ngrok / Cloudflare 實戰指南</title>
   <style>
     :root {
       --bg-slate: #0f172a;
@@ -131,6 +131,15 @@
       <span style="font-size:1rem; color:#cbd5e1; font-weight:normal;">
         ngrok 幫助學員在 3 分鐘內體驗本機 AI 被外部呼叫；Cloudflare Tunnel 幫助企業建立穩定安穩的地端對外 API！
       </span>
+    </div>
+
+    <!-- 🌐 Cloudflare 升級觀念區塊 -->
+    <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid var(--accent-cyan); border-radius: 14px; padding: 1.5rem; margin-bottom: 2rem;">
+      <h3 style="color: var(--accent-cyan); font-size: 1.2rem; margin-bottom: 0.5rem;">🌐 企業正式生產環境升級建議：Cloudflare + Tunnel</h3>
+      <p style="font-size: 0.93rem; color: #cbd5e1; line-height: 1.7;">
+        <strong>只改 Name Server (NS) 即可完成部署！</strong> 前往 <strong>GoDaddy</strong> 或 <strong>國內 VPS/網域服務商</strong> 購買專屬域名，將 DNS NS 改為 Cloudflare 指派伺服器，即可享受完全免費的 Cloudflare Tunnel、TLS 免費憑證與全球 DDoS 安全過濾！<br>
+        <span style="color:#34d399; font-weight:bold;">👉 Free 免費版 ($0/月) 就完全夠用；升級 USD $5/月 包含 1,000 萬次 API 請求，超高 CP 值！</span>
+      </p>
     </div>
 
     <!-- 雙操作模式總覽 -->

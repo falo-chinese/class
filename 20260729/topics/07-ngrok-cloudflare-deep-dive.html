@@ -447,6 +447,42 @@ if __name__ == "__main__":
       <!-- 四、ngrok vs Cloudflare Tunnel 深度對照 -->
       <h2>四、ngrok (練兵) vs. Cloudflare Tunnel (正式) 評估矩陣</h2>
 
+      <!-- 🖼️ AI Node 對外服務演進圖 -->
+      <div style="text-align: center; margin: 2rem 0;">
+        <img src="../assets/ai_node_evolution.png" alt="AI Node 對外服務演進圖" style="max-width: 100%; height: auto; border-radius: 14px; border: 2px solid var(--accent-purple); box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);">
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.75rem;">圖：AI Node 對外服務演進 5 大階段 (localhost ➔ ngrok ➔ Cloudflare Tunnel ➔ Workers ➔ Enterprise AI)</p>
+      </div>
+
+      <!-- 💡 Cloudflare Tunnel 建置前置：只改 NS 原理與網域購買推薦 -->
+      <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid var(--accent-cyan); border-radius: 14px; padding: 1.75rem; margin: 2rem 0;">
+        <h3 style="color: var(--accent-cyan); font-size: 1.25rem; margin-bottom: 0.75rem;">🌐 Cloudflare 關鍵優勢：只改 Name Server (NS) 即可完成部署！</h3>
+        <p style="font-size: 0.98rem; color: #cbd5e1; line-height: 1.8;">
+          使用 Cloudflare 最強大的地方在於：<strong>完全不用動現有主機或 IP</strong>！只需要將 DNS 代管指向 Cloudflare：
+        </p>
+
+        <div style="background: rgba(30, 41, 59, 0.8); padding: 1.25rem; border-radius: 10px; margin: 1rem 0; font-size: 0.93rem; color: #f8fafc; line-height: 1.8;">
+          1️⃣ <strong>購買專屬網域 (Domain Name)</strong>：推薦至 <strong style="color:var(--accent-cyan);">GoDaddy</strong>（國際大廠，活動折扣多）或 <strong style="color:var(--accent-cyan);">國內 VPS / 網域服務商</strong>（如智邦、遠振、捕夢網，可買域名+VPS、發票報帳、中文客服）。<br>
+          2️⃣ <strong>變更 NS 伺服器</strong>：在 GoDaddy 或國內服務商後台，將 DNS Name Server 改填 Cloudflare 指派的兩組 NS。<br>
+          3️⃣ <strong>啟用 Cloudflare Tunnel</strong>：地端執行 <code>cloudflared</code>，綁定專屬子域名（如 <code>ai.yourdomain.com</code>），享受免費 HTTPS 與 DDoS 全球防禦！
+        </div>
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+          <div style="flex: 1; min-width: 250px; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; border-radius: 10px; padding: 1rem;">
+            <h4 style="color: #34d399; font-size: 1rem; margin-bottom: 0.4rem;">🟢 Free 免費版 ($0/月)</h4>
+            <p style="font-size: 0.88rem; color: #f8fafc; line-height: 1.6;">
+              <strong style="color:#34d399;">完全就夠用！</strong> 免費提供 SSL 憑證、CDN 全球加速、DDoS 巨量防禦與無限流量的 Cloudflare Tunnel 穿透。
+            </p>
+          </div>
+
+          <div style="flex: 1; min-width: 250px; background: rgba(59, 130, 246, 0.15); border: 1px solid #3b82f6; border-radius: 10px; padding: 1rem;">
+            <h4 style="color: #60a5fa; font-size: 1rem; margin-bottom: 0.4rem;">🔵 USD $5 / 月 (Workers Paid)</h4>
+            <p style="font-size: 0.88rem; color: #f8fafc; line-height: 1.6;">
+              <strong style="color:#60a5fa;">CP 值爆棚，更好用！</strong> 每月包含 1,000 萬次 API 請求，50ms CPU 時間可用於邊緣 AI 路由、身分驗證與 LINE Webhook 轉發。
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div class="price-table-container">
         <table class="pricing-table">
           <thead>
