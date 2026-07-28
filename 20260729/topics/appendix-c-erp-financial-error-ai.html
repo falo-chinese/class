@@ -36,6 +36,13 @@
       margin: 1rem 0;
       line-height: 1.6;
     }
+    .gemini-card {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(168, 85, 247, 0.15));
+      border: 2px solid var(--accent-blue);
+      border-radius: 14px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
   </style>
 </head>
 <body data-topic-id="appendix-c-erp-financial-error-ai">
@@ -65,7 +72,7 @@
       <!-- 📌 最上方主題簡介橫幅 -->
       <div class="source-banner">
         💡 <strong>銀河軟體 ERP 智慧稽核專題：先理解，再動手 (Understand First, Act Later)</strong><br>
-        本單元探討如何結合 AI Agent 人機問診、錯誤樣態模擬與語意式知識庫 (Semantic Knowledge Base)，打造全自動 ERP 財報錯誤檢索系統。
+        本單元探討如何結合 Gemini 多模態能力、AI Agent 人機問診、錯誤樣態模擬與語意式知識庫 (Semantic Knowledge Base)，打造全自動 ERP 財報錯誤檢索系統。
       </div>
 
       <div class="article-header">
@@ -80,11 +87,12 @@
 
       <!-- 三大重點 Callout -->
       <div class="callout callout-info">
-        <strong>💡 本單元三大腦力激盪核心：</strong>
+        <strong>💡 本單元四大腦力激盪核心：</strong>
         <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
           <li><strong>核心一（先理解，再動手）：</strong> 拒絕盲目寫 Code！先由 AI Agent 訪談審計師收斂「異常病徵」，建立清晰的商業上下文（Context）與自動化工作流。</li>
           <li><strong>核心二（AI 模擬錯誤樣態）：</strong> 利用大模型生成常見與邊角（Edge-case）帳務錯誤樣態（借貸不平、跨期認列、重複列支、關係人交易隱匿等），作為訓練與測試防線。</li>
           <li><strong>核心三（語意式 vs. 傳統規則式）：</strong> 傳統 Rule-based（硬編碼 IF-ELSE）條件變動即失效；語意式 AI 知識庫（Semantic KB + Vector Embedding）能自主推理商業意圖與情境！</li>
+          <li><strong>核心四（Gemini 多模態強大應用）：</strong> 運用 Gemini 跨模態原生能力，同時消化「圖片（手寫單據/發票照片）+ ERP 文字傳票 + 商業上下文」，實現無死角智慧稽核。</li>
         </ul>
       </div>
 
@@ -147,7 +155,7 @@
           <tr>
             <td><strong>情境理解能力</strong></td>
             <td>❌ 條件稍有變化或拆單規避即失效</td>
-            <td><strong style="color:var(--accent-emerald);">✅ 理解商業意圖與隱蔽手法的異樣感</strong></td>
+            <td><strong style="color:var(--accent-emerald);">✅ 理解商業意圖與隱蔽手法之異樣感</strong></td>
           </tr>
           <tr>
             <td><strong>檢索範例說明</strong></td>
@@ -175,13 +183,48 @@
 }
       </div>
 
-      <h2>五、銀河軟體 ERP 實務拋轉與防禦落地</h2>
-      <p>經過語意式 AI 知識庫比對後，系統將自動產生結構化 JSON 並拋轉至銀河軟體 ERP 稽核儀表板：</p>
+      <!-- 五、Gemini 多模態 (Multimodal) 跨模態財報與單據診斷 -->
+      <h2>五、運用 Gemini 多模態 (Multimodal) 原生能力：資料 + 視覺 + 上下文</h2>
+      <p>現代企業帳務稽核最困難的挑戰在於：<strong>單據型態多樣化（文字傳票 + 掃描紙本發票 + 手寫簽收單 + 現場交貨照）</strong>。傳統 OCR 只會轉出文字，無法進行邏輯比對。而 **Google Gemini 多模態原生模型** 具備強大的跨模態（Cross-modal）上下文推理能力：</p>
+
+      <div class="gemini-card">
+        <h4 style="color: var(--accent-cyan); font-size: 1.15rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;">
+          ✨ Gemini 多模態帳務診斷實務 3 大跨模態場景
+        </h4>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 1rem;">
+          
+          <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--accent-blue); border-radius: 10px; padding: 1.1rem;">
+            <div style="color: #60a5fa; font-weight: 800; font-size: 0.98rem; margin-bottom: 0.4rem;">📷 1. 手寫送貨單照片 vs ERP 出貨傳票</div>
+            <p style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.6; margin: 0;">
+              <strong>視覺上下文比對：</strong> Gemini 同時讀入現場司機手寫塗改的簽收單照片與 ERP 系統數據，自動發覺數量塗改痕跡並標記「疑似人為修改出貨量」。
+            </p>
+          </div>
+
+          <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--accent-purple); border-radius: 10px; padding: 1.1rem;">
+            <div style="color: #c084fc; font-weight: 800; font-size: 0.98rem; margin-bottom: 0.4rem;">🧾 2. 發票照片+合約 PDF+傳票上下文</div>
+            <p style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.6; margin: 0;">
+              <strong>三向多模態比對：</strong> 將紙本發票照片、合約 PDF 與傳票摘要一次丟給 Gemini，AI 自動辨識發票抬頭與合約主體不符之關係人避稅風險。
+            </p>
+          </div>
+
+          <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid var(--accent-emerald); border-radius: 10px; padding: 1.1rem;">
+            <div style="color: #34d399; font-weight: 800; font-size: 0.98rem; margin-bottom: 0.4rem;">📊 3. 財報趨勢圖表+語意情境推論</div>
+            <p style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.6; margin: 0;">
+              <strong>圖表跨模態解析：</strong> Gemini 直接分析損益表折線圖異常突起點，結合當季營運新聞上下文，自動驗證銷貨成本異常毛利率波動的原因。
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <h2>六、銀河軟體 ERP 實務拋轉與防禦落地</h2>
+      <p>經過 Gemini 多模態與語意式 AI 知識庫比對後，系統將自動產生結構化 JSON 並拋轉至銀河軟體 ERP 稽核儀表板：</p>
 
       <div class="callout callout-tip">
         <strong>💡 智慧稽核自動化工作流成果：</strong>
         <p>1. <strong>告警精準度提升 65%</strong>：排除傳統硬編碼過度告警（False Positive）狀況。<br>
-        2. <strong>無痛適應新會計準則</strong>：增刪稽核規則只需上傳自然語言描述檔，無須重編寫系統程式碼！</p>
+        2. <strong>無痛適應新會計準則</strong>：增刪稽核規則只需上傳自然語言描述檔或新範本照片，無須重編寫系統程式碼！</p>
       </div>
 
     </main>
