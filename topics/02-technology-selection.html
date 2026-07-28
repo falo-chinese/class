@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 時代，本科資訊人的核心競爭力：技術選型（Technology Selection） - 天心 ERP 教學</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .competency-hero {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(244, 63, 94, 0.2));
+      border: 1px solid var(--accent-amber);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      color: #f8fafc;
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.15);
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    @media (max-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+    .tool-chip-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .tool-chip {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 0.4rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+    }
+    .golden-quote {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #f59e0b;
+      text-align: center;
+      margin: 2rem 0;
+      padding: 1.75rem;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px dashed rgba(245, 158, 11, 0.4);
+      border-radius: var(--radius-lg);
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body data-topic-id="02-technology-selection">
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <a href="../index.html" class="brand-icon">C6</a>
+        <div>
+          <div class="brand-text">天心 ERP 教學專區 (第六堂課)</div>
+          <div class="brand-subtitle">本科資訊人核心競爭力篇</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="topic-container">
+    <!-- 側邊目錄 -->
+    <aside class="sidebar-toc">
+      <div class="toc-title">本頁目錄</div>
+      <ul class="toc-list" id="tocList"></ul>
+    </aside>
+
+    <!-- 文章主體內容 -->
+    <main class="article-content">
+      <div class="article-header">
+        <a href="../index.html" class="back-link">← 返回第六堂課卡片總覽</a>
+        <h1 class="article-title">AI 時代，本科資訊人的核心競爭力：技術選型（Technology Selection）</h1>
+        <div class="article-meta">
+          <span class="badge badge-fin">資訊人核心競爭力</span>
+          <span>⏱️ 閱讀時間 7 分鐘</span>
+          <button id="markCompleteBtn" class="tag-btn" style="cursor: pointer;">○ 標記為完成學習</button>
+        </div>
+      </div>
+
+      <div class="competency-hero">
+        <h3 style="color: #fbbf24; margin-bottom: 0.5rem; font-size: 1.25rem;">💡 本章核心觀念</h3>
+        <p style="font-size: 1.1rem; line-height: 1.8;">
+          生成式 AI 大幅降低了程式開發的門檻，也改變了資訊人員的價值。<br>
+          未來資訊人的核心能力，將逐漸從<strong>「寫程式」</strong>轉向<strong>「選技術（Technology Selection）」</strong>。
+        </p>
+      </div>
+
+      <h2>一、價值轉向：工程師競賽規則的改變</h2>
+      <p>過去，資訊工程師主要比的是：誰會更多程式語言、誰程式寫得更快、誰熟悉更多 Framework。</p>
+      <p>然而 AI 已能協助完成大量程式撰寫工作。未來真正重要的不再是「我會不會寫 Python？」，而是：<strong>「這個問題最適合用什麼技術解決？」</strong></p>
+
+      <div class="tool-chip-container">
+        <span class="tool-chip">🌐 HTML / Web UI</span>
+        <span class="tool-chip">🐍 Python Engine</span>
+        <span class="tool-chip">☁️ Cloudflare Workers</span>
+        <span class="tool-chip">📊 Google Apps Script</span>
+        <span class="tool-chip">🗄️ SQL</span>
+        <span class="tool-chip">🔄 n8n 自動化</span>
+        <span class="tool-chip">🤖 AI Agent</span>
+        <span class="tool-chip">⚡ Workflow</span>
+        <span class="tool-chip">🔌 各種 AI API</span>
+      </div>
+
+      <div class="callout callout-info">
+        <strong>🎯 好的工程師思維：</strong>
+        <p>每一種工具都有自己的優勢與適用場景。優秀的工程師，不是每件事情都使用同一種技術，而是能選擇最適合的方案。</p>
+      </div>
+
+      <h2>二、技術選型，比技術本身更重要</h2>
+      <p>在 AI 時代，許多技術都能完成同一件事情。真正的差異在於：</p>
+
+      <div class="grid-2">
+        <div class="step-card">
+          <h3><span class="step-number">1</span> 開發速度與維護成本</h3>
+          <p>是否能用最少的程式碼、最低的複雜度維護系統。</p>
+        </div>
+        <div class="step-card">
+          <h3><span class="step-number">2</span> 執行效率與擴充能力</h3>
+          <p>架構是否具備彈性，能隨業務需求水平擴充。</p>
+        </div>
+        <div class="step-card">
+          <h3><span class="step-number">3</span> 團隊協作與溝通</h3>
+          <p>標準化規格是否能讓團隊快速接手與分工。</p>
+        </div>
+        <div class="step-card">
+          <h3><span class="step-number">4</span> 長期維運成本 (TCO)</h3>
+          <p>計算雲端託管、伺服器與授權之總體擁有成本。</p>
+        </div>
+      </div>
+
+      <h2>三、ERP 企業系統更需要技術選型能力</h2>
+      <p>企業級 ERP 系統很少只依賴單一技術。真正的企業系統，是許多技術共同合作完成：</p>
+
+      <div class="step-card">
+        <ul style="line-height: 2; margin-left: 1.2rem; color: var(--text-primary);">
+          <li>🖥️ <strong>人機介面 UI</strong> ➔ 採用 <strong style="color: #34d399;">HTML</strong></li>
+          <li>🧠 <strong>AI 推理與 OCR</strong> ➔ 採用 <strong style="color: #fbbf24;">Python</strong></li>
+          <li>🔄 <strong>工作流程處理</strong> ➔ 採用 <strong style="color: #60a5fa;">Workflow 引擎</strong></li>
+          <li>⏱️ <strong>定時排程任務</strong> ➔ 採用 <strong style="color: #c084fc;">Cloudflare Cron</strong></li>
+          <li>🏭 <strong>ERP 串接與溝通</strong> ➔ 採用 <strong style="color: #fb7185;">REST API</strong></li>
+          <li>📊 <strong>報表與資料視覺化</strong> ➔ 採用 <strong style="color: #34d399;">HTML / PowerBI</strong></li>
+        </ul>
+      </div>
+
+      <h2>四、AI Native 工程師不可被取代的 5 大關鍵能力</h2>
+      <p>未來優秀的資訊人員，除了基礎程式能力，更需要具備以下難以被 AI 完全取代的核心價值：</p>
+
+      <ul style="line-height: 2.2; margin-left: 1.5rem; color: var(--text-secondary);">
+        <li>🏛️ <strong>架構設計 (Architecture)</strong>：規劃高可用與鬆耦合之整體系統藍圖。</li>
+        <li>🎯 <strong>技術選型 (Technology Selection)</strong>：在眾多工具中找出最佳成本效益解。</li>
+        <li>🤝 <strong>AI 協作能力 (Human + AI)</strong>：高效指揮 AI Agent 協助產出程式碼。</li>
+        <li>💰 <strong>成本與效益分析 (ROI)</strong>：為企業計算開發與維運的投資報酬率。</li>
+        <li>🛡️ <strong>系統治理與維運 (Governance)</strong>：資訊安全、合規性與維護品質控管。</li>
+      </ul>
+
+      <div class="golden-quote">
+        「 AI 降低了寫程式的門檻，但提高了技術選型的重要性。<br>
+        未來的競爭力，不再只是『會不會寫程式』，而是是否能在眾多技術與 AI 工具之間，選擇最適合的解決方案！」
+      </div>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>天心 ERP 教學教材專區 &copy; 第六堂課 (attn-class6)</p>
+  </footer>
+
+  <script src="../js/topic.js"></script>
+</body>
+</html>

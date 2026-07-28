@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026最新Skill指南｜官方揭Claude 5世代新規：不用給大量範例、指令講一次就好</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .source-banner {
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid var(--accent-blue);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+    }
+    .source-banner a {
+      color: #60a5fa;
+      font-weight: 600;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+    .article-img {
+      width: 100%;
+      max-height: 450px;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      margin: 1.5rem 0;
+      border: 1px solid var(--border-color);
+    }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+    .comparison-table th, .comparison-table td {
+      border: 1px solid var(--border-color);
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    .comparison-table th {
+      background: rgba(30, 41, 59, 0.9);
+      color: var(--accent-cyan);
+    }
+    .comparison-table tr:nth-child(even) {
+      background: rgba(15, 23, 42, 0.4);
+    }
+  </style>
+</head>
+<body data-topic-id="claude-5-context-engineering">
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <a href="../index.html" class="brand-icon">C6</a>
+        <div>
+          <div class="brand-text">天心 ERP 教學專區 (第六堂課)</div>
+          <div class="brand-subtitle">AI & 上下文工程精選文章</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="topic-container">
+    <!-- 側邊目錄 -->
+    <aside class="sidebar-toc">
+      <div class="toc-title">本頁目錄</div>
+      <ul class="toc-list" id="tocList"></ul>
+    </aside>
+
+    <!-- 文章主體內容 -->
+    <main class="article-content">
+
+      <!-- 原始出處橫幅 (最上方保留) -->
+      <div class="source-banner">
+        📌 <strong>原始文章出處：</strong> <a href="https://www.bnext.com.tw/article/91623/claude-5-context-engineering-guide" target="_blank" rel="noopener noreferrer">https://www.bnext.com.tw/article/91623/claude-5-context-engineering-guide</a><br>
+        📰 <strong>來源媒體：</strong> 數位時代 BusinessNext | <strong>整理・編輯：</strong> 李先泰 | <strong>發布日期：</strong> 2026-07-27
+      </div>
+
+      <div class="article-header">
+        <a href="../index.html" class="back-link">← 返回第六堂課卡片總覽</a>
+        <h1 class="article-title">2026最新Skill指南｜官方揭Claude 5世代新規：不用給大量範例、指令講一次就好</h1>
+        <div class="article-meta">
+          <span class="badge badge-sys">AI 與大數據</span>
+          <span>⏱️ 閱讀時間 8 分鐘</span>
+          <button id="markCompleteBtn" class="tag-btn" style="cursor: pointer;">○ 標記為完成學習</button>
+        </div>
+      </div>
+
+      <img src="https://image-cdn.learnin.tw/bnextmedia/image/album/2026-07/m46n-1785124814.jpg?w=900&output=webp" alt="Claude 5 世代上下文工程指南封面圖" class="article-img">
+
+      <!-- 三大重點 Callout -->
+      <div class="callout callout-info">
+        <strong>💡 本文三大核心重點摘要：</strong>
+        <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+          <li><strong>重點一：</strong> Anthropic 為 Claude 5 世代刪除 Claude Code 逾 8 成系統提示詞，內部編碼評測成績沒有可測量的下滑。</li>
+          <li><strong>重點二：</strong> 針對 Claude 5 世代的上下文工程，Anthropic 建議減少過度約束與大量工具範例，改以清楚介面、漸進式揭露及模型判斷力為主。</li>
+          <li><strong>重點三：</strong> CLAUDE.md 應保持精簡，集中放置需持續遵守的專案規則與模型不易自行發現的陷阱；Skills 則適合承載按需載入的流程、知識與團隊觀點。</li>
+        </ul>
+      </div>
+
+      <h2>一、前言：別再給 AI 寫滿死規矩</h2>
+      <p>如果你曾為了讓 Claude 更聽話，在設定檔裡寫滿規則、堆滿範例，Anthropic 有個壞消息：面對 Claude 5 世代的新模型，這些心血有一部分可能正在扯 AI 的後腿。</p>
+      <p>Anthropic 技術團隊成員 <strong>Thariq Shihipar</strong> 於 2026 年 7 月 24 日在官方部落格發文揭露，團隊為 Claude Opus 5、Claude Fable 5 等 Claude 5 世代模型，刪掉了 Claude Code（Anthropic 推出的 AI 程式開發工具）超過 8 成的系統提示詞，內部編碼評測的成績卻沒有任何可測量的下滑。</p>
+      <p>這件事的言外之意是：過去一兩年在社群流傳的一批提示詞守則，包括給 AI 範例、立下嚴格規矩、把注意事項寫好寫滿，正被規則的制定者親手重新檢討。</p>
+      <p>這裡先建立一個背景觀念。當你送出一則訊息給 Claude，AI 實際讀到的內容遠不止那句話，還包括系統提示詞（產品開發者預先寫好的角色與規則說明）、CLAUDE.md（使用者放在專案裡的說明檔）、Skills（技能檔，等於預先打包好的工作指南）等一整套背景資料。而如何組裝這些背景資料，業界稱為<strong>「context engineering」（上下文工程）</strong>，Shihipar 直言，它對你能拿到什麼品質的產出，影響很大。</p>
+
+      <h2>二、為什麼規則越多，AI 反而變笨？</h2>
+      <p>Shihipar 給的診斷很直接：問題不在規則寫得不好，而在<strong>「過度約束」（overconstraining）</strong>。</p>
+      <p>Anthropic 回頭翻閱內部員工使用 Claude Code 的紀錄，發現同一個請求裡經常塞著互相打架的指令：這頭寫著「留下適當的文件說明」，那頭寫著「不准加註解」，系統提示詞、Skills 與使用者的當下要求彼此衝突。模型通常猜得出使用者真正的意圖，但它必須耗費更多推理，去處理這些重疊或衝突的指令。</p>
+
+      <div class="callout callout-warning">
+        <strong>⚠️ 歷史包袱的演進：</strong>
+        <p>早期模型判斷力不足，Anthropic 必須用強硬措辭防止 AI 闖禍，例如舊版系統提示詞有這麼一條：「預設不寫註解。絕不寫多段的說明區塊，最多一行短註解。」但這條規則注定在某些情境是錯的：有些複雜程式碼就是需要大段註解，有些使用者就是偏好完整文件。</p>
+        <p>如果舊模型只能接受這種取捨；但新一代模型的判斷力已經夠好，因此新版系統提示詞只剩一句：<strong>「寫出讀起來與周圍程式碼一致的程式碼：跟上它的註解密度、命名與慣用寫法。」</strong>換句話說，Anthropic 對待 AI 的方式，正在從「防呆」轉向「授權」。</p>
+      </div>
+
+      <h2>三、Anthropic 點名的 4 條新守則</h2>
+      <p>Shihipar 在文中列出六組「以前這樣教、現在別再做」的對照，《數位時代》整理為 4 條可直接套用的新守則：</p>
+
+      <div class="step-card">
+        <h3><span class="step-number">1</span> 第一條：別立死規矩，留判斷空間</h3>
+        <p>檢查你的 CLAUDE.md 或常用提示詞，把「絕對不要」「一律禁止」這類措辭挑出來，問自己：這條規則有沒有例外？如果有，改成描述原則而非下命令。前述的註解規則就是官方示範，從「絕不寫多段註解」改成「跟隨周圍程式碼的風格」，把判斷權還給模型。</p>
+      </div>
+
+      <div class="step-card">
+        <h3><span class="step-number">2</span> 第二條：與其堆範例，先設計好介面</h3>
+        <p>過去工具說明的第一鐵則是「附上使用範例」，Anthropic 卻發現，對 Claude 5 世代模型而言，大量範例反而會把它鎖在單一路徑，限制它探索更好的做法。</p>
+        <p>Anthropic 的新建議是把力氣優先花在「介面設計」：讓工具的參數名稱、選項本身就清楚、有表達力，足以說明用法。官方以自家的待辦清單工具為例，狀態欄位只開放「待處理、進行中、已完成」三個選項，再補一句「同時間只保留一項進行中」，不必額外舉例，模型就能抓到用法。</p>
+      </div>
+
+      <div class="step-card">
+        <h3><span class="step-number">3</span> 第三條：別全塞在前面，讓 AI 需要時再讀</h3>
+        <p>一個常見迷思是把 CLAUDE.md 當成百科全書，所有可能用到的守則都寫進去，深怕 AI 找不到。官方的新做法叫<strong>「漸進式揭露」（progressive disclosure）</strong>：把資訊拆成一棵檔案樹，需要時才載入。</p>
+        <p>Anthropic 自己就把程式碼審查、驗證流程從系統提示詞拆出來，變成獨立的 Skills，用到才呼叫；部分工具甚至採「延遲載入」，模型得先主動搜尋，才能取得完整定義。</p>
+      </div>
+
+      <div class="step-card">
+        <h3><span class="step-number">4</span> 第四條：規格不必只靠文字，可加入高仿真參照物</h3>
+        <p>過去的慣用做法，是把計畫與規格寫成簡單的 Markdown 文件；這種寫法仍然可行，但新模型已能消化複雜得多的參照材料，不必只依靠文字規格。一份規格可以是一套完整的測試碼、另一個專案裡現成的函式，甚至是一個 HTML 網頁原型。</p>
+        <p>官方的經驗是，一個 HTML 排版原型的效果，通常好過一段文字描述或一張截圖。你甚至可以把自己的品味寫成評分準則（rubric），讓模型拿著這份準則生出驗證代理，自我把關。</p>
+      </div>
+
+      <h2>四、新舊做法完整對照表</h2>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>構面</th>
+            <th>舊做法（Then）</th>
+            <th>新做法（Now）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>行為約束</strong></td>
+            <td>給 Claude 立規矩</td>
+            <td>讓模型用判斷力</td>
+          </tr>
+          <tr>
+            <td><strong>工具示範</strong></td>
+            <td>給 Claude 大量範例</td>
+            <td>設計清楚、有表達力的工具介面</td>
+          </tr>
+          <tr>
+            <td><strong>資訊載入</strong></td>
+            <td>把資訊全塞在最前面</td>
+            <td>漸進式揭露，需要時才載入</td>
+          </tr>
+          <tr>
+            <td><strong>指令強調</strong></td>
+            <td>重要指令重複講</td>
+            <td>指令只寫在工具描述，講一次就好</td>
+          </tr>
+          <tr>
+            <td><strong>記憶維護</strong></td>
+            <td>用 CLAUDE.md 手動存記憶</td>
+            <td>自動記憶分擔手動保存</td>
+          </tr>
+          <tr>
+            <td><strong>規格描述</strong></td>
+            <td>規格寫成簡單文字檔</td>
+            <td>提供高仿真參照物：測試碼、HTML 原型、Rubric</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>五、如何重構你的 CLAUDE.md 與 Skills</h2>
+      <p>回到多數使用者最關心的兩個檔案，這些建議可以整理成三個動作：</p>
+      <ul style="line-height: 2; margin-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-secondary);">
+        <li><strong>動作一：CLAUDE.md 大瘦身</strong> — 用一小段講清楚這個專案是做什麼的，把主要篇幅留給模型無法直接從專案看出的東西：特殊慣例、限制與常見陷阱。官方文件給出具體門檻：指令要具體、簡潔、彼此不矛盾，每份 CLAUDE.md 以 200 行以內為目標。</li>
+        <li><strong>動作二：Skills 寫觀念，不寫百科</strong> — 官方對 Skills 的定位是「輕量的指南」，幫模型在需要時找到資訊；最有價值的 Skills，是把你個人、團隊或產品獨有的觀點、知識與最佳實務編寫進去。</li>
+        <li><strong>動作三：用 /doctor 自動體檢</strong> — 可在 Claude Code 輸入 <code>/doctor</code> 指令，自動檢查安裝健康度與 CLAUDE.md 冗餘建議。</li>
+      </ul>
+
+      <div class="callout callout-tip">
+        <strong>💡 總結心得：</strong>
+        <p>與其用文字描述你要什麼，不如直接丟一個「長這樣」的實物給它看。先講清楚目標，再交出判斷權；先給看得懂的實物，再談抽象規則；先把手冊瘦身，再讓他自己翻資料。</p>
+      </div>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>天心 ERP 教學教材專區 &copy; 第六堂課 (attn-class6)</p>
+  </footer>
+
+  <script src="../js/topic.js"></script>
+</body>
+</html>

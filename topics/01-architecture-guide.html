@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第六堂課核心架構與心法：HTML First 技術選型原則與 AI Native 架構藍圖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .arch-banner {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(59, 130, 246, 0.25));
+      border: 2px solid var(--accent-purple);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
+    }
+    .quote-box {
+      background: rgba(15, 23, 42, 0.9);
+      border-left: 5px solid var(--accent-emerald);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: #f8fafc;
+    }
+    .golden-quote {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #f59e0b;
+      text-align: center;
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px dashed rgba(245, 158, 11, 0.4);
+      border-radius: var(--radius-lg);
+      line-height: 1.8;
+    }
+    .flow-tree {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin: 1.5rem 0;
+    }
+    .tree-node {
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-align: center;
+    }
+    .tree-start { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid var(--accent-blue); }
+    .tree-branch { display: flex; gap: 2rem; width: 100%; justify-content: center; margin-top: 0.5rem; }
+    .tree-yes { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid var(--accent-emerald); flex: 1; max-width: 280px; }
+    .tree-no { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid var(--accent-amber); flex: 1; max-width: 280px; }
+    
+    .arch-img-container {
+      margin: 1.5rem 0;
+      text-align: center;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+    }
+    .arch-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-subtle);
+    }
+    .reason-card {
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 1.25rem 0;
+      backdrop-filter: blur(10px);
+      transition: var(--transition-fast);
+    }
+    .reason-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
+    }
+    .reason-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .device-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .device-item {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 0.8rem;
+      font-size: 0.875rem;
+      text-align: center;
+      color: var(--text-primary);
+    }
+    .code-block {
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      font-family: 'Fira Code', 'Courier New', Courier, monospace;
+      font-size: 0.875rem;
+      color: #38bdf8;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    @media (max-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+    .comparison-table td strong.html-tag {
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.15);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+    .comparison-table td strong.python-tag {
+      color: #fbbf24;
+      background: rgba(245, 158, 11, 0.15);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body data-topic-id="01-architecture-guide">
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <a href="../index.html" class="brand-icon">C6</a>
+        <div>
+          <div class="brand-text">天心 ERP 教學專區 (第六堂課)</div>
+          <div class="brand-subtitle">FALO AI Native 開發原則與架構藍圖</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="topic-container">
+    <!-- 側邊目錄 -->
+    <aside class="sidebar-toc">
+      <div class="toc-title">本頁目錄</div>
+      <ul class="toc-list" id="tocList"></ul>
+    </aside>
+
+    <!-- 文章主體內容 -->
+    <main class="article-content">
+      <div class="article-header">
+        <a href="../index.html" class="back-link">← 返回第六堂課卡片總覽</a>
+        <h1 class="article-title">AI Native 的技術選型原則：HTML First 與架構藍圖</h1>
+        <div class="article-meta">
+          <span class="badge badge-mfg">第六堂課核心心法與架構藍圖</span>
+          <span>📅 設計者：Falo x Force Cheng (2026/7/28)</span>
+          <button id="markCompleteBtn" class="tag-btn" style="cursor: pointer;">○ 標記為完成學習</button>
+        </div>
+      </div>
+
+      <!-- 核心教材名言區 -->
+      <div class="golden-quote">
+        「 HTML 是介面，Python 是能力。<br>
+        凡是 HTML 能做的，就讓 HTML 做；只有 HTML 不適合的工作，才交給 Python。」
+      </div>
+
+      <div class="arch-banner">
+        <h3 style="color: var(--accent-cyan); margin-bottom: 0.5rem; font-size: 1.25rem;">💡 FALO AI Native 開發第一原則：HTML First</h3>
+        <p style="font-size: 1.1rem; line-height: 1.8; color: #f8fafc;">
+          不是「HTML 可以做，所以用 HTML」；<br>
+          而是：<strong style="color: #34d399; font-size: 1.2rem;">「HTML 是預設選項（Default），只有 HTML 不適合時，才交給 Python。」</strong>
+        </p>
+      </div>
+
+      <h2>一、AI Native 的技術選型邏輯</h2>
+      <p>過去與現在的開發選型思維完全相反：</p>
+
+      <div class="grid-2">
+        <div class="callout callout-warning" style="margin: 0;">
+          <strong>❌ 以前的選型邏輯：</strong>
+          <p style="margin-top: 0.5rem; font-size: 1.05rem;">
+            先想 Python 怎麼寫<br>
+            ↓<br>
+            再想怎麼畫畫面 (用 Streamlit / Jinja2 包辦一切)
+          </p>
+        </div>
+
+        <div class="callout callout-tip" style="margin: 0;">
+          <strong>✅ 現在 AI Native 選型邏輯：</strong>
+          <p style="margin-top: 0.5rem; font-size: 1.05rem;">
+            先問：<strong>「HTML 能不能完成？」</strong><br>
+            ➔ 可以 ➔ <strong style="color: #34d399;">使用 HTML</strong><br>
+            ➔ 不適合 ➔ <strong style="color: #fbbf24;">交給 Python API</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- 樹狀圖選型 -->
+      <div class="flow-tree">
+        <div class="tree-node tree-start">🤔 需求發想：先問「HTML 能不能完成？」</div>
+        <div style="color: var(--accent-blue); font-weight: 800;">│</div>
+        <div class="tree-branch">
+          <div class="tree-node tree-yes">
+            ✅ 可以做<br>
+            <span style="font-size: 0.9rem; font-weight: 400; color: #e2e8f0;">直接採用 HTML / CSS / JS<br>(不要增加 Python UI)</span>
+          </div>
+          <div class="tree-node tree-no">
+            ⚠️ 不適合 (重度運算/AI/ERP)<br>
+            <span style="font-size: 0.9rem; font-weight: 400; color: #e2e8f0;">交給 Python API 處理<br>(作為獨立能力 Engine)</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>二、工作屬性與技術選型對照表</h2>
+      <p>根據 HTML First 原則，企業系統各工作項目的建議選型如下：</p>
+
+      <table class="comparison-table" style="margin: 1.5rem 0;">
+        <thead>
+          <tr>
+            <th>工作項目</th>
+            <th>屬性類別</th>
+            <th>建議選型</th>
+            <th>原因與理由</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>表單 / 輸入畫面</strong></td>
+            <td>人機介面 (UI)</td>
+            <td><strong class="html-tag">HTML</strong></td>
+            <td>跨平台、AI 幾秒即可生成、好維護</td>
+          </tr>
+          <tr>
+            <td><strong>查詢畫面 / Dashboard</strong></td>
+            <td>資料展示 (UI)</td>
+            <td><strong class="html-tag">HTML</strong></td>
+            <td>圖表庫生態極豐富，可即時響應</td>
+          </tr>
+          <tr>
+            <td><strong>ERP 操作介面 / RWD</strong></td>
+            <td>多裝置操作 (UI)</td>
+            <td><strong class="html-tag">HTML</strong></td>
+            <td>一次開發，全平台 (PC/手機/平板) 適用</td>
+          </tr>
+          <tr>
+            <td><strong>LINE LIFF / Cloudflare Pages</strong></td>
+            <td>邊緣與入口 (UI)</td>
+            <td><strong class="html-tag">HTML</strong></td>
+            <td>原生支援 Web 技術，體驗最佳</td>
+          </tr>
+          <tr>
+            <td><strong>OCR 辨識 / PDF 解析</strong></td>
+            <td>圖像與檔案運算</td>
+            <td><strong class="python-tag">Python</strong></td>
+            <td>HTML 不擅長，需依賴 Python 強大生態庫</td>
+          </tr>
+          <tr>
+            <td><strong>AI 推理 (LLM / Agent)</strong></td>
+            <td>AI 模型核心</td>
+            <td><strong class="python-tag">Python</strong></td>
+            <td>模型呼叫、Prompt 組裝與邏輯編排</td>
+          </tr>
+          <tr>
+            <td><strong>Excel 大量運算 / OpenCV</strong></td>
+            <td>重度資料與影像處理</td>
+            <td><strong class="python-tag">Python</strong></td>
+            <td>Pandas / OpenCV 高效本地處理</td>
+          </tr>
+          <tr>
+            <td><strong>ERP 核心邏輯 / Workflow / ETL / 排程</strong></td>
+            <td>企業能力與背景任務</td>
+            <td><strong class="python-tag">Python</strong></td>
+            <td>作為專屬能力引擎 (Engine) 獨立運作</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="quote-box">
+        <strong>📌 比喻觀念（為什麼不要拿 Python 做 HTML 擅長的事？）：</strong>
+        <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+          <li>我們<strong>不會拿 SQL 去畫 UI 畫面</strong>。</li>
+          <li>我們<strong>不會拿 Excel 去做整套企業級 ERP</strong>。</li>
+          <li>同樣的：<strong style="color: var(--accent-amber);">也不要拿 Python 去做 HTML 已經非常成熟且擅長的事情！</strong></li>
+        </ul>
+      </div>
+
+      <h2>三、架構藍圖（本機與正式上線對照圖）</h2>
+      <div class="arch-img-container">
+        <img src="file:///C:/Users/user/Downloads/ChatGPT%20Image%202026%E5%B9%B47%E6%9C%8828%E6%97%A5%20%E4%B8%8B%E5%8D%8808_29_37.png" alt="HTML 殼 + Python 核心，Cloudflare 連結架構圖" class="arch-img">
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem;">圖：本機開發模式 vs. 正式上線模式 與 AI Native 思維對比 (Falo x Force Cheng 設計)</p>
+      </div>
+
+      <h2>四、為什麼 AI 時代更推薦 HTML 作為主要 UI？（5 大思維維度）</h2>
+
+      <div class="reason-card">
+        <div class="reason-title">⚡ 1. AI 讓 HTML 的開發成本大幅下降</div>
+        <p>過去，製作一個漂亮且支援多裝置的 HTML 網頁，需要投入不少前端開發時間。</p>
+        <p>然而在生成式 AI 出現後，HTML、CSS 與 JavaScript 已成為 AI 最擅長產生的內容之一，許多介面只需要幾分鐘即可完成，大幅降低 UI 開發成本。因此，<strong>HTML 在 AI 時代的價值不是降低，而是更加凸顯。</strong></p>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-title">📱 2. 一套 HTML，可服務多種裝置（一次開發，多平台使用）</div>
+        <p>採用 HTML + RWD（Responsive Web Design 響應式設計）後，同一套介面通常可以同時支援：</p>
+        
+        <div class="device-grid">
+          <div class="device-item">💻 Windows / macOS</div>
+          <div class="device-item">📱 平板裝置</div>
+          <div class="device-item">📲 手機 (iOS / Android)</div>
+          <div class="device-item">☁️ Cloudflare Pages</div>
+          <div class="device-item">🪟 WebView 內嵌</div>
+          <div class="device-item">💬 LINE LIFF</div>
+          <div class="device-item">🌐 LINE 內建瀏覽器</div>
+          <div class="device-item">🚀 PWA & Web 平台</div>
+        </div>
+
+        <p style="margin-top: 0.75rem;">相較於針對不同平台分別開發 App 或桌面程式，HTML 能有效降低維護與開發成本，真正做到：<strong>「一次開發，多平台使用。」</strong></p>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-title">🧠 3. HTML 已成為 AI 最成熟的 UI 生態</div>
+        <p>HTML 並不是因為歷史悠久而值得使用，而是因為：<strong>生態成熟、規格標準化、公開範例極多、AI 已累積大量相關知識</strong>。目前許多 AI 平台所產生的互動介面，本質上都是 HTML 技術。因此，HTML 已逐漸成為 AI 與使用者互動最重要的介面。</p>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-title">⚙️ 4. Python 更應該專注於核心能力</div>
+        <p>Python 在 AI 時代的重要性並沒有降低，反而更加重要！但它更適合投入於真正的企業能力，而不是花費大量時間建立 UI：</p>
+        <ul style="line-height: 2; margin-left: 1.5rem; margin-top: 0.5rem; color: var(--text-primary);">
+          <li>🤖 <strong>AI 推理</strong> (LLM 呼叫、Prompt 組裝)</li>
+          <li>👁️ <strong>OCR 辨識與圖像解析</strong></li>
+          <li>🏭 <strong>天心 ERP 商業邏輯運算</strong></li>
+          <li>🔄 <strong>Workflow 流程編排與 ETL</strong></li>
+          <li>⚡ <strong>批次處理與排程任務 (Cron Jobs)</strong></li>
+          <li>🔌 <strong>API Service 服務介面提供</strong></li>
+        </ul>
+      </div>
+
+      <div class="reason-card">
+        <div class="reason-title">🚀 5. AI Native 的最佳分工架構</div>
+        <p>AI Native 並不是「HTML 取代 Python」，而是讓兩者發揮各自最大的價值：</p>
+
+        <div class="flow-badge-box">
+          <div class="flow-step" style="border-color: var(--accent-emerald);">🖥️ HTML<br><small style="color: var(--text-secondary);">人機互動 (UI / UX)</small></div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-step" style="border-color: var(--accent-blue);">☁️ Cloudflare<br><small style="color: var(--text-secondary);">安全、連線與服務整合</small></div>
+          <div class="flow-arrow">➔</div>
+          <div class="flow-step" style="border-color: var(--accent-amber);">⚙️ Python<br><small style="color: var(--text-secondary);">企業能力 (AI / API / Workflow)</small></div>
+        </div>
+      </div>
+
+      <h2>五、實務運作：本機開發與正式上線對照</h2>
+
+      <div class="grid-2">
+        <div class="step-card">
+          <h3><span class="step-number">1</span> 本機開發模式 (127.0.0.1:8000)</h3>
+          <p>HTML 負責 UI，透過 HTTP / JSON 向本機 Python API 發送請求，最容易理解與除錯。</p>
+          <div class="code-block">
+// 前端 HTML 發送請求範例
+fetch('http://localhost:8000/api/ocr', {
+  method: 'POST',
+  body: formData
+})
+.then(res => res.json())
+.then(data => showResult(data));
+          </div>
+        </div>
+
+        <div class="step-card">
+          <h3><span class="step-number">2</span> 正式上線模式 (Cloudflare Tunnel)</h3>
+          <p>HTML 託管於 Cloudflare Pages，連線透過 Cloudflare Tunnel 安全隧道直連本機，不安裝對外 Port，保護資料庫安全。</p>
+          <div class="code-block">
+# 後端 Python API (FastAPI 範例)
+from fastapi import FastAPI
+app = FastAPI()
+
+@app.post("/api/ocr")
+def process_ocr():
+    return {"status": "success", "result": "..."}
+          </div>
+        </div>
+      </div>
+
+      <h2>六、本章思維結語</h2>
+
+      <div class="callout callout-tip" style="font-size: 1.1rem; text-align: center; padding: 2rem;">
+        <p style="color: var(--accent-rose); font-weight: 700; margin-bottom: 0.5rem;">❌ 不要問：「我要用 Python 還是 HTML？」</p>
+        <p style="color: var(--accent-emerald); font-weight: 800; font-size: 1.25rem;">✅ 而是問：「哪些工作適合交給 HTML？哪些能力應交給 Python？」</p>
+        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 1.25rem 0;">
+        <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.8;">
+          <strong>FALO AI Native 第一原則：HTML First！</strong><br>
+          凡是 HTML 能做的，就讓 HTML 做；只有 HTML 不適合的工作，才交給 Python。
+        </p>
+      </div>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>天心 ERP 教學教材專區 &copy; 第六堂課 (attn-class6)</p>
+  </footer>
+
+  <script src="../js/topic.js"></script>
+</body>
+</html>
