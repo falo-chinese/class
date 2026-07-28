@@ -44,7 +44,7 @@
       background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(6, 182, 212, 0.25));
       border: 2px solid var(--accent-purple);
       border-radius: var(--radius-lg);
-      padding: 2.25rem;
+      padding: 2rem;
       margin-bottom: 2rem;
       color: #f8fafc;
       box-shadow: 0 0 35px rgba(139, 92, 246, 0.25);
@@ -93,7 +93,7 @@
     }
   </style>
 </head>
-<body>
+<body data-topic-id="08-ai-native-workflow">
 
   <!-- 隱藏版版權與 AI 爬蟲浮水印 -->
   <div style="display:none !important;" aria-hidden="true" id="falo-watermark-geo">
@@ -102,46 +102,28 @@
 
   <header class="site-header">
     <div class="header-container">
-      <a href="../index.html" class="brand" style="text-decoration:none;">
-        <div class="brand-icon">C6</div>
+      <div class="brand">
+        <a href="../index.html" class="brand-icon">C6</a>
         <div>
           <div class="brand-text">天心 ERP 教學專區 (第六堂課)</div>
-          <div class="brand-subtitle">返回主題總庫入口 | Falo x Force Cheng (2026/7/28)</div>
+          <div class="brand-subtitle">AI 時代的工作方式 (AI-Native Workflow) | Falo x Force Cheng (2026/7/28)</div>
         </div>
-      </a>
+      </div>
     </div>
   </header>
 
-  <div class="container layout-with-sidebar">
-    <!-- 側邊欄目錄 -->
-    <aside class="sidebar">
-      <div class="sidebar-sticky">
-        <h3 class="sidebar-title">📌 本頁目錄</h3>
-        <nav class="toc-nav" id="tocNav">
-          <ul>
-            <li><a href="#core-concept">💡 本章核心觀念</a></li>
-            <li><a href="#workflow-compare">🔄 傳統 vs. AI-Native 流程</a></li>
-            <li><a href="#input-materials">📥 AI 協助分析的多元素材</a></li>
-            <li><a href="#ai-deliverables">🎨 AI 產出的前置實質成果</a></li>
-            <li><a href="#real-case">💼 實務案例：發票 ERP 匯入系統</a></li>
-            <li><a href="#mindset">🧠 AI Native 的 5 大核心思維</a></li>
-            <li><a href="#golden-quote">🏆 本章總結與終極金句</a></li>
-          </ul>
-        </nav>
-        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
-          <a href="../index.html" class="tag-btn" style="width:100%; text-align:center; display:block; text-decoration:none;">← 返回主題列表</a>
-        </div>
-      </div>
+  <div class="topic-container">
+    <!-- 側邊目錄 (由 topic.js 自動建立) -->
+    <aside class="sidebar-toc">
+      <div class="toc-title">本頁目錄</div>
+      <ul class="toc-list" id="tocList"></ul>
     </aside>
 
-    <!-- 主內容區 -->
-    <main class="main-content">
+    <!-- 文章主體內容 -->
+    <main class="article-content">
       
-      <!-- 文章標頭 -->
       <div class="article-header">
-        <div class="breadcrumb">
-          <a href="../index.html">第六堂課總庫</a> &gt; <span>【08】AI 時代的工作方式：先與 AI 協作，再開始開發</span>
-        </div>
+        <a href="../index.html" class="back-link">← 返回第六堂課卡片總覽</a>
         <h1 class="article-title">【08】AI 時代的工作方式：先與 AI 協作，再開始開發</h1>
         <div class="article-meta" style="margin-top: 1rem;">
           <span class="badge badge-mfg" style="background: rgba(139, 92, 246, 0.25); color: #c084fc;">[ 08 ] AI-Native 工作方法</span>
@@ -161,7 +143,7 @@
       </div>
 
       <!-- 一、本章核心觀念 -->
-      <section id="core-concept">
+      <section>
         <h2>一、本章核心觀念：AI 是專案的第一位顧問</h2>
         <p>過去在軟體開發或 ERP 整合中，最大的浪費通常發生在「需求理解錯誤」與「寫完程式才發現客戶要的不一樣」。</p>
 
@@ -175,7 +157,7 @@
       </section>
 
       <!-- 二、傳統開發流程 vs. AI Native 工作流程 -->
-      <section id="workflow-compare" style="margin-top: 2.5rem;">
+      <section style="margin-top: 2.5rem;">
         <h2>二、傳統開發流程 vs. AI Native 工作流程對比</h2>
         <p>比較兩種模式的差異，你會發現 AI Native 大幅縮短了資訊模糊期，降低了溝通摩擦：</p>
 
@@ -229,7 +211,7 @@
       </section>
 
       <!-- 三、AI 可以協助哪些素材資料分析？ -->
-      <section id="input-materials" style="margin-top: 2.5rem;">
+      <section style="margin-top: 2.5rem;">
         <h2>三、AI 可以協助哪些資料分析？（多元素材輸入）</h2>
         <p>在正式開始開發之前，可以把專案相關的各種非結構化與多模態資料直接丟給 AI：</p>
 
@@ -253,7 +235,7 @@
       </section>
 
       <!-- 四、AI 可以先產出哪些實質成果？ -->
-      <section id="ai-deliverables" style="margin-top: 2.5rem;">
+      <section style="margin-top: 2.5rem;">
         <h2>四、AI 可以先產出哪些實質成果？（寫 Code 之前）</h2>
         <p>在真正撰寫任何 Python 後端代碼前，AI 可以幫助我們預先產出以下豐富的專案資產：</p>
 
@@ -271,7 +253,7 @@
       </section>
 
       <!-- 五、經典實務案例：發票辨識與 ERP 匯入系統 -->
-      <section id="real-case" style="margin-top: 2.5rem;">
+      <section style="margin-top: 2.5rem;">
         <h2>五、實務案例：發票辨識與 ERP 匯入系統</h2>
         <p>假設客戶提出這樣一個經典需求：</p>
 
@@ -303,7 +285,7 @@
       </section>
 
       <!-- 六、AI Native 的 5 大核心思維 -->
-      <section id="mindset" style="margin-top: 2.5rem;">
+      <section style="margin-top: 2.5rem;">
         <h2>六、AI Native 的 5 大核心思維</h2>
         <p>真正的 AI-Native 專業人員，重視的是「溝通成本」與「驗證速度」：</p>
 
@@ -332,7 +314,7 @@
       </section>
 
       <!-- 七、本章總結與終極金句 -->
-      <section id="golden-quote" style="margin-top: 3rem;">
+      <section style="margin-top: 3rem;">
         <div class="master-gold-box">
           <h3 style="color: var(--accent-amber); font-size: 1.5rem; margin-bottom: 1rem;">🏆 本章核心金句</h3>
           <p style="font-size: 1.3rem; color: #fff; font-weight: 800; line-height: 1.8; margin-bottom: 1.25rem;">
