@@ -271,16 +271,53 @@
               </div>
             </div>
 
-            <!-- ⚡ 影片 Token 省費優化密技 -->
-            <div style="grid-column: 1 / -1; background: rgba(15, 23, 42, 0.9); border: 1px solid var(--accent-emerald); border-radius: 10px; padding: 1.1rem; margin-top: 0.5rem;">
-              <div style="color: var(--accent-emerald); font-weight: 800; font-size: 0.98rem; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem;">
-                ⚡ 實務省費技巧：影片錄影 Token 暴降 80%~90% 的 3 大優化法
+            <!-- ⚡ Google Gemini 影片 Token 實務優化與 API 原生參數 -->
+            <div style="grid-column: 1 / -1; background: rgba(15, 23, 42, 0.95); border: 2px solid var(--accent-emerald); border-radius: 12px; padding: 1.25rem; margin-top: 0.75rem;">
+              <div style="color: var(--accent-emerald); font-weight: 800; font-size: 1.05rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                ⚡ 實務省費技巧：Google Gemini 影片 Token 暴降 80%~90% 的原生 API 參數與處理手法
               </div>
-              <ul style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.7; padding-left: 1.1rem; margin: 0;">
-                <li><strong>1. 關鍵影格萃取 (Keyframe Extraction)</strong>：不必傳送每秒 60 幀的全長高畫質影片，只需萃取「畫面切換/按鈕點擊瞬間」的 10~20 張關鍵定格截圖，即可完整替代 10 分鐘影片，Token 暴降 90%！</li>
-                <li><strong>2. 降幀數與降低解析度 (Sub-sampling)</strong>：將操作錄影抽樣降至 <strong>1 FPS (每秒1幀)</strong> 或 720p 解析度，既能完封所有 UI 按鈕動作細節，又能大幅減輕多模態 API 負擔。</li>
-                <li><strong>3. 時間戳記語境導引 (Time-stamped Indexing)</strong>：搭配簡短文字時間戳記（如 `[01:15] 點擊拋轉單據按鈕`），讓 AI 能以極少 Token 精確對齊影像與業務動作邏輯！</li>
-              </ul>
+              <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 0.85rem;">
+                在呼叫 Google Gemini (Gemini 1.5 Pro / 2.0 Flash) 多模態 API 處理長影片時，預設會以 1 FPS（約每秒 263 Tokens）抽樣。透過以下原生參數與預處理，可將 Token 消耗直降 90%：
+              </p>
+
+              <!-- 3 大手法細節 -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0.85rem; margin-bottom: 1rem;">
+                <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid #334155; border-radius: 8px; padding: 0.9rem;">
+                  <div style="color: #38bdf8; font-weight: 700; font-size: 0.92rem; margin-bottom: 0.3rem;">1. ffmpeg 關鍵定格抽樣 (fps=0.2 ~ 0.5)</div>
+                  <div style="font-size: 0.83rem; color: #cbd5e1; line-height: 1.5;">
+                    透過 ffmpeg 將 10 分鐘影片預先萃取為 2~5 秒一張定格圖或降為 0.2 FPS（每 5 秒 1 幀），Token 直接節省 80%！
+                  </div>
+                </div>
+
+                <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid #334155; border-radius: 8px; padding: 0.9rem;">
+                  <div style="color: #34d399; font-weight: 700; font-size: 0.92rem; margin-bottom: 0.3rem;">2. Gemini File API 寬高重定 (720p Scaling)</div>
+                  <div style="font-size: 0.83rem; color: #cbd5e1; line-height: 1.5;">
+                    將 4K 錄影畫面縮放至 1280x720 (720p)，每幀圖檔 Token 鎖定在最平價區間，畫面細節依然清晰可辨。
+                  </div>
+                </div>
+
+                <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid #334155; border-radius: 8px; padding: 0.9rem;">
+                  <div style="color: #fbbf24; font-weight: 700; font-size: 0.92rem; margin-bottom: 0.3rem;">3. 時間戳記導引 (Timestamp Range Prompt)</div>
+                  <div style="font-size: 0.83rem; color: #cbd5e1; line-height: 1.5;">
+                    在 Prompt 中加入 `[01:15-02:30]` 時間區段限制，Gemini 會精準焦距目標片段，省去無效畫面的處理成本。
+                  </div>
+                </div>
+              </div>
+
+              <!-- 實務 Python 代碼範例 -->
+              <div style="background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 1rem; font-family: monospace; font-size: 0.84rem; color: #38bdf8; line-height: 1.6; overflow-x: auto;">
+                <div style="color: #94a3b8; margin-bottom: 0.4rem;"># 💡 1. 預處理：使用 ffmpeg 抽樣降低影格與解析度 (縮降 90% Token)</div>
+                <div style="color: #facc15;">ffmpeg -i erp_demo.mp4 -vf "fps=0.2,scale=1280:-1" -q:v 2 frames_%03d.jpg</div>
+                <br>
+                <div style="color: #94a3b8; margin-bottom: 0.4rem;"># 💡 2. Google Gemini API 呼叫範例 (Python google-genai SDK)</div>
+                <div><span style="color:#f472b6;">import</span> google.generativeai <span style="color:#f472b6;">as</span> genai</div>
+                <div>video_file = genai.upload_file(<span style="color:#a7f3d0;">"frames_preview.mp4"</span>, mime_type=<span style="color:#a7f3d0;">"video/mp4"</span>)</div>
+                <div>model = genai.GenerativeModel(<span style="color:#a7f3d0;">"gemini-1.5-pro"</span>)</div>
+                <div>response = model.generate_content([</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;video_file,</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#a7f3d0;">"分析 [00:30-02:00] 操作步驟，以 JSON 格式輸出：1. UI 欄位變更 2. 按鈕點擊動作 3. 天心 ERP 拋轉 API Payload"</span></div>
+                <div>])</div>
+              </div>
             </div>
           </div>
         </div>
