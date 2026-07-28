@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【09】台灣企業實務落地模式：先不計 Token 達成目的 ➔ 再逐步互動優化降 Token - 天心 ERP AI 專區</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/topic.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 頂部導覽列 -->
+  <header class="top-nav">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">
+        <span class="logo-icon">🚀</span>
+        <span class="logo-text">天心 ERP AI 課堂 <span>Class 6</span></span>
+      </a>
+      <div class="nav-actions">
+        <a href="../index.html" class="btn-secondary">回首頁</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="topic-container">
+    <!-- 左側側邊欄 TOC -->
+    <aside class="sidebar-toc">
+      <div class="toc-sticky-box">
+        <h3>目次導覽</h3>
+        <ul class="toc-list">
+          <li><a href="#section-1" class="active">一、台灣企業 AI 專區實務痛點</a></li>
+          <li><a href="#section-2">二、核心戰略：兩階段進化法</a></li>
+          <li><a href="#section-3">三、第一階段：先不計 Token 達成目的</a></li>
+          <li><a href="#section-4">四、第二階段：逐步互動引導降 Token</a></li>
+          <li><a href="#section-5">五、實戰對比：過度早優化 vs. 兩階段法</a></li>
+          <li><a href="#section-6">六、本章總結與終極金句</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- 右側文章主體 -->
+    <main class="article-content">
+      
+      <div class="topic-header">
+        <div class="topic-meta">
+          <span class="badge badge-cyan">[ 09 ] 台灣實務心法</span>
+          <span class="read-time">⏱️ 閱讀時間 8 分鐘</span>
+          <span class="author">👤 Falo x Force Cheng (2026/7/28)</span>
+        </div>
+        <h1 class="topic-title">【09】台灣企業實務落地模式：先不計 Token 達成目的 ➔ 再逐步互動優化降 Token</h1>
+        <p class="topic-subtitle">
+          打破「過度早優化 (Premature Optimization)」的迷思！專案初期不計成本驗證商業價值與 PoC 成功，中期透過 AI 互動與技術參數將 API 費用暴降 80%~90%！
+        </p>
+      </div>
+
+      <!-- 一、台灣企業 AI 專區實務痛點 -->
+      <section id="section-1">
+        <h2>一、台灣企業 AI 專區實務痛點</h2>
+        <p>
+          在台灣中小企業與天心 ERP 專案落地的第一線，許多工程團隊常陷入一個致命的開發誤區：
+        </p>
+
+        <div class="callout callout-warning" style="border-left-color: var(--accent-amber);">
+          <h4 style="color: var(--accent-amber); font-size: 1.1rem; margin-bottom: 0.4rem;">⚠️ 傳統過度早優化 (Premature Optimization) 的陷阱：</h4>
+          <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7; margin: 0;">
+            「專案還沒開始，工程師就花好幾天絞盡腦汁寫精簡 Prompt、縮減 Token 上下文，甚至把高解析度發票圖檔壓縮成模糊小圖... 結果第一天 Demo 辨識率大失常，主管與客戶直接信心崩盤，專案胎死腹中！」
+          </p>
+        </div>
+
+        <!-- 💡 台灣省費導向 vs 開發/營運分開思維卡片 -->
+        <div style="background: rgba(30, 41, 59, 0.9); border: 2px solid var(--accent-amber); border-radius: 14px; padding: 1.35rem; margin-top: 1.25rem;">
+          <h4 style="color: var(--accent-amber); font-size: 1.15rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            💡 台灣企業文化洞察：「省費導向」下，必須將「開發階段」與「營運階段」完全拆開！
+          </h4>
+          <p style="font-size: 0.92rem; color: #cbd5e1; line-height: 1.8; margin-bottom: 0.85rem;">
+            台灣企業普遍具備極高的成本敏感度（Cost-conscious）。但必須釐清：<strong>「開發/驗證階段」與「正式營運階段」是兩個完全不同的維度與概念！</strong>
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid #334155; border-radius: 8px; padding: 0.9rem;">
+              <div style="color: #38bdf8; font-weight: 700; font-size: 0.92rem; margin-bottom: 0.3rem;">🛠️ 開發與驗證階段 (Development Phase)</div>
+              <div style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.6;">
+                <strong>追求速度、驗證與商業價值！</strong> 這時省幾塊錢的 Token 費用是「省小錢、賠大錢」。應該花小小的 API 費用，極速換取 100% 驗證成功與客戶點頭認可！
+              </div>
+            </div>
+            <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid #334155; border-radius: 8px; padding: 0.9rem;">
+              <div style="color: #34d399; font-weight: 700; font-size: 0.92rem; margin-bottom: 0.3rem;">🚀 正式營運階段 (Operations Phase)</div>
+              <div style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.6;">
+                <strong>追求高效率、極致省費與穩定輸出！</strong> 規格與邏輯確定後，這時候才進行切換純程式碼、0.2 FPS 抽樣與 Context Caching，讓每日百萬次呼叫的成本降至最低！
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 二、核心戰略：兩階段進化法 -->
+      <section id="section-2" style="margin-top: 2.5rem;">
+        <h2>二、核心戰略：兩階段進化法 (Make it Work ➔ Make it Cheap)</h2>
+        <p>
+          最適合台灣企業專案落地的 AI 核心原則是：<strong>「 Make it Work, Make it Fast, Make it Cheap 」（先讓它運作 ➔ 讓它快速 ➔ 讓它便宜）</strong>。
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 1.25rem;">
+          
+          <!-- 階段 1 -->
+          <div style="background: rgba(30, 41, 59, 0.95); border: 2px solid var(--accent-cyan); border-radius: 14px; padding: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem;">
+              <span style="font-size: 1.5rem;">🎯</span>
+              <h3 style="color: var(--accent-cyan); font-size: 1.15rem; margin: 0;">第一階段：先不計 Token 達成目的</h3>
+            </div>
+            <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.6;">
+              <strong>功能與商業驗證第一！</strong> 大膽提供給 AI 最高畫質素材、全量Context 與詳細需求，100% 跑通 PoC 與 HTML 可互動原型。
+            </p>
+            <div style="background: rgba(6, 182, 212, 0.1); border-radius: 8px; padding: 0.8rem; margin-top: 0.75rem; font-size: 0.85rem; color: #38bdf8;">
+              💡 核心目標：拿到主管與客戶的簽核點頭，確保商業價值存在！
+            </div>
+          </div>
+
+          <!-- 階段 2 -->
+          <div style="background: rgba(30, 41, 59, 0.95); border: 2px solid var(--accent-emerald); border-radius: 14px; padding: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem;">
+              <span style="font-size: 1.5rem;">⚡</span>
+              <h3 style="color: var(--accent-emerald); font-size: 1.15rem; margin: 0;">第二階段：逐步互動精簡 Token 費用</h3>
+            </div>
+            <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.6;">
+              <strong>運營成本最佳化！</strong> 當需求與規格完全鎖定後，再透過 AI 互動寫出可重複利用的 JSON 模板與抽樣參數，費用直降 90%！
+            </p>
+            <div style="background: rgba(16, 185, 129, 0.1); border-radius: 8px; padding: 0.8rem; margin-top: 0.75rem; font-size: 0.85rem; color: #34d399;">
+              💡 核心目標：準備上線正式環境，讓 API 營運成本趨近於零！
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 三、第一階段：與 AI 溝通：先達成目的，不用特別考慮成本 (Make it Work) -->
+      <section id="section-3" style="margin-top: 2.5rem;">
+        <h2>三、第一階段：與 AI 溝通「先達成目的，不用特別考慮成本」(Make it Work)</h2>
+        <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7;">
+          在需求討論與 PoC 驗證初期，跟 AI 溝通時最重要的一句話就是：<strong style="color: var(--accent-cyan);">「請盡量完成我的目標，先不用特別考慮 Token 成本！」</strong>
+        </p>
+
+        <div style="background: rgba(15, 23, 42, 0.9); border: 2px solid var(--accent-cyan); border-radius: 14px; padding: 1.5rem; margin-top: 1rem;">
+          <ul style="line-height: 2; font-size: 0.96rem; color: #f8fafc; padding-left: 1.2rem; margin: 0;">
+            <li>🖼️ <strong>全量高畫質素材輸入</strong>：提供最完整的上下文、4K 發票照片、白板草圖與長錄音檔，不刻意壓縮圖片，確保 AI 擁有一流的資訊視覺與 100% 辨識準確率。</li>
+            <li>💡 <strong>讓 AI 大膽推理與提案</strong>：請 AI 協助整理需求、規劃架構、建議例外處理狀況，並在 10 分鐘內產出 HTML 可互動 Prototype！</li>
+            <li>🎯 <strong>鎖定核心價值</strong>：以「能讓客戶與主管看見、點擊並驗證成功」為唯一 KPI，第一時間取得認可！</li>
+          </ul>
+        </div>
+
+        <!-- 💡 Force 老師靈魂提醒卡片 -->
+        <div style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(168, 85, 247, 0.15)); border: 2px solid var(--accent-purple); border-radius: 14px; padding: 1.35rem; margin-top: 1.25rem;">
+          <h4 style="color: #c084fc; font-size: 1.15rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            💡 Force 老師靈魂提醒：補充領域經驗給 AI，但千萬不要侷限它！
+          </h4>
+          <p style="font-size: 0.95rem; color: #f8fafc; line-height: 1.8; margin: 0;">
+            「在與 AI 溝通時，我們可以<strong>大膽提供領域經驗與業務 Context 補充給 AI</strong>，但<strong>千萬不要過度約束或劃地自限</strong>！因為 AI 通常比我們更博學（具備全球跨領域知識庫），而且它的創意與聯想力一點也不輸人類！給予 AI 開放式的揮灑空間，它往往能帶給你意想不到的驚豔方案！」
+          </p>
+        </div>
+
+        <!-- 🔄 一階邁向二階的關鍵過渡橋樑：AI Agent 審計與使用者對齊 3 步驟 -->
+        <div style="background: rgba(15, 23, 42, 0.95); border: 2px solid var(--accent-cyan); border-radius: 14px; padding: 1.35rem; margin-top: 1.25rem;">
+          <h4 style="color: var(--accent-cyan); font-size: 1.15rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+            🔄 關鍵過渡橋樑：如何從「完成 PoC」流暢邁向「降本優化設計」？
+          </h4>
+          <p style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 0.85rem;">
+            當 AI Agent 幫你完成了令人讚嘆的 PoC 成果後，<strong>千萬不要急著直接寫 Code</strong>！請遵循以下 3 步落地橋樑：
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.9rem;">
+            <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid #334155; border-radius: 10px; padding: 1rem;">
+              <div style="color: #38bdf8; font-weight: 800; font-size: 0.95rem; margin-bottom: 0.3rem;">1. 向 AI Agent 請教詳細步驟</div>
+              <div style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.6;">
+                請 AI 說清楚講明白：「請列出你完成這個任務時，所使用的<strong>每一個思考步驟、Prompt 邏輯、API 呼叫順序與資料解析邏輯</strong>！」讓 AI 交付完整細節。
+              </div>
+            </div>
+
+            <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid #334155; border-radius: 10px; padding: 1rem;">
+              <div style="color: #fbbf24; font-weight: 800; font-size: 0.95rem; margin-bottom: 0.3rem;">2. 與使用者/主管充分討論對齊</div>
+              <div style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.6;">
+                拿著 AI 的步驟拆解與 HTML 互動原型，與客戶徹底檢視：「哪些步驟是必須的？哪些例外狀況要補強？哪個 UI 畫面才是最終要的？」對齊真正規格！
+              </div>
+            </div>
+
+            <div style="background: rgba(30, 41, 59, 0.8); border: 1px solid #334155; border-radius: 10px; padding: 1rem;">
+              <div style="color: #34d399; font-weight: 800; font-size: 0.95rem; margin-bottom: 0.3rem;">3. 再來進行最終優化設計</div>
+              <div style="font-size: 0.86rem; color: #cbd5e1; line-height: 1.6;">
+                規格 100% 確定後，才進行「切換非 Agent 純 Code」與「少用 LLM 精簡 Token」的最終工程重構，打造營運成本最低、防護力最強的正式系統！
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 四、第二階段：與 AI 互動優化——降 Token、切換非 Agent 程式與穩定輸出 (Make it Cheap & Stable) -->
+      <section id="section-4" style="margin-top: 2.5rem;">
+        <h2>四、第二階段：與 AI 互動優化——降 Token、切換非 Agent 程式與穩定輸出</h2>
+        <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.7;">
+          當 PoC 驗證成功並確定規格後，接著與 AI 互動進行<strong>「雙重降本增效與防護優化」</strong>：
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 1.25rem;">
+          
+          <!-- 1. 切換為非 AI Agent 作法 -->
+          <div style="background: rgba(30, 41, 59, 0.9); border: 2px solid var(--accent-purple); border-radius: 14px; padding: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem;">
+              <span style="font-size: 1.5rem;">⚡</span>
+              <h3 style="color: #c084fc; font-size: 1.1rem; margin: 0;">優化方向 1：切換為「不需要 AI Agent」的純程式碼作法</h3>
+            </div>
+            <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 0.75rem;">
+              PoC 階段驗證成功後，正式生產環境<strong>不要持續跑高成本、動態思考的重型 AI Agent</strong>：
+            </p>
+            <ul style="font-size: 0.88rem; color: #f8fafc; line-height: 1.8; padding-left: 1.1rem; margin: 0;">
+              <li><strong>純程式碼落地</strong>：請 AI 將驗證好的邏輯，直接重構成標準的 Python (FastAPI/Requests) 或 JavaScript 腳本。</li>
+              <li><strong>固定 API 與 SQL 拋轉</strong>：用確定性的程式碼處理資料傳輸與天心 ERP 寫入，擺脫對 Agent 循環叫用的依賴。</li>
+            </ul>
+          </div>
+
+          <!-- 2. 各環節少用 LLM 與精簡 Token -->
+          <div style="background: rgba(30, 41, 59, 0.9); border: 2px solid var(--accent-emerald); border-radius: 14px; padding: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem;">
+              <span style="font-size: 1.5rem;">🛡️</span>
+              <h3 style="color: var(--accent-emerald); font-size: 1.1rem; margin: 0;">優化方向 2：各環節「少用 LLM、精簡 Token」與穩定輸出</h3>
+            </div>
+            <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 0.75rem;">
+              在正式運作流程中，儘可能減少 LLM 的負擔，兼顧<strong>省錢與 100% 穩定輸出</strong>：
+            </p>
+            <ul style="font-size: 0.88rem; color: #f8fafc; line-height: 1.8; padding-left: 1.1rem; margin: 0;">
+              <li><strong>省錢 (Cost Reduction)</strong>：關鍵定格 (0.2 FPS) 替代全程影片；用 Python 正則表達式 (Regex) 處理簡單文字萃取，能用程式做的就不花 LLM Token！</li>
+              <li><strong>穩定輸出 (Deterministic Output)</strong>：嚴格強制 JSON Schema 限制，並對固定 ERP 表格結構開啟 Context Caching，徹底消除幻覺風險！</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- 實務 Python 省費與確定性代碼範例 -->
+        <div style="background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 1.1rem; margin-top: 1.25rem; font-family: monospace; font-size: 0.84rem; color: #38bdf8; line-height: 1.6; overflow-x: auto;">
+          <div style="color: #94a3b8; margin-bottom: 0.4rem;"># 💡 實務範例：非 Agent 純 Python 程式 + JSON Schema 確定性輸出 (零幻覺 + 極低 Token)</div>
+          <div><span style="color:#f472b6;">import</span> google.generativeai <span style="color:#f472b6;">as</span> genai</div>
+          <div><span style="color:#f472b6;">from</span> pydantic <span style="color:#f472b6;">import</span> BaseModel</div>
+          <br>
+          <div style="color: #94a3b8;"># 1. 用 Pydantic 定義確定性 Schema，保證輸出絕對穩定</div>
+          <div><span style="color:#f472b6;">class</span> InvoicePayload(BaseModel):</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;invoice_num: <span style="color:#a7f3d0;">str</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;total_amount: <span style="color:#a7f3d0;">int</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;tax_id: <span style="color:#a7f3d0;">str</span></div>
+          <br>
+          <div style="color: #94a3b8;"># 2. 純程式呼叫 (不透過 Agent 輪詢，僅花費單次少許 Token)</div>
+          <div>model = genai.GenerativeModel(<span style="color:#a7f3d0;">"gemini-1.5-flash"</span>)</div>
+          <div>response = model.generate_content(</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;[invoice_img, <span style="color:#a7f3d0;">"請依據圖片填寫發票資訊"</span>],</div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;generation_config={"response_mime_type": <span style="color:#a7f3d0;">"application/json"</span>, "response_schema": InvoicePayload}</div>
+          <div>)</div>
+        </div>
+      </section>
+
+      <!-- 五、實戰對比：過度早優化 vs. 兩階段法 -->
+      <section id="section-5" style="margin-top: 2.5rem;">
+        <h2>五、實戰對比：過度早優化 vs. 兩階段法</h2>
+        
+        <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.9rem; color: #cbd5e1;">
+          <thead>
+            <tr style="background: rgba(30, 41, 59, 0.9); border-bottom: 2px solid var(--border-color); color: #fff;">
+              <th style="padding: 0.8rem; text-align: left;">對比項目</th>
+              <th style="padding: 0.8rem; text-align: left; color: #fb7185;">❌ 傳統過度早優化</th>
+              <th style="padding: 0.8rem; text-align: left; color: #34d399;">✅ AI Native 兩階段進化法</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+              <td style="padding: 0.8rem; font-weight: 700; color: #fff;">專案初期重點</td>
+              <td style="padding: 0.8rem;">斤斤計較 Token 數量，狂砍圖片畫質與上下文。</td>
+              <td style="padding: 0.8rem; color: #34d399;">先不計 Token 達成目的，優先驗證 PoC 與商業價值。</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+              <td style="padding: 0.8rem; font-weight: 700; color: #fff;">第一次 Demo 體驗</td>
+              <td style="padding: 0.8rem;">辨識失真、功能殘缺，客戶失去信心。</td>
+              <td style="padding: 0.8rem; color: #34d399;">高準確率 + 10 分鐘亮眼 HTML 互動原型，驚豔全場！</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.08);">
+              <td style="padding: 0.8rem; font-weight: 700; color: #fff;">後期營運成本</td>
+              <td style="padding: 0.8rem;">初期就卡住，根本走不到正式上線。</td>
+              <td style="padding: 0.8rem; color: #34d399;">規格確定後透過 AI 互動與快取，Token 費用暴降 90%！</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 六、本章總結與終極金句 -->
+      <section id="section-6" style="margin-top: 3rem;">
+        <div class="master-gold-box">
+          <h3 style="color: var(--accent-amber); font-size: 1.5rem; margin-bottom: 1rem;">🏆 本章核心金句</h3>
+          <p style="font-size: 1.3rem; color: #fff; font-weight: 800; line-height: 1.8; margin-bottom: 1.25rem;">
+            「初期的 Token 節省是假節省，先跑通目的才是真價值！」<br>
+            <strong style="color: var(--accent-cyan); font-size: 1.4rem;">「先不計 Token 達成目的 ➔ 再逐步互動優化降 Token (Make it Work ➔ Make it Cheap)！」</strong>
+          </p>
+          <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid var(--accent-cyan); border-radius: 12px; padding: 1.25rem; max-width: 700px; margin: 0 auto;">
+            <p style="font-size: 1.05rem; color: #38bdf8; font-weight: 700; margin-bottom: 0.5rem;">
+              最適合台灣企業的 AI 落地黃金方程式：
+            </p>
+            <p style="font-size: 1.15rem; color: #f8fafc; font-weight: 800; letter-spacing: 0.5px;">
+              全量素材輸入 ➔ PoC / HTML 原型成功 ➔ 規格鎖定 ➔ AI 互動精簡 ➔ 90% 降本上線
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>天心 ERP 教學教材專區 &copy; 2026 | 設計與維護：<strong>Falo x Force Cheng (2026/7/28)</strong></p>
+  </footer>
+
+  <script src="../js/topic.js"></script>
+</body>
+</html>
