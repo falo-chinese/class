@@ -315,8 +315,13 @@
             使用 <strong>Cloudflare Tunnel 穿透</strong> 的強大之處，在於可打破硬體與公網 IP 限制：
           </p>
           <ul style="font-size: 0.9rem; color: #f8fafc; line-height: 1.8; padding-left: 1.2rem;">
-            <li><strong>💻 雲端開發主機 (Dev Machine)</strong>：Windows 365 具備獨立桌面沙盒，開發者可以在任何裝置（Mac/iPad）隨處寫程式，開發測試一鍵 Demo。</li>
-            <li><strong>🟢 小流量 PoC / 輕量營運 (Win365 + Tunnel)</strong>：微軟未明確禁止背景服務，經實測，每天數百-數千次 ERP Webhook 拋轉可完美 24/7 穩定運行。</li>
+            <li><strong>💻 雲端開發主機 (Dev Machine) 兩大絕殺優勢</strong>：
+              <ul style="margin-left: 1rem; color: #cbd5e1;">
+                <li>⏰ <strong>全天候待機 (24/7 Cloud Readiness)</strong>：進度跨裝置原封不動保留（公司用電腦、回家用 iPad/Mac），背景 OCR 批次與測試筆電關機也能 24H 默默跑完。</li>
+                <li>🛡️ <strong>極高企業資安堡壘 (Stealth Tunnel Security)</strong>：透過主動外連 Tunnel，Win365 <strong>不需要開放任何對內 Port 號 (Zero Inbound Ports)</strong>，外網無法直接掃描或攻擊主機，其他惡意流量全被 Cloudflare 全球邊緣防禦牆完全阻擋！加上「資料不落地」與原廠 MFA / Defender，成為保護極高的雲端 VPS。</li>
+              </ul>
+            </li>
+            <li style="margin-top: 0.4rem;"><strong>🟢 小流量 PoC / 輕量營運 (Win365 + Tunnel)</strong>：微軟未明確禁止背景服務，經實測，每天數百-數千次 ERP Webhook 拋轉可完美 24/7 穩定運行。</li>
             <li><strong>🔵 大流量正式營運 (正規 VPS / 雲端 VM)</strong>：若為高併發巨量 API 或多廠區 MES 系統，建議選擇專用 Windows/Linux 伺服器 (AWS/GCP/國內VPS) 獲得獨佔算力保障。</li>
           </ul>
         </div>
