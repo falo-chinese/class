@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【附錄 C】AI 腦力激盪：銀河軟體 ERP 財報資訊與語意式帳務錯誤自動診斷系統</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .source-banner {
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid var(--accent-purple);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+    .source-banner a {
+      color: #c084fc;
+      font-weight: 700;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+    .json-code-block {
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.88rem;
+      color: #38bdf8;
+      overflow-x: auto;
+      margin: 1rem 0;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body data-topic-id="appendix-c-erp-financial-error-ai">
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <a href="../index.html" class="brand-icon">C6</a>
+        <div>
+          <div class="brand-text">銀河軟體 教學專區 (第六堂課)</div>
+          <div class="brand-subtitle">AI 腦力激盪與 ERP 帳務智慧診斷</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="topic-container">
+    <!-- 側邊目錄 (topic.js 會自動掃描 h2 生成目錄) -->
+    <aside class="sidebar-toc">
+      <div class="toc-title">本頁目錄</div>
+      <ul class="toc-list" id="tocList"></ul>
+    </aside>
+
+    <!-- 文章主體內容 -->
+    <main class="article-content">
+
+      <!-- 📌 最上方主題簡介橫幅 -->
+      <div class="source-banner">
+        💡 <strong>銀河軟體 ERP 智慧稽核專題：先理解，再動手 (Understand First, Act Later)</strong><br>
+        本單元探討如何結合 AI Agent 人機問診、錯誤樣態模擬與語意式知識庫 (Semantic Knowledge Base)，打造全自動 ERP 財報錯誤檢索系統。
+      </div>
+
+      <div class="article-header">
+        <a href="../index.html" class="back-link">← 返回第六堂課卡片總覽</a>
+        <h1 class="article-title">【附錄 C】AI 腦力激盪：銀河軟體 ERP 財報資訊與語意式帳務錯誤自動診斷系統</h1>
+        <div class="article-meta">
+          <span class="badge badge-psi">財報 AI 診斷</span>
+          <span>⏱️ 閱讀時間 10 分鐘</span>
+          <button id="markCompleteBtn" class="tag-btn" style="cursor: pointer;">○ 標記為完成學習</button>
+        </div>
+      </div>
+
+      <!-- 三大重點 Callout -->
+      <div class="callout callout-info">
+        <strong>💡 本單元三大腦力激盪核心：</strong>
+        <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+          <li><strong>核心一（先理解，再動手）：</strong> 拒絕盲目寫 Code！先由 AI Agent 訪談審計師收斂「異常病徵」，建立清晰的商業上下文（Context）與自動化工作流。</li>
+          <li><strong>核心二（AI 模擬錯誤樣態）：</strong> 利用大模型生成常見與邊角（Edge-case）帳務錯誤樣態（借貸不平、跨期認列、重複列支、關係人交易隱匿等），作為訓練與測試防線。</li>
+          <li><strong>核心三（語意式 vs. 傳統規則式）：</strong> 傳統 Rule-based（硬編碼 IF-ELSE）條件變動即失效；語意式 AI 知識庫（Semantic KB + Vector Embedding）能自主推理商業意圖與情境！</li>
+        </ul>
+      </div>
+
+      <h2>一、核心哲學：先理解，再動手 (Understand First, Act Later)</h2>
+      <p>在傳統 ERP 開發中，工程師接到「請幫忙寫一個找出財報帳務錯誤」的需求時，往往第一時間就開始寫 SQL 或硬編碼大量的 <code>IF...ELSE</code> 判斷式。然而在真實商業環境中，帳務錯誤往往隱蔽且具備動態上下文背景。</p>
+      <p>銀河軟體主張<strong>「先理解，再動手」</strong>：開發者應先利用 AI Agent 與會計師、財務主管及資深審計人員進行「診斷式問診」，收斂出可能病徵，明確定義情境與邏輯後，再讓 AI 協作寫入系統防線。</p>
+
+      <h2>二、第一階段：AI Agent 人機互動——問診病徵與建立工作流</h2>
+      <p>AI Agent 擔任「資深審計顧問助手」，主動引導財務人員說明過去發生的典型帳務漏洞與疑似人為疏失，從對話中提煉出關鍵監控病徵。</p>
+
+      <div class="step-card">
+        <h3><span class="step-number">1</span> 互動問診：AI 引導會計師收斂「病徵」</h3>
+        <p><strong>AI Agent：</strong>「在銀河軟體 ERP 應付帳款 (AP) 與損益表結算時，哪類帳務錯誤最容易避開傳統系統檢查？」<br>
+        <strong>財務主管：</strong>「通常是跨期費用認列！例如今年 12 月收到的廣告發票，被拖到次年 1 月才估列，或是銷貨退回未同步沖銷暫估收入。」<br>
+        <strong>AI Agent：</strong>「了解，病徵包含：【時間戳與履約期不符】與【關聯傳票金額單邊滯留】。我們將此建立為專屬監控工作流。」</p>
+      </div>
+
+      <div class="step-card">
+        <h3><span class="step-number">2</span> 工作流（Workflow）自動收斂與步驟定義</h3>
+        <p>從問診對話中，AI 自動梳理出四步診斷工作流：<br>
+        <strong>傳票抽取 ➔ 語意特徵向量化 ➔ 語意知識庫 (Semantic KB) 比對 ➔ 異常等級推論與風險告警</strong>。</p>
+      </div>
+
+      <h2>三、第二階段：AI 模擬各種帳務錯誤樣態 (Error Pattern Simulation)</h2>
+      <p>為了確保診斷系統具備足夠的防衛能力，我們利用大模型自動模擬生成多元的「帳務錯誤樣態測試庫」：</p>
+
+      <div class="callout callout-warning">
+        <strong>🧪 5 大典型與邊角 (Edge-case) 帳務錯誤樣態模擬：</strong>
+        <ol style="margin-left: 1.2rem; margin-top: 0.5rem; line-height: 1.8;">
+          <li><strong>借貸不平與科目錯置：</strong> 銷貨成本誤記為營業費用，或資產類科目誤入損益類。</li>
+          <li><strong>跨期收入與費用認列：</strong> 履約義務完成於 Q4，但估列傳票延遲至次年 Q1。</li>
+          <li><strong>重複列支與虛拆單據：</strong> 同一筆採購拆成兩張微額報帳傳票以規避主管簽核門檻。</li>
+          <li><strong>關係人交易異常定價：</strong> 與關聯企業交易價格顯著偏離同類市場行情。</li>
+          <li><strong>暫付款未沖銷懸掛：</strong> 員工借支或預付款項停滯超過 180 天未對帳銷案。</li>
+        </ol>
+      </div>
+
+      <h2>四、第三階段：給 AI 看的資料庫——語意式 (Semantic) vs 傳統規則式 (Rule-based)</h2>
+      <p>這是整個 AI 財報診斷系統的最關鍵分水嶺！傳統做法依靠硬編碼規則（Rule-based），而新世代 AI 系統採用<strong>「語意式知識庫 (Semantic Knowledge Base)」</strong>。</p>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>維度</th>
+            <th>傳統規則式 (Rule-based / 硬編碼)</th>
+            <th>語意式 AI 知識庫 (Semantic KB / Vector AI)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>核心機制</strong></td>
+            <td>寫死條件語句：<code>IF (Amount > 100000 AND Date > Q4)</code></td>
+            <td><strong style="color:var(--accent-emerald);">Vector Embedding 語意向量比對與情境推理</strong></td>
+          </tr>
+          <tr>
+            <td><strong>維護成本</strong></td>
+            <td>❌ 規矩越加越多，邏輯衝突（Overconstraining）</td>
+            <td><strong style="color:var(--accent-emerald);">✅ 僅需更新自然語言說明，AI 自動理解變化</strong></td>
+          </tr>
+          <tr>
+            <td><strong>情境理解能力</strong></td>
+            <td>❌ 條件稍有變化或拆單規避即失效</td>
+            <td><strong style="color:var(--accent-emerald);">✅ 理解商業意圖與隱蔽手法的異樣感</strong></td>
+          </tr>
+          <tr>
+            <td><strong>檢索範例說明</strong></td>
+            <td>給系統「計算公式與臨界值」</td>
+            <td><strong style="color:var(--accent-emerald);">給 AI 看的「語意情境範例描述 JSON」</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>🧠 給 AI 看的語意式知識庫 (Semantic KB) 範例說明 JSON</h3>
+      <p>以下為儲存在 Vector KB 中、專門給 AI Agent 閱讀與推理的語意式 JSON 結構：</p>
+
+      <div class="json-code-block">
+{
+  "semantic_rule_id": "ERR-SEM-2026-009",
+  "rule_name": "跨期廣告費用未匹配認列異常",
+  "description": "當業務合約顯示服務履約期集中於第四季（如雙11檔期），但相對應之廣告費傳票主要開立與認列日期落在次年一月中旬，且摘要載明『前期行銷補估』時，即屬於潛在跨期費用規避異常。",
+  "semantic_features": [
+    "履約時間與傳票開立時間存在明顯跨月份差異",
+    "摘要語意包含『補充估列』、『前期補開』、『前期合約結算』",
+    "金額規模超過該部門季度行銷預算之 15%"
+  ],
+  "detection_strategy": "語意意圖相似度分析 + 履約時間軸重疊比對",
+  "risk_level": "HIGH"
+}
+      </div>
+
+      <h2>五、銀河軟體 ERP 實務拋轉與防禦落地</h2>
+      <p>經過語意式 AI 知識庫比對後，系統將自動產生結構化 JSON 並拋轉至銀河軟體 ERP 稽核儀表板：</p>
+
+      <div class="callout callout-tip">
+        <strong>💡 智慧稽核自動化工作流成果：</strong>
+        <p>1. <strong>告警精準度提升 65%</strong>：排除傳統硬編碼過度告警（False Positive）狀況。<br>
+        2. <strong>無痛適應新會計準則</strong>：增刪稽核規則只需上傳自然語言描述檔，無須重編寫系統程式碼！</p>
+      </div>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>銀河軟體 教學教材專區 &copy; 第六堂課 (attn-class6)</p>
+  </footer>
+
+  <script src="../js/topic.js"></script>
+</body>
+</html>
