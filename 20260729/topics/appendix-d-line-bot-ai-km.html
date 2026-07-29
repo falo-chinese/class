@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【附錄 D】LINE Bot + AI KM 企業智慧知識庫系統 (Falo x Force Cheng 實戰)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .source-banner {
+      background: rgba(6, 199, 85, 0.15);
+      border: 1px solid #06C755;
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+    .source-banner a {
+      color: #34d399;
+      font-weight: 700;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+    .cmd-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+    .cmd-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+    }
+    .cmd-badge {
+      display: inline-block;
+      background: rgba(6, 199, 85, 0.2);
+      border: 1px solid #06C755;
+      color: #34d399;
+      font-family: monospace;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+  </style>
+</head>
+<body data-topic-id="appendix-d-line-bot-ai-km">
+
+  <header class="site-header">
+    <div class="header-container">
+      <div class="brand">
+        <a href="../index.html" class="brand-icon">C6</a>
+        <div>
+          <div class="brand-text">銀河軟體 教學專區 (第六堂課)</div>
+          <div class="brand-subtitle">LINE Bot + AI KM 企業知識庫系統實戰</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="topic-container">
+    <!-- 側邊目錄 (topic.js 會自動掃描 h2 生成目錄) -->
+    <aside class="sidebar-toc">
+      <div class="toc-title">本頁目錄</div>
+      <ul class="toc-list" id="tocList"></ul>
+    </aside>
+
+    <!-- 文章主體內容 -->
+    <main class="article-content">
+
+      <!-- 📌 最上方主題簡介與原始連結橫幅 -->
+      <div class="source-banner">
+        🌐 <strong>官方產品規格與線上入口：</strong>
+        <a href="https://line-bot-km.formosa-ai.com/" target="_blank" rel="noopener noreferrer">https://line-bot-km.formosa-ai.com/</a><br>
+        👨‍💻 <strong>系統作者：</strong> Falo x Force Cheng ｜ <strong>版本標示：</strong> ver1.01 (2026/07/23)
+      </div>
+
+      <div class="article-header">
+        <a href="../index.html" class="back-link">← 返回第六堂課卡片總覽</a>
+        <h1 class="article-title">【附錄 D】LINE Bot + AI KM 企業智慧知識庫系統 (Falo x Force Cheng 實戰)</h1>
+        <div class="article-meta">
+          <span class="badge badge-psi" style="background: rgba(6, 199, 85, 0.2); color: #34d399; border: 1px solid #06C755;">LINE Bot AI KM</span>
+          <span>⏱️ 閱讀時間 12 分鐘</span>
+          <button id="markCompleteBtn" class="tag-btn" style="cursor: pointer;">○ 標記為完成學習</button>
+        </div>
+      </div>
+
+      <!-- 三大重點 Callout -->
+      <div class="callout callout-info">
+        <strong>💡 本單元四大技術亮點與實戰核心：</strong>
+        <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+          <li><strong>核心一（FALO AI KM × NotebookLM 協同架構）：</strong> 拒絕重新發明輪子！由 NotebookLM 擔任深度研究與創作中心，FALO AI KM 擔綱 LINE 多模態入口與知識管理。</li>
+          <li><strong>核心二（LINE 聊天室多模態輸入）：</strong> 支援語音聽寫 (Whisper)、視覺圖片辨識 (Vision OCR)、檔案 PDF 解析與 HTML 結構化報表自動生成。</li>
+          <li><strong>核心三（數字快捷指令集）：</strong> 提供 <code>000</code>(選單)、<code>661</code>(搜尋)、<code>662</code>(整理)、<code>663</code>(語音)、<code>666</code>(OCR) 等直覺選單機制。</li>
+          <li><strong>核心四（4 級容錯與備援機制）：</strong> 運行於 Cloudflare Edge 全球網路，具備高並發快取與斷線自動重試防護。</li>
+        </ul>
+      </div>
+
+      <h2>一、核心觀念：不重新發明輪子，我們讓輪子更好用</h2>
+      <p>許多企業在導入 AI 知識庫時，常常誤以為必須從頭開發一套複雜的對話與研發系統。<strong>Google NotebookLM</strong> 已經是一套極其成熟的 AI 知識探索與整理工具。FALO AI KM 的核心價值，<strong>不是取代 NotebookLM，而是善用它、賦能它</strong>。</p>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>系統角色</th>
+            <th>NotebookLM (研究與創作中心)</th>
+            <th>FALO AI KM (入口與知識管理)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>擅長領域</strong></td>
+            <td>跨文件深度閱讀、研究分析、自動生成語音摘要 (Audio Overview)、產出簡報</td>
+            <td><strong style="color:var(--accent-emerald);">串接 LINE 聊天室、多模態輸入 (語音/圖片/檔案)、動態教導新知識</strong></td>
+          </tr>
+          <tr>
+            <td><strong>核心價值</strong></td>
+            <td>讓使用者直接對話，享受 Google 最先進的生成式 AI能力</td>
+            <td><strong style="color:var(--accent-emerald);">降低企業導入門檻，提供極致便民的 LINE 免下載 App 入口</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>二、LINE 聊天室多模態 (Multimodal) 強大輸入能力</h2>
+      <p>員工只需透過日常習慣的 LINE 聊天室，即可隨時隨地與企業知識庫互動：</p>
+
+      <div class="step-card">
+        <h3><span class="step-number">1</span> 🎙️ 語音訊息聽寫 (Whisper Engine)</h3>
+        <p>員工在現場直接錄製語音訊息傳送給 LINE Bot，系統自動調用 Whisper 模型完成高精度聽寫，並轉化為知識庫查詢意圖。</p>
+      </div>
+
+      <div class="step-card">
+        <h3><span class="step-number">2</span> 📷 視覺照片辨識 (Vision OCR)</h3>
+        <p>拍攝紙本合約、送貨單或現場設備銘牌照片傳送，AI 自動進行文字辨識 (OCR) 並比對知識庫條目。</p>
+      </div>
+
+      <div class="step-card">
+        <h3><span class="step-number">3</span> 📊 HTML 結構化報表自動生成</h3>
+        <p>將繁複的查詢結果自動渲染為清晰的 HTML 卡片與圖表，提升跨部門閱讀效率。</p>
+      </div>
+
+      <h2>三、數字快捷指令集與廣播選單</h2>
+      <p>系統內建強大的快捷數字指令系統，讓使用者無需記憶複雜 Prompt 即可精準操控：</p>
+
+      <div class="cmd-grid">
+        <div class="cmd-card">
+          <span class="cmd-badge">000</span>
+          <div style="font-weight: 700; color: #f8fafc; margin-bottom: 0.3rem;">主功能選單</div>
+          <div style="font-size: 0.85rem; color: #94a3b8;">列出所有可用指令與當前系統權限狀態</div>
+        </div>
+
+        <div class="cmd-card">
+          <span class="cmd-badge">661</span>
+          <div style="font-weight: 700; color: #f8fafc; margin-bottom: 0.3rem;">知識庫全文搜尋</div>
+          <div style="font-size: 0.85rem; color: #94a3b8;">對企業知識庫發起語意搜尋與精準解答</div>
+        </div>
+
+        <div class="cmd-card">
+          <span class="cmd-badge">662</span>
+          <div style="font-weight: 700; color: #f8fafc; margin-bottom: 0.3rem;">智慧整理與提煉</div>
+          <div style="font-size: 0.85rem; color: #94a3b8;">將長篇對話或文件內容自動摘要歸納</div>
+        </div>
+
+        <div class="cmd-card">
+          <span class="cmd-badge">663</span>
+          <div style="font-weight: 700; color: #f8fafc; margin-bottom: 0.3rem;">語音翻譯與聽寫</div>
+          <div style="font-size: 0.85rem; color: #94a3b8;">處理語音檔並翻譯為指定目標語言</div>
+        </div>
+
+        <div class="cmd-card">
+          <span class="cmd-badge">666</span>
+          <div style="font-weight: 700; color: #f8fafc; margin-bottom: 0.3rem;">圖像 OCR 與分析</div>
+          <div style="font-size: 0.85rem; color: #94a3b8;">辨識單據、照片中之文字並分析欄位</div>
+        </div>
+
+        <div class="cmd-card">
+          <span class="cmd-badge">999</span>
+          <div style="font-weight: 700; color: #f8fafc; margin-bottom: 0.3rem;">系統權限與設定</div>
+          <div style="font-size: 0.85rem; color: #94a3b8;">查看管理員身分與知識庫掛載狀態</div>
+        </div>
+      </div>
+
+      <h2>四、Cloudflare Edge 4 級容錯與備援機制</h2>
+      <p>為了確保企業級服務 24/7 不間斷，FALO AI KM 部署於 Cloudflare Edge 全球無伺服器架構：</p>
+
+      <div class="callout callout-warning">
+        <strong>🛡️ 4 級容錯與防護架構：</strong>
+        <ol style="margin-left: 1.2rem; margin-top: 0.5rem; line-height: 1.8;">
+          <li><strong>一級（快取層）：</strong> Cloudflare KV 超高速快取常用搜尋解答。</li>
+          <li><strong>二級（模型切換）：</strong> 主模型回應超時時，0.2 秒自動無縫降級切換至備援 LLM。</li>
+          <li><strong>三級（限流防護）：</strong> 防止異常流量爆刷 API，維護系統穩定度。</li>
+          <li><strong>四級（離線靜態降級）：</strong> 最極端狀況下提供靜態安全指南回應。</li>
+        </ol>
+      </div>
+
+      <h2>五、總結與實務導入建議</h2>
+      <p>FALO AI KM 結合了 LINE 的便利性、Google NotebookLM 的深厚研究底蘊與 Cloudflare 的邊緣運算優勢，為企業提供了一套成本可控、體驗極佳的智慧知識庫解決方案。</p>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>銀河軟體 教學教材專區 &copy; 第六堂課 (attn-class6)</p>
+  </footer>
+
+  <script src="../js/topic.js"></script>
+</body>
+</html>
